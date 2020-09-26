@@ -79,7 +79,7 @@ This section shows the settings used in the demo/example for various MCU modules
 In “Registers” view, RSTOSC is configured as HFINTOSC with HFFRQ = 64 MHz and CDIV = 1:1
 
 <p align="center">
-  <img width=750 height=auto src="images/clock.png">
+  <img width=auto height=auto src="images/clock.png">
 </p>
 
 ## ADCC settings
@@ -87,7 +87,7 @@ In “Registers” view, RSTOSC is configured as HFINTOSC with HFFRQ = 64 MHz an
 Selected ADC clock source as FOSC/ADCLK, Clock as FOSC/128, Auto-conversion Trigger as TMR1. In computation feature selected “Repeat” value as 32 for ADC to take average of 32 samples in burst average mode. The Acc Right Shift value is set as 5. Enabled the ADC Threshold interrupt.
 
 <p align="center">
-  <img width=750 height=auto src="images/adcc.png">
+  <img width=auto height=auto src="images/adcc.png">
 </p>
 
 ## ADCC pins:
@@ -95,7 +95,7 @@ Selected ADC clock source as FOSC/ADCLK, Clock as FOSC/128, Auto-conversion Trig
 Selected RA0 and RA2 as analog input pins corresponding to the potentiometer on curiosity HPC board and analog output of UV/Ambient Click board respectively.
 
 <p align="center">
-  <img width=750 height=auto src="images/pinmanager.png">
+  <img width=auto height=auto src="images/pinmanager.png">
 </p>
 
 ## Timer 1 settings:
@@ -103,23 +103,23 @@ Selected RA0 and RA2 as analog input pins corresponding to the potentiometer on 
 The clock source for timer 1 is selected as LFINTOSC along with the prescaler of 1:8 and the timer period is set as 1 second. The timer interrupt is enabled.
 
 <p align="center">
-  <img width=750 height=auto src="images/timer1.png">
+  <img width=auto height=auto src="images/timer1.png">
 </p>
 
 Selected BLE2 form Device Resources -> Mikro-E Clicks-> Wireless Connectivity -> BLE2. In BLE2 Configuration tab disabled Generate Example option.
 
 <p align="center">
-  <img width=750 height=auto src="images/ble2Selection.png">
+  <img width=auto height=auto src="images/ble2Selection.png">
 </p>
 
 <p align="center">
-  <img width=750 height=auto src="images/ble2Selection1.png">
+  <img width=auto height=auto src="images/ble2Selection1.png">
 </p>
 
 Under advanced settings, selected EUSART1 which will select normal EUSART1 module (not the foundation service)
 
 <p align="center">
-  <img width=750 height=auto src="images/ble2Selection2.png">
+  <img width=auto height=auto src="images/ble2Selection2.png">
 </p>
 
 ## EUSART settings
@@ -127,7 +127,7 @@ Under advanced settings, selected EUSART1 which will select normal EUSART1 modul
 Selected Baud Rate as 115200.
 
 <p align="center">
-  <img width=750 height=auto src="images/Eusart1.png">
+  <img width=auto height=auto src="images/Eusart1.png">
 </p>
 
 ## CRC settings:
@@ -135,7 +135,7 @@ Selected Baud Rate as 115200.
 Data word is 16 bits and the CRC polynomial used is CRC-16.
 
 <p align="center">
-  <img width=750 height=auto src="images/CRC.png">
+  <img width=auto height=auto src="images/CRC.png">
 </p>
 
 ## Timer 0 settings:
@@ -143,7 +143,7 @@ Data word is 16 bits and the CRC polynomial used is CRC-16.
 Selected Clock prescaler as 1:4096, postscaler as 1:16 and Timer mode as 8-bit. The timer period is set as 1 second and the Timer Interrupt is enabled.
 
 <p align="center">
-  <img width=750 height=auto src="images/timer0.png">
+  <img width=auto height=auto src="images/timer0.png">
 </p>
 
 ## Memory settings:
@@ -151,17 +151,17 @@ Selected Clock prescaler as 1:4096, postscaler as 1:16 and Timer mode as 8-bit. 
 Enabled the option to Add DataEE Routines.
 
 <p align="center">
-  <img width=750 height=auto src="images/memory.png">
+  <img width=auto height=auto src="images/memory.png">
 </p>
 
 ## Full pin settings:
 
 <p align="center">
-  <img width=750 height=auto src="images/pinmanager.png">
+  <img width=auto height=auto src="images/pinmanager.png">
 </p>
 
 <p align="center">
-  <img width=750 height=auto src="images/pinModule.png">
+  <img width=auto height=auto src="images/pinModule.png">
 </p>
 
 ## Hardware setup
