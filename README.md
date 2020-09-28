@@ -46,8 +46,10 @@ In this application, the MCU communicates with the BLE2 click board over UART co
 ## Hardware used
 
 * [PIC18F47Q10 MCU](https://www.microchip.com/wwwproducts/en/PIC18F47Q10 "PIC18F47Q10 MCU")
-* [Curiosity HPC Develoment board](https://www.microchip.com/DevelopmentTools/ProductDetails/PartNO/DM164136 "Curiosity HPC Develoment board") 
-* [LCD mini click](https://www.mikroe.com/lcd-mini-click "LCD mini click")
+* [PIC18F47Q10 Curiosity Nano](https://www.microchip.com/Developmenttools/ProductDetails/DM182029 "PIC18F47Q10 Curiosity Nano") 
+* [Ultra Violet click](https://www.mikroe.com/uv-click "Ultra Violet click")
+* [Ambient click]( https://www.mikroe.com/ambient-click "Ambient click")
+* [BLE2 click](https://www.mikroe.com/ble-2-click "BLE2 click")
 
 <p align="center">
   <img width=auto height=auto src="images/hardware.png">
@@ -62,12 +64,12 @@ In this application, the MCU communicates with the BLE2 click board over UART co
 - [Microcontrollers and peripherals Library version]("Microcontrollers and peripherals Library version")
 - [MikroElektronika Click Library version]("MikroElektronika Click Library version")
 
-**Note: For running the demo, the installed tool versions should be the same or later. This example is not tested with the previous versions.**
+***Note: For running the demo, the installed tool versions should be the same or later. This example is not tested with the previous versions.***
 
 ## Android OS version:
 
-* The android app is developed using Android OS version Marshmallow (6.0.1) API level 23.
-* The app supports android versions from Jelly bean 4.3.x (API level 18) to Oreo 8.0.0 (API level 26).
+* The android app is developed using Android OS version **Marshmallow (6.0.1) API level 23**.
+* The app supports android versions from **Jelly bean 4.3.x (API level 18)** to **Oreo 8.0.0 (API level 26)**.
 * The apk file for the android app can be downloaded here:[Curious Sensors.apk](https://microchiptechnology-my.sharepoint.com/personal/namrata_dalvi_microchip_com/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fnamrata%5Fdalvi%5Fmicrochip%5Fcom%2FDocuments%2FEXT%5FCurious%20Sensors%2Eapk&parent=%2Fpersonal%2Fnamrata%5Fdalvi%5Fmicrochip%5Fcom%2FDocuments&originalPath=aHR0cHM6Ly9taWNyb2NoaXB0ZWNobm9sb2d5LW15LnNoYXJlcG9pbnQuY29tLzp1Oi9nL3BlcnNvbmFsL25hbXJhdGFfZGFsdmlfbWljcm9jaGlwX2NvbS9FUlc0aUZBcGY0cEZ1YjVQX0c2aUczUUJCdHdqZEh2Y2xkaWRzdW4xb3F2aHRRP3J0aW1lPWpuS1BmcGRKMkVn "Curious Sensors.apk")
 
 ## MCC settings
@@ -157,10 +159,6 @@ Enabled the option to Add DataEE Routines.
 ## Full pin settings:
 
 <p align="center">
-  <img width=auto height=auto src="images/pinmanager.png">
-</p>
-
-<p align="center">
   <img width=auto height=auto src="images/pinModule.png">
 </p>
 
@@ -174,13 +172,17 @@ Enabled the option to Add DataEE Routines.
 
 4. Following table shows the list of port pins of PIC18F25Q10 device used in the example along with the signal names.
 
-<p align="center">
-  <img width=750 height=auto src="images/systemModule.png">
-</p>
+|Sr No. | PIC18F47Q10 Pin|Signal Name| Board|
+| :---------: |:----------:|:-----------:|:-----------:|
+	
+| 1     | RA2    | Analog Input | AN output from UV/Ambient click |
+| 2     | RD5    | Sensor EN    | UV/Ambient click                | 
+| 3     | RA0    | Conn         | BLE2 Click                      | 
+| 4     | RA7    | Wake         | BLE2 Click                      | 
+| 5     | RC3/RX | UART RX	| BLE2 Click                      | 
+| 6    	| RC2/TX | UART TX    	| BLE2 Click            	  | 
+| 7     | RA3    | CMD/MLDP     | BLE2 Click                      |
 
-**Note:**
-* RB0 should be shorted to RD0 via a jumper for the working of BLE2 Click board. This is required as PIC18F25Q10 (28-pin package) MCUs do not have PORTD and the BLE2 click wakeup pin slot (in mikroBUS slot1) is hardwired to RD0 pin of the MCU on curiosity HPC board.
-* RB2 should be shorted to RD2 via a jumper for the working of UV Click board. Since the UV click EN pin slot (in mikroBUS slot2) is hardwired to RD2 pin of the MCU on curiosity HPC board.
 
 ## Operation
 
