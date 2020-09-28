@@ -51,18 +51,10 @@ In this application, the MCU communicates with the BLE2 click board over UART co
 * [Ambient click]( https://www.mikroe.com/ambient-click "Ambient click")
 * [BLE2 click](https://www.mikroe.com/ble-2-click "BLE2 click")
 
-<p align="center">
-  <img width=auto height=auto src="images/hardware.png">
-  <br>Fig 3:Curiosity HPC development board and LCD mini click<br>
-</p>
-
 ## Software tools
 - [MPLAB X IDE v5.40](https://www.microchip.com/mplab/mplab-x-ide "MPLAB X IDE v5.40")
 - [XC8 Compiler v2.30](https://www.microchip.com/mplab/compilers "XC8 Compiler v2.30")
 - [MPLAB Code Configurator](https://www.microchip.com/mplab/mplab-code-configurator "MPLAB Code Configurator")
-- [MCC Core Version]("MCC Core Version")
-- [Microcontrollers and peripherals Library version]("Microcontrollers and peripherals Library version")
-- [MikroElektronika Click Library version]("MikroElektronika Click Library version")
 
 ***Note: For running the demo, the installed tool versions should be the same or later. This example is not tested with the previous versions.***
 
