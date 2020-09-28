@@ -173,8 +173,7 @@ Enabled the option to Add DataEE Routines.
 4. Following table shows the list of port pins of PIC18F25Q10 device used in the example along with the signal names.
 
 |Sr No. | PIC18F47Q10 Pin|Signal Name| Board|
-| :---------: |:----------:|:-----------:|:-----------:|
-	
+| :---------: |:----------:|:-----------:|:-----------:|	
 | 1     | RA2    | Analog Input | AN output from UV/Ambient click |
 | 2     | RD5    | Sensor EN    | UV/Ambient click                | 
 | 3     | RA0    | Conn         | BLE2 Click                      | 
