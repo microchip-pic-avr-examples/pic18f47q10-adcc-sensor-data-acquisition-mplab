@@ -103,7 +103,7 @@ The clock source for timer 1 is selected as LFINTOSC along with the prescaler of
 Selected BLE2 form Device Resources -> Mikro-E Clicks-> Wireless Connectivity -> BLE2. In BLE2 Configuration tab disabled Generate Example option.
 
 <p align="center">
-  <img width=auto height=auto src="images/ble2Selection.png">
+  <img width=350 height=auto src="images/ble2Selection.png">
 </p>
 
 <p align="center">
@@ -113,7 +113,7 @@ Selected BLE2 form Device Resources -> Mikro-E Clicks-> Wireless Connectivity ->
 Under advanced settings, selected EUSART1 which will select normal EUSART1 module (not the foundation service)
 
 <p align="center">
-  <img width=auto height=auto src="images/ble2Selection2.png">
+  <img width=auto height=auto src="images/ble2selection2.png">
 </p>
 
 ## EUSART settings
@@ -155,7 +155,7 @@ Enabled the option to Add DataEE Routines.
 </p>
 
 <p align="center">
-  <img width=auto height=auto src="images/pinmanagergrid.png">
+  <img width=800 height=auto src="images/pinmanagergrid.png">
 </p>
 
 ## Hardware setup
@@ -182,23 +182,23 @@ Enabled the option to Add DataEE Routines.
 ## Operation
 
 1. Power on the PIC18F47Q10 Curiosity Nano board using USB micro cable connected to the PC.
-2. Program the PIC18F25Q10 device on curiosity HPC board using onboard programmer.
+2. Program the PIC18F47Q10 MCU on curiosity nano board using onboard programmer.
 3. The UV LED torch light can be used to check the working of UV sensor on the UV click board.
 
-### Curiosity HPC with UV, BLE2 Click boards and UV light source:
+### Curiosity Nano Base clicks board with UV, BLE2 Click board and UV light source:
 
 <p align="center">
-  <img width=750 height=auto src="images/systemModule.png">
+  <img width=750 height=auto src="images/uvclick.png">
 </p>
 
 <p align="center">
-  <img width=750 height=auto src="images/systemModule.png">
+  <img width=750 height=auto src="images/uv1click.png">
 </p>
 
-### Curiosity HPC with Ambient and BLE2 Click boards:
+### Curiosity Nano Base clicks board with Ambient and BLE2 Click boards:
 
 <p align="center">
-  <img width=750 height=auto src="images/systemModule.png">
+  <img width=750 height=auto src="images/ambientclick.png">
 </p>
 
 4. Install the android app (Curious Sensors) on the mobile.
