@@ -121,7 +121,7 @@ Under advanced settings, selected EUSART1 which will select normal EUSART1 modul
 Selected Baud Rate as 115200.
 
 <p align="center">
-  <img width=auto height=auto src="images/Eusart1.png">
+  <img width=750 height=auto src="images/Eusart1.png">
 </p>
 
 ## CRC settings:
@@ -129,7 +129,7 @@ Selected Baud Rate as 115200.
 Data word is 16 bits and the CRC polynomial used is CRC-16.
 
 <p align="center">
-  <img width=auto height=auto src="images/CRC.png">
+  <img width=750 height=auto src="images/CRC.png">
 </p>
 
 ## Timer 0 settings:
@@ -137,7 +137,7 @@ Data word is 16 bits and the CRC polynomial used is CRC-16.
 Selected Clock prescaler as 1:4096, postscaler as 1:16 and Timer mode as 8-bit. The timer period is set as 1 second and the Timer Interrupt is enabled.
 
 <p align="center">
-  <img width=auto height=auto src="images/timer0.png">
+  <img width=750 height=auto src="images/timer0.png">
 </p>
 
 ## Memory settings:
@@ -145,7 +145,8 @@ Selected Clock prescaler as 1:4096, postscaler as 1:16 and Timer mode as 8-bit. 
 Enabled the option to Add DataEE Routines.
 
 <p align="center">
-  <img width=auto height=auto src="images/memory.png">
+  <img width=750
+ height=auto src="images/memory.png">
 </p>
 
 ## Full pin settings:
