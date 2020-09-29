@@ -145,7 +145,7 @@ Selected Clock prescaler as 1:4096, postscaler as 1:16 and Timer mode as 8-bit. 
 Enabled the option to Add DataEE Routines.
 
 <p align="center">
-  <img width=750 height=auto src="images/memory.png">
+  <img width=auto height=auto src="images/memory.png">
 </p>
 
 ## Full pin settings:
@@ -177,7 +177,7 @@ Enabled the option to Add DataEE Routines.
 
 ## Operation
 
-1. Power on the curiosity HPC board using USB micro cable connected to the PC.
+1. Power on the PIC18F47Q10 Curiosity Nano board using USB micro cable connected to the PC.
 2. Program the PIC18F25Q10 device on curiosity HPC board using onboard programmer.
 3. The UV LED torch light can be used to check the working of UV sensor on the UV click board.
 
@@ -206,25 +206,25 @@ Enabled the option to Add DataEE Routines.
 6. Enable the GPS service and turn on the location service in the mobile. Ignore this step if Location service is already turned on in the mobile.
 
 <p align="center">
-  <img width=750 height=auto src="images/systemModule.png">
+  <img width=750 height=auto src="images/app1.png">
 </p>
 
 7. The GUI consists of a “Search” button, the user presses that to scan all nearby BLE devices. Once the search operation is done, it lists the device. The user should select one of the BLE devices from the list, and press the “Connect” button to pair with the device. Once connected to the device the connect button will appear as “Disconnect”.
 
 <p align="center">
-  <img width=750 height=auto src="images/systemModule.png">
+  <img width=750 height=auto src="images/app2.png">
 </p>
 
 8. To view the sensor data, check the “Display sensor data” option in the GUI. The ADC mode such as Normal or Burst average mode can be selected from the drop-down menus of “ADC Sampling Type”. The ADC sampling interval can be selected as 1, 2, 4, 8, or 16 seconds.
 
 <p align="center">
-  <img width=750 height=auto src="images/systemModule.png">
+  <img width=auto height=auto src="images/app3.png">
 </p>
 
 9. The real-time sensor reading is displayed in the percentage and the graph of the readings is plotted. The Y-axis shows the light intensity in terms of percentage. To view the previous logged data from the PFM of PIC18F25Q10 press button “Show Logged Data”. The button then will turn in to “Show real data” and the graph of the logged data is plotted. If there are any errors in CRC calculations or FLASH read/write, the corresponding error message is displayed at the bottom.
 
 <p align="center">
-  <img width=750 height=auto src="images/systemModule.png">
+  <img width=750 height=auto src="images/app4.png">
 </p>
 
 ## Conclusion
