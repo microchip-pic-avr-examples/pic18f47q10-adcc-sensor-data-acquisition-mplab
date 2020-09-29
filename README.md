@@ -5,11 +5,11 @@
 
 ## Introduction
   
-The PIC18FxxQ10 family is equipped with a 10-bit ADC with Computation (ADCC) automating Capacitive Voltage Divider (CVD) techniques for advanced touch sensing, averaging, filtering, oversampling and performing automatic threshold comparisons.
+The PIC18-Q10 family is equipped with a 10-bit ADC with Computation (ADCC) automating Capacitive Voltage Divider (CVD) techniques for advanced touch sensing, averaging, filtering, oversampling and performing automatic threshold comparisons.
 
-PIC18FxxQ10 family has the capability to store 1 byte data at a time to program memory without erasing it. So, no need to erase 64 Bytes in a sector to store 1 byte of data. This feature is not there in any other PIC18F devices. A write to program memory can be executed by sectors or single words. A read from program memory is executed one byte at a time.
+PIC18-Q10 family has the capability to store 1 byte data at a time to program memory without erasing it. So, no need to erase 64 Bytes in a sector to store 1 byte of data. This feature is not there in any other PIC18F devices. A write to program memory can be executed by sectors or single words. A read from program memory is executed one byte at a time.
 
-The PIC18FxxQ10 family offers core independent peripheral programmable CRC with Memory Scan which can be used for reliable data/program memory monitoring for Fail-Safe operation (e.g., Class B), to calculate CRC over any portion of Flash or EEPROM. The CRC module can be used in high-speed or background operation modes.
+The PIC18-Q10 family offers core independent peripheral programmable CRC with Memory Scan which can be used for reliable data/program memory monitoring for Fail-Safe operation (e.g., Class B), to calculate CRC over any portion of Flash or EEPROM. The CRC module can be used in high-speed or background operation modes.
 
 
 ## Useful Links
@@ -19,7 +19,7 @@ The PIC18FxxQ10 family offers core independent peripheral programmable CRC with 
 
 ## Description
 
-This example highlights the usage of ADCC, CRC modules of PIC18F25Q10 MCU and word writable feature of on-chip flash memory, without erasing complete sector.
+This example highlights the usage of ADCC, CRC modules of PIC18F47Q10 MCU and word writable feature of on-chip flash memory, without erasing complete sector.
 
 In this demo, the ADCC module operates either in Baisc or Burst average mode. The CRC module with memory scanner feature is used for PFM data integrity.
 
@@ -54,7 +54,7 @@ In this application, the MCU communicates with the BLE2 click board over UART co
 ## Software tools
 - [MPLAB X IDE v5.40](https://www.microchip.com/mplab/mplab-x-ide "MPLAB X IDE v5.40")
 - [XC8 Compiler v2.30](https://www.microchip.com/mplab/compilers "XC8 Compiler v2.30")
-- [MPLAB Code Configurator](https://www.microchip.com/mplab/mplab-code-configurator "MPLAB Code Configurator")
+- [MPLAB Code Configurator core version 4.85](https://www.microchip.com/mplab/mplab-code-configurator "MPLAB Code Configurator core version 4.85")
 
 ***Note: For running the demo, the installed tool versions should be the same or later. This example is not tested with the previous versions.***
 
@@ -154,6 +154,10 @@ Enabled the option to Add DataEE Routines.
   <img width=auto height=auto src="images/pinModule.png">
 </p>
 
+<p align="center">
+  <img width=auto height=auto src="images/pinmanagergrid.png">
+</p>
+
 ## Hardware setup
 
 1. Connect BLE2 click board in mikroBUS slot 1 of the curiosity HPC board.
@@ -218,7 +222,7 @@ Enabled the option to Add DataEE Routines.
 8. To view the sensor data, check the “Display sensor data” option in the GUI. The ADC mode such as Normal or Burst average mode can be selected from the drop-down menus of “ADC Sampling Type”. The ADC sampling interval can be selected as 1, 2, 4, 8, or 16 seconds.
 
 <p align="center">
-  <img width=auto height=auto src="images/app3.png">
+  <img width=750 height=auto src="images/app3.png">
 </p>
 
 9. The real-time sensor reading is displayed in the percentage and the graph of the readings is plotted. The Y-axis shows the light intensity in terms of percentage. To view the previous logged data from the PFM of PIC18F25Q10 press button “Show Logged Data”. The button then will turn in to “Show real data” and the graph of the logged data is plotted. If there are any errors in CRC calculations or FLASH read/write, the corresponding error message is displayed at the bottom.
