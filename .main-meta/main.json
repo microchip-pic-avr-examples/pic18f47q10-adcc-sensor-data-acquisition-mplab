@@ -3,28 +3,28 @@
     "category": "com.microchip.ide.project",
     "content": {
         "metaDataVersion": "1.1.0",
-        "name": "com.microchip.mcu8.mplabx.project.",
-        "version": " ",
-        "displayName": "  ",
-        "projectName": "",
+        "name": "com.microchip.mcu8.mplabx.project.pic18f47q10-adcc-sensor-data-acquisition-mplab",
+        "version": "1.0.0 ",
+        "displayName": "Sensor data acquisition",
+        "projectName": "pic18f47q10-adcc-sensor-data-acquisition-mplab",
         "shortDescription": "",
         "ide": {
-            "name": "",
-            "semverRange": ""
+            "name": "MPLAB X IDE",
+            "semverRange": ">=5.40.0"
         },
         "compiler": [
 			{
-				"name": "",
-				"semverRange": ""
+				"name": "XC8",
+				"semverRange": "^2.30.0"
 			}
 		],
         "dfp": {
-            "name": "",
-            "semverRange": ""
+            "name": "PIC18F-Q_DFP",
+            "semverRange": "^1.8.154"
         },
         "configurator": {
-            "name": "",
-            "semverRange": ""
+            "name": "MCC",
+            "semverRange": ">=3.95.0"
         },
         "device": {
             "metaDataVersion": "1.0.0",
@@ -32,26 +32,44 @@
             "content": {
                 "metaDataVersion": "1.0.0",
                 "category": "com.microchip.device",
-                "name": "",
+                "name": "PIC18F47Q10",
                 "versionRange": "*"
             }
         },
-        "author": "",
+        "author": "Microchip",
         "subcategories": [
-            "",
+            "MCC",
             [
-               "Peripherals", ""
+               "Peripherals", "TMR0"
             ],
             [
-               "Peripherals", ""
-            ]            			
+               "Peripherals", "TMR1"
+            ],
+            [
+               "Peripherals", "USART"
+            ]
+			[
+               "Peripherals", "MEMORY"
+            ],
+            [
+               "Peripherals", "CRC"
+            ],
+            [
+               "Peripherals", "ADCC"
+            ]
+			
         ],
         "peripherals": [
-            "",""
+            "TMR0","TMR1","USART","MEMORY","CRC","ADCC"
         ],
         "keywords": [
-            "",
-            ""			
+            "Bluetooth",
+            "Ambient click",
+			"UV click",
+			"Mobile App",
+			"PIC18F47Q10 Curiosity Nano",
+			"Curiosity Nano Base for click boards",
+			"BLE2 click",
         ],
 		"additionalData": {
 			"longDescription": {

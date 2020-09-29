@@ -23,7 +23,7 @@ This example highlights the usage of ADCC, CRC modules of PIC18F47Q10 MCU and wo
 
 In this demo, the ADCC module operates either in Baisc or Burst average mode. The CRC module with memory scanner feature is used for PFM data integrity.
 
-An Android App is developed with which users can visualize the sensors data over time. The instantaneous data visible on the app is from ADCC and the logged data is from Flash memory. This example uses the Curiosity Nano Base clicks board with the UV-Click board or Ambient Click board and a BLE2 Click board from MikroElektronika.
+An Android App is developed with which users can visualize the sensors data over time. The instantaneous data visible on the app is from ADCC and the logged data is from Flash memory. This example uses the Curiosity Nano base for click boards with the UV-Click board or Ambient Click board and a BLE2 Click board from MikroElektronika.
 
 ## Sensor Data Acquistion using ADCC:
 
@@ -47,6 +47,7 @@ In this application, the MCU communicates with the BLE2 click board over UART co
 
 * [PIC18F47Q10 MCU](https://www.microchip.com/wwwproducts/en/PIC18F47Q10 "PIC18F47Q10 MCU")
 * [PIC18F47Q10 Curiosity Nano](https://www.microchip.com/Developmenttools/ProductDetails/DM182029 "PIC18F47Q10 Curiosity Nano") 
+* [Curiosity Nano base for click boards](https://www.microchip.com/developmenttools/ProductDetails/AC164162 "Curiosity Nano base for click boards")
 * [Ultra Violet click](https://www.mikroe.com/uv-click "Ultra Violet click")
 * [Ambient click]( https://www.mikroe.com/ambient-click "Ambient click")
 * [BLE2 click](https://www.mikroe.com/ble-2-click "BLE2 click")
@@ -86,7 +87,7 @@ Selected ADC clock source as FOSC/ADCLK, Clock as FOSC/128, Auto-conversion Trig
 
 ## ADCC pins:
 
-Selected RA2 as analog input pins corresponding to the curiosity nano base clicks board and analog output of UV/Ambient Click board respectively.
+Selected RA2 as analog input pins corresponding to the curiosity nano base for click boards and analog output of UV/Ambient Click board respectively.
 
 <p align="center">
   <img width=750 height=auto src="images/pinmanager.png">
@@ -160,11 +161,11 @@ Enabled the option to Add DataEE Routines.
 
 ## Hardware setup
 
-1. Connect BLE2 click board in mikroBUS slot 1 of the curiosity nano base clicks board.
+1. Connect BLE2 click board in mikroBUS slot 1 of the curiosity nano base for click boards.
 
 2. Analog output from UV click is used in this demo. On UV click board resolder the A/D SEL jumper J1 (zero-ohm resistor) to AN position to use analog output. By default, the jumper is soldered in the ADC position.
 
-3. Connect UV/Ambient click board in mikroBUS slot 3 of the curiosity nano base clicks board.
+3. Connect UV/Ambient click board in mikroBUS slot 3 of the curiosity nano base for click boards.
 
 4. Following table shows the list of port pins of PIC18F47Q10 device used in the example along with the signal names.
 
@@ -185,7 +186,7 @@ Enabled the option to Add DataEE Routines.
 2. Program the PIC18F47Q10 MCU on curiosity nano board using onboard programmer.
 3. The UV LED torch light can be used to check the working of UV sensor on the UV click board.
 
-### Curiosity Nano Base clicks board with UV, BLE2 Click board and UV light source:
+### Curiosity Nano base for click boards with UV, BLE2 Click board and UV light source:
 
 <p align="center">
   <img width=750 height=auto src="images/uvclick.png">
@@ -195,7 +196,7 @@ Enabled the option to Add DataEE Routines.
   <img width=750 height=auto src="images/uv1click.png">
 </p>
 
-### Curiosity Nano Base clicks board with Ambient and BLE2 Click boards:
+### Curiosity Nano base for click boards with Ambient and BLE2 Click boards:
 
 <p align="center">
   <img width=750 height=auto src="images/ambientclick.png">
