@@ -23,7 +23,7 @@ This example highlights the usage of ADCC, CRC modules of PIC18F47Q10 MCU and wo
 
 In this demo, the ADCC module operates either in Baisc or Burst average mode. The CRC module with memory scanner feature is used for PFM data integrity.
 
-An Android App is developed with which users can visualize the sensors data over time. The instantaneous data visible on the app is from ADCC and the logged data is from Flash memory. This example uses the Curiosity HPC board with the UV-Click board or Ambient Click board and a BLE2 Click board from MikroElektronika.
+An Android App is developed with which users can visualize the sensors data over time. The instantaneous data visible on the app is from ADCC and the logged data is from Flash memory. This example uses the Curiosity Nano Base clicks board with the UV-Click board or Ambient Click board and a BLE2 Click board from MikroElektronika.
 
 ## Sensor Data Acquistion using ADCC:
 
@@ -33,7 +33,7 @@ This example project is targeting the sensor node segment. Figure below shows th
   <img width=750 height=auto src="images/blockdiagram.png">
 </p> 
 
-The ADCC module of PIC18F25Q10 MCU periodically acquires the UV/Ambient sensor data and process it to equivalent digital data. The ADCC has auto conversion trigger option. In this example Timer 1 is used as a source for the ADC conversion trigger. The interval for the timer can be selected from android app; currently the available options for the interval are 1, 2, 4, 8 or 16 seconds.
+The ADCC module of PIC18F47Q10 MCU periodically acquires the UV/Ambient sensor data and process it to equivalent digital data. The ADCC has auto conversion trigger option. In this example Timer 1 is used as a source for the ADC conversion trigger. The interval for the timer can be selected from android app; currently the available options for the interval are 1, 2, 4, 8 or 16 seconds.
 
 Out of various computation features of the ADCC such as Averaging and low-pass filter functions, reference comparison, 2-level threshold comparison and selectable interrupts the ADCC is used in the burst average mode in this example. The averaging of 32 samples is done by the computation hardware in the ADCC and the result is available in ADFLT register. The processed data will be transmitted to a mobile over BLE communication and displayed on the android mobile app.
 
@@ -86,7 +86,7 @@ Selected ADC clock source as FOSC/ADCLK, Clock as FOSC/128, Auto-conversion Trig
 
 ## ADCC pins:
 
-Selected RA0 and RA2 as analog input pins corresponding to the potentiometer on curiosity HPC board and analog output of UV/Ambient Click board respectively.
+Selected RA2 as analog input pins corresponding to the curiosity nano base clicks board and analog output of UV/Ambient Click board respectively.
 
 <p align="center">
   <img width=750 height=auto src="images/pinmanager.png">
@@ -160,13 +160,13 @@ Enabled the option to Add DataEE Routines.
 
 ## Hardware setup
 
-1. Connect BLE2 click board in mikroBUS slot 1 of the curiosity HPC board.
+1. Connect BLE2 click board in mikroBUS slot 1 of the curiosity nano base clicks board.
 
 2. Analog output from UV click is used in this demo. On UV click board resolder the A/D SEL jumper J1 (zero-ohm resistor) to AN position to use analog output. By default, the jumper is soldered in the ADC position.
 
-3. Connect UV/Ambient click board in mikroBUS slot 2 of the curiosity HPC board.
+3. Connect UV/Ambient click board in mikroBUS slot 3 of the curiosity nano base clicks board.
 
-4. Following table shows the list of port pins of PIC18F25Q10 device used in the example along with the signal names.
+4. Following table shows the list of port pins of PIC18F47Q10 device used in the example along with the signal names.
 
 |Sr No. | PIC18F47Q10 Pin|Signal Name| Board|
 | :---------: |:----------:|:-----------:|:-----------:|	
@@ -225,7 +225,7 @@ Enabled the option to Add DataEE Routines.
   <img width=750 height=auto src="images/app3.png">
 </p>
 
-9. The real-time sensor reading is displayed in the percentage and the graph of the readings is plotted. The Y-axis shows the light intensity in terms of percentage. To view the previous logged data from the PFM of PIC18F25Q10 press button “Show Logged Data”. The button then will turn in to “Show real data” and the graph of the logged data is plotted. If there are any errors in CRC calculations or FLASH read/write, the corresponding error message is displayed at the bottom.
+9. The real-time sensor reading is displayed in the percentage and the graph of the readings is plotted. The Y-axis shows the light intensity in terms of percentage. To view the previous logged data from the PFM of PIC18F47Q10 press button “Show Logged Data”. The button then will turn in to “Show real data” and the graph of the logged data is plotted. If there are any errors in CRC calculations or FLASH read/write, the corresponding error message is displayed at the bottom.
 
 <p align="center">
   <img width=750 height=auto src="images/app4.png">
@@ -233,7 +233,7 @@ Enabled the option to Add DataEE Routines.
 
 ## Conclusion
 
-This demo provides a code example of interfacing a sensor with PIC18F25Q10 device and usage of its advanced ADC with computation peripheral. The advanced analog peripheral ADCC replaces common software tasks with hardware solution reducing the amount of software code needed. It performs advanced calculations and filtering of data in hardware without any intervention from the CPU which reduces design efforts and improves system response.
+This demo provides a code example of interfacing a sensor with PIC18F47Q10 device and usage of its advanced ADC with computation peripheral. The advanced analog peripheral ADCC replaces common software tasks with hardware solution reducing the amount of software code needed. It performs advanced calculations and filtering of data in hardware without any intervention from the CPU which reduces design efforts and improves system response.
 
 The CRC module periodically checks the integrity of the logged data to check for any data corruption. Also, the word write feature without a need to erase whole sector of the program flash memory is demonstrated in the application.
 
