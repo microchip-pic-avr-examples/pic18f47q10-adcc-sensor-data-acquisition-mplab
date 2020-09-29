@@ -89,7 +89,7 @@ Selected ADC clock source as FOSC/ADCLK, Clock as FOSC/128, Auto-conversion Trig
 Selected RA0 and RA2 as analog input pins corresponding to the potentiometer on curiosity HPC board and analog output of UV/Ambient Click board respectively.
 
 <p align="center">
-  <img width=auto height=auto src="images/pinmanager.png">
+  <img width=750 height=auto src="images/pinmanager.png">
 </p>
 
 ## Timer 1 settings:
@@ -145,8 +145,7 @@ Selected Clock prescaler as 1:4096, postscaler as 1:16 and Timer mode as 8-bit. 
 Enabled the option to Add DataEE Routines.
 
 <p align="center">
-  <img width=750
- height=auto src="images/memory.png">
+  <img width=750 height=auto src="images/memory.png">
 </p>
 
 ## Full pin settings:
