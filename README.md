@@ -30,7 +30,7 @@ An Android App is developed with which users can visualize the sensors data over
 This example project is targeting the sensor node segment. Figure below shows the block diagram view of the application.
 
 <p align="center">
-  <img width=auto height=auto src="images/blockdiagram.png">
+  <img width=750 height=auto src="images/blockdiagram.png">
 </p> 
 
 The ADCC module of PIC18F25Q10 MCU periodically acquires the UV/Ambient sensor data and process it to equivalent digital data. The ADCC has auto conversion trigger option. In this example Timer 1 is used as a source for the ADC conversion trigger. The interval for the timer can be selected from android app; currently the available options for the interval are 1, 2, 4, 8 or 16 seconds.
@@ -73,7 +73,7 @@ This section shows the settings used in the demo/example for various MCU modules
 In “Registers” view, RSTOSC is configured as HFINTOSC with HFFRQ = 64 MHz and CDIV = 1:1
 
 <p align="center">
-  <img width=auto height=auto src="images/clock.png">
+  <img width=750 height=auto src="images/clock.png">
 </p>
 
 ## ADCC settings
@@ -81,7 +81,7 @@ In “Registers” view, RSTOSC is configured as HFINTOSC with HFFRQ = 64 MHz an
 Selected ADC clock source as FOSC/ADCLK, Clock as FOSC/128, Auto-conversion Trigger as TMR1. In computation feature selected “Repeat” value as 32 for ADC to take average of 32 samples in burst average mode. The Acc Right Shift value is set as 5. Enabled the ADC Threshold interrupt.
 
 <p align="center">
-  <img width=auto height=auto src="images/adcc.png">
+  <img width=750 height=auto src="images/adcc.png">
 </p>
 
 ## ADCC pins:
@@ -97,7 +97,7 @@ Selected RA0 and RA2 as analog input pins corresponding to the potentiometer on 
 The clock source for timer 1 is selected as LFINTOSC along with the prescaler of 1:8 and the timer period is set as 1 second. The timer interrupt is enabled.
 
 <p align="center">
-  <img width=auto height=auto src="images/timer1.png">
+  <img width=750 height=auto src="images/timer1.png">
 </p>
 
 Selected BLE2 form Device Resources -> Mikro-E Clicks-> Wireless Connectivity -> BLE2. In BLE2 Configuration tab disabled Generate Example option.
