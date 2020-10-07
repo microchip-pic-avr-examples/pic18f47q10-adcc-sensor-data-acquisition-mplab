@@ -55,7 +55,7 @@ In this application, the MCU communicates with the BLE2 click board over UART co
 ## Software tools
 - [MPLAB X IDE v5.40](https://www.microchip.com/mplab/mplab-x-ide "MPLAB X IDE v5.40")
 - [XC8 Compiler v2.30](https://www.microchip.com/mplab/compilers "XC8 Compiler v2.30")
-- [MPLAB Code Configurator core version 4.85](https://www.microchip.com/mplab/mplab-code-configurator "MPLAB Code Configurator core version 4.85")
+- [MPLAB Code Configurator  v4.0.1](https://www.microchip.com/mplab/mplab-code-configurator "MPLAB Code Configurator v4.0.1")
 
 ***Note: For running the demo, the installed tool versions should be the same or later. This example is not tested with the previous versions.***
 
