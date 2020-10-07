@@ -11,7 +11,11 @@ PIC18-Q10 family has the capability to store 1 byte data at a time to program me
 
 The PIC18-Q10 family offers core independent peripheral programmable CRC with Memory Scan which can be used for reliable data/program memory monitoring for Fail-Safe operation (e.g., Class B), to calculate CRC over any portion of Flash or EEPROM. The CRC module can be used in high-speed or background operation modes.
 
+#### To see the Sensor Data Acquisition using 10bit-ADCC demo operation video, click on the below image.
 
+<p align="center">
+<br><a href="https://youtu.be/n88VXd1AmxE" rel="nofollow"><img src="images/videofrontimage.png" alt="AVR DA" width="500"/></a>
+</p>
 ## Useful Links
 
 - [PIC18F47Q10 Product Page](https://www.microchip.com/wwwproducts/en/PIC18F47Q10 "PIC18F47Q10 Product Page")
