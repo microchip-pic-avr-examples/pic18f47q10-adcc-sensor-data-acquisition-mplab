@@ -16,6 +16,7 @@ The PIC18-Q10 family offers core independent peripheral programmable CRC with Me
 <p align="center">
 <br><a href="https://youtu.be/n88VXd1AmxE" rel="nofollow"><img src="images/videofrontimage.png" alt="AVR DA" width="500"/></a>
 </p>
+
 ## Useful Links
 
 - [PIC18F47Q10 Product Page](https://www.microchip.com/wwwproducts/en/PIC18F47Q10 "PIC18F47Q10 Product Page")
