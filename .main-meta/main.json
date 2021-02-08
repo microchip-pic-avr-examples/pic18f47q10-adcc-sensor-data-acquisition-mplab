@@ -4,7 +4,7 @@
     "content": {
         "metaDataVersion": "1.1.0",
         "name": "com.microchip.mcu8.mplabx.project.pic18f47q10-adcc-sensor-data-acquisition-mplab",
-        "version": "1.0.0",
+        "version": "1.0.1",
         "displayName": "Sensor Data Acquisition using 10-bit ADCC",
         "projectName": "pic18f47q10-adcc-sensor-data-acquisition-mplab",
         "shortDescription": "This demo is developed using PIC18-Q10 family MCU and PIC18F47Q10 Curiosity Nano development board. The demo highlights the usage of 10-bit ADCC module in PIC18-Q10 family of MCUs for sensor data acquisition.",
