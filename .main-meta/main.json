@@ -39,6 +39,9 @@
         "author": "Microchip",
         "subcategories": [
             "MCC",
+			"Communications",
+			"Internet of Things (IoT)",
+			"Sensor Nodes",
             [
                "Peripherals", "TMR0"
             ],
@@ -64,12 +67,9 @@
         ],
         "keywords": [
             "Bluetooth",
-            "Ambient click",
-			"UV click",
-			"Mobile App",
-			"PIC18F47Q10 Curiosity Nano",
-			"Curiosity Nano Base for click boards",
-			"BLE2 click"
+			"16 Timer",
+			"Wireless Communication",
+			"Curiosity Nano"
         ],
 		"additionalData": {
 			"longDescription": {
