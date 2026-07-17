@@ -1,248 +1,167 @@
 <!-- Please do not change this html logo with link -->
 <a href="https://www.microchip.com" rel="nofollow"><img src="images/microchip.png" alt="MCHP" width="200"/></a>
 
-## Sensor Data Acquisition using 10-bit ADCC
+## Sensor Data Acquisition Using 10-bit ADCC
 
 ## Introduction
-  
-The PIC18-Q10 family is equipped with a 10-bit ADC with Computation (ADCC) automating Capacitive Voltage Divider (CVD) techniques for advanced touch sensing, averaging, filtering, oversampling and performing automatic threshold comparisons.
 
-PIC18-Q10 family has the capability to store 1 byte data at a time to program memory without erasing it. So, no need to erase 64 Bytes in a sector to store 1 byte of data. This feature is not there in any other PIC18F devices. A write to program memory can be executed by sectors or single words. A read from program memory is executed one byte at a time.
+The PIC18-Q10 family is equipped with a 10-bit Analog-to-Digital Converter with Computation (ADCC) which automates Capacitive Voltage Divider (CVD) techniques for advanced touch sensing, averaging, filtering, oversampling and performing automatic threshold comparisons. A key feature that distinguishes the PIC18F-Q10 family MCUs within the PIC18F devices is their ability to write a single byte of data to program memory without requiring to erase an entire sector. Writes to program memory can be performed by sector or by individual word, while reads from program memory are performed one byte at a time. Furthermore, they have programmable Cyclic Redundancy Check (CRC) with Memory Scan, which is a Core Independent Peripheral (CIP) used to calculate CRC over a portion of Flash memory or EEPROM without needing the user to input data to the CRC data registers.
 
-The PIC18-Q10 family offers core independent peripheral programmable CRC with Memory Scan which can be used for reliable data/program memory monitoring for Fail-Safe operation (e.g., Class B), to calculate CRC over any portion of Flash or EEPROM. The CRC module can be used in high-speed or background operation modes.
+Click the image below to view the demo operation video of this example.
 
-#### To see the Sensor Data Acquisition using 10bit-ADCC demo operation video, click on the below image.
-
-<p align="center">
+<p align="left">
 <br><a href="https://youtu.be/n88VXd1AmxE" rel="nofollow"><img src="images/videofrontimage.png" alt="AVR DA" width="500"/></a>
 </p>
 
-## Useful Links
+## Related Documentation
 
-- [PIC18F47Q10 Product Page](https://www.microchip.com/wwwproducts/en/PIC18F47Q10 "PIC18F47Q10 Product Page")
-- [PIC18F47Q10 Code Examples on GitHub](https://github.com/microchip-pic-avr-examples?q=PIC18F47Q10&type=&language= "PIC18F47Q10 Code Examples on GitHub")
+- [PIC18F47Q10 Product Page](https://www.microchip.com/en-us/product/PIC18F47Q10?utm_source=GitHub&utm_medium=TextLink&utm_campaign=MCU8_PIC18-Q13&utm_content=pic18f47q10-adcc-sensor-data-acquisition-mplab-github&utm_bu=MCU08")
+- [PIC18F47Q10 Data Sheet](https://ww1.microchip.com/downloads/en/DeviceDoc/PIC18F27_47Q10-data-sheet-40002043C.pdf)
+- [PIC18F47Q10 Code Examples on GitHub](https://github.com/microchip-pic-avr-examples?q=PIC18F47Q10&type=&language="PIC18F47Q10")
+
+## Hardware Used
+
+- [PIC18F47Q10 Curiosity Nano](https://www.microchip.com/en-us/development-tool/DM182029?utm_source=GitHub&utm_medium=TextLink&utm_campaign=MCU8_PIC18-Q10&utm_content=pic18f47q10-adcc-sensor-data-acquisition-mplab-github&utm_bu=MCU08)
+- [Curiosity Nano Base for Click boards™](https://www.microchip.com/en-us/development-tool/AC164162?utm_source=GitHub&utm_medium=TextLink&utm_campaign=MCU8_PIC18-Q10&utm_content=pic18f47q10-adcc-sensor-data-acquisition-mplab-github&utm_bu=MCU08)
+- [UV Click](https://www.mikroe.com/uv-click) or [Ambient Click]( https://www.mikroe.com/ambient-click)
+- [BLE2 Click](https://www.mikroe.com/ble-2-click)
+
+## Software Used
+
+- [MPLAB® X IDE v6.30](https://www.microchip.com/en-us/tools-resources/develop/mplab-x-ide?utm_source=GitHub&utm_medium=TextLink&utm_campaign=MCU8_PIC18-Q10&utm_content=pic18f47q10-adcc-sensor-data-acquisition-mplab-github&utm_bu=MCU08) or newer
+- [XC8 Compiler v3.10](https://www.microchip.com/en-us/tools-resources/develop/mplab-xc-compilers?utm_source=GitHub&utm_medium=TextLink&utm_campaign=MCU8_PIC18-Q11&utm_content=pic18f47q10-adcc-sensor-data-acquisition-mplab-github&utm_bu=MCU08) or newer
+- [MPLAB Code Configurator (MCC) v5.7.0](https://www.microchip.com/en-us/tools-resources/configure/mplab-code-configurator?utm_source=GitHub&utm_medium=TextLink&utm_campaign=MCU8_PIC18-Q12&utm_content=pic18f47q10-adcc-sensor-data-acquisition-mplab-github&utm_bu=MCU08) or newer
+- [Microchip PIC18F-Q Series Device Support v1.30.487](https://packs.download.microchip.com/) or newer
+
+## Android™ OS Version
+
+* The android app is developed using Android OS version **Marshmallow (v6.0.1) API level 23**
+* The app supports Android versions from **Jelly bean v4.3.x (API level 18)** to **Oreo v8.0.0 (API level 26)**
+* The apk file for the Android app is available in the project files for downloading
 
 ## Description
 
-This example highlights the usage of ADCC, CRC modules of PIC18F47Q10 MCU and word writable feature of on-chip flash memory, without erasing complete sector.
+This example highlights the usage of the word-writable feature of the on-chip Flash memory, which does not erase the complete sector, ADCC and CRC modules of the PIC18F47Q10 MCU. Here, the ADCC module operates either in Basic mode or Burst Average mode. The CRC module with the integrated Memory Scanner feature is used for Program Flash Memory (PFM) data integrity.
 
-In this demo, the ADCC module operates either in Baisc or Burst average mode. The CRC module with memory scanner feature is used for PFM data integrity.
+An Android app is developed with which users can visualize the sensor data over time. The instantaneous data visible on the app is from ADCC, and the logged data is from Flash memory. This example uses the Curiosity Nano base for Click boards with the UV Click board or Ambient Click board, and a BLE2 Click board from MikroElektronika.
 
-An Android App is developed with which users can visualize the sensors data over time. The instantaneous data visible on the app is from ADCC and the logged data is from Flash memory. This example uses the Curiosity Nano base for click boards with the UV-Click board or Ambient Click board and a BLE2 Click board from MikroElektronika.
+The figure below shows the block diagram view of the application. <br> 
 
-## Sensor Data Acquistion using ADCC:
+![block diagram](images/blockdiagram.png)
 
-This example project is targeting the sensor node segment. Figure below shows the block diagram view of the application.
+The PIC18F47Q10 ADCC module  periodically acquires the UV Sensor or Ambient sensor data and processes it to the equivalent digital data. The ADCC is used with the Auto Trigger option by setting Timer1 (TMR1) as source. The ADC mode and the Timer1 interval can be selected from the Android app. Currently, the available options for the interval are 1, 2, 4, 8 or 16 seconds.
 
-<p align="center">
-  <img width=750 height=auto src="images/blockdiagram.png">
-</p> 
+In this example, the ADCC is used in the Basic mode or Burst Average mode. The averaging of 32 samples is done by the computation hardware of the ADCC and the result is available in the ADFLT register. The processed data will be transmitted to a mobile over Bluetooth® Low Energy (BLE) communication and displayed on the Android mobile app.
 
-The ADCC module of PIC18F47Q10 MCU periodically acquires the UV/Ambient sensor data and process it to equivalent digital data. The ADCC has auto conversion trigger option. In this example Timer 1 is used as a source for the ADC conversion trigger. The interval for the timer can be selected from android app; currently the available options for the interval are 1, 2, 4, 8 or 16 seconds.
+If the Bluetooth is not connected, the sensor data acquired by the ADC is periodically stored in PFM using the single-word write feature of the PFM. When the Bluetooth is connected, the logged data is transmitted to the mobile app. The CRC with memory scanner peripheral is used to do error checking of data stored in PFM for data integrity.
 
-Out of various computation features of the ADCC such as Averaging and low-pass filter functions, reference comparison, 2-level threshold comparison and selectable interrupts the ADCC is used in the burst average mode in this example. The averaging of 32 samples is done by the computation hardware in the ADCC and the result is available in ADFLT register. The processed data will be transmitted to a mobile over BLE communication and displayed on the android mobile app.
+In this application, the MCU communicates with the BLE2 Click board over the Universal Asynchronous Receiver and Transmitter (UART) communication interface. This application uses the ADCC, CRC with memory scanner, PFM and UART modules of the MCU.
 
-The sensor data acquired by the ADC is periodically stored in PFM using single word write feature of the PFM, when it is not connected to the Bluetooth. When the Bluetooth connection is available, the logged data is then transmitted to the mobile app.
+## Hardware Setup
 
-The CRC and memory scanner peripheral is used to do error checking of data stored in PFM for data integrity.
+1. Insert the BLE2 Click board in mikroBUS™ slot 1 of the Curiosity Nano base board.
 
-In this application, the MCU communicates with the BLE2 click board over UART communication interface. This application uses ADCC, CRC and memory scanner, PFM and UART modules of the MCU.
+2. This demo uses the UV Click analog output. Resolder the Analog-to-Digital (A/D) SEL jumper J1 (zero-ohm resistor) on the UV Click board to the AN position to use the analog output. By default, the jumper is soldered in the ADC position.
 
-## Hardware used
+3. Insert the UV/Ambient Click board in mikroBUS slot 3 of the Curiosity Nano base board.
 
-* [PIC18F47Q10 MCU](https://www.microchip.com/wwwproducts/en/PIC18F47Q10 "PIC18F47Q10 MCU")
-* [PIC18F47Q10 Curiosity Nano](https://www.microchip.com/Developmenttools/ProductDetails/DM182029 "PIC18F47Q10 Curiosity Nano") 
-* [Curiosity Nano base for click boards](https://www.microchip.com/developmenttools/ProductDetails/AC164162 "Curiosity Nano base for click boards")
-* [Ultra Violet click](https://www.mikroe.com/uv-click "Ultra Violet click")
-* [Ambient click]( https://www.mikroe.com/ambient-click "Ambient click")
-* [BLE2 click](https://www.mikroe.com/ble-2-click "BLE2 click")
-
-## Software tools
-- [MPLAB X IDE v5.40](https://www.microchip.com/mplab/mplab-x-ide "MPLAB X IDE v5.40")
-- [XC8 Compiler v2.30](https://www.microchip.com/mplab/compilers "XC8 Compiler v2.30")
-- [MPLAB Code Configurator  v4.0.1](https://www.microchip.com/mplab/mplab-code-configurator "MPLAB Code Configurator v4.0.1")
-
-***Note: For running the demo, the installed tool versions should be the same or later. This example is not tested with the previous versions.***
-
-## Android OS version:
-
-* The android app is developed using Android OS version **Marshmallow (6.0.1) API level 23**.
-* The app supports android versions from **Jelly bean 4.3.x (API level 18)** to **Oreo 8.0.0 (API level 26)**.
-* The apk file for the android app can be downloaded here:[Curious Sensors.apk](https://microchiptechnology-my.sharepoint.com/personal/namrata_dalvi_microchip_com/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fnamrata%5Fdalvi%5Fmicrochip%5Fcom%2FDocuments%2FEXT%5FCurious%20Sensors%2Eapk&parent=%2Fpersonal%2Fnamrata%5Fdalvi%5Fmicrochip%5Fcom%2FDocuments&originalPath=aHR0cHM6Ly9taWNyb2NoaXB0ZWNobm9sb2d5LW15LnNoYXJlcG9pbnQuY29tLzp1Oi9nL3BlcnNvbmFsL25hbXJhdGFfZGFsdmlfbWljcm9jaGlwX2NvbS9FUlc0aUZBcGY0cEZ1YjVQX0c2aUczUUJCdHdqZEh2Y2xkaWRzdW4xb3F2aHRRP3J0aW1lPWpuS1BmcGRKMkVn "Curious Sensors.apk")
-
-## MCC settings
-
-This section shows the settings used in the demo/example for various MCU modules configuration. These settings were done using the Microchip Code Configurator (MCC). Open MCC to look at the settings of the modules.
-
-## System Module
-
-In “Registers” view, RSTOSC is configured as HFINTOSC with HFFRQ = 64 MHz and CDIV = 1:1
-
-<p align="center">
-  <img width=750 height=auto src="images/clock.png">
-</p>
-
-## ADCC settings
-
-Selected ADC clock source as FOSC/ADCLK, Clock as FOSC/128, Auto-conversion Trigger as TMR1. In computation feature selected “Repeat” value as 32 for ADC to take average of 32 samples in burst average mode. The Acc Right Shift value is set as 5. Enabled the ADC Threshold interrupt.
-
-<p align="center">
-  <img width=750 height=auto src="images/adcc.png">
-</p>
-
-## ADCC pins:
-
-Selected RA2 as analog input pins corresponding to the curiosity nano base for click boards and analog output of UV/Ambient Click board respectively.
-
-<p align="center">
-  <img width=750 height=auto src="images/pinmanager.png">
-</p>
-
-## Timer 1 settings:
-
-The clock source for timer 1 is selected as LFINTOSC along with the prescaler of 1:8 and the timer period is set as 1 second. The timer interrupt is enabled.
-
-<p align="center">
-  <img width=750 height=auto src="images/timer1.png">
-</p>
-
-Selected BLE2 form Device Resources -> Mikro-E Clicks-> Wireless Connectivity -> BLE2. In BLE2 Configuration tab disabled Generate Example option.
-
-<p align="center">
-  <img width=350 height=auto src="images/ble2Selection.png">
-</p>
-
-<p align="center">
-  <img width=auto height=auto src="images/ble2Selection1.png">
-</p>
-
-Under advanced settings, selected EUSART1 which will select normal EUSART1 module (not the foundation service)
-
-<p align="center">
-  <img width=auto height=auto src="images/ble2selection2.png">
-</p>
-
-## EUSART settings
-
-Selected Baud Rate as 115200.
-
-<p align="center">
-  <img width=750 height=auto src="images/Eusart1.png">
-</p>
-
-## CRC settings:
-
-Data word is 16 bits and the CRC polynomial used is CRC-16.
-
-<p align="center">
-  <img width=750 height=auto src="images/CRC.png">
-</p>
-
-## Timer 0 settings:
-
-Selected Clock prescaler as 1:4096, postscaler as 1:16 and Timer mode as 8-bit. The timer period is set as 1 second and the Timer Interrupt is enabled.
-
-<p align="center">
-  <img width=750 height=auto src="images/timer0.png">
-</p>
-
-## Memory settings:
-
-Enabled the option to Add DataEE Routines.
-
-<p align="center">
-  <img width=auto height=auto src="images/memory.png">
-</p>
-
-## Full pin settings:
-
-<p align="center">
-  <img width=auto height=auto src="images/pinModule.png">
-</p>
-
-<p align="center">
-  <img width=800 height=auto src="images/pinmanagergrid.png">
-</p>
-
-## Hardware setup
-
-1. Connect BLE2 click board in mikroBUS slot 1 of the curiosity nano base for click boards.
-
-2. Analog output from UV click is used in this demo. On UV click board resolder the A/D SEL jumper J1 (zero-ohm resistor) to AN position to use analog output. By default, the jumper is soldered in the ADC position.
-
-3. Connect UV/Ambient click board in mikroBUS slot 3 of the curiosity nano base for click boards.
-
-4. Following table shows the list of port pins of PIC18F47Q10 device used in the example along with the signal names.
+The following table shows the list of PIC18F47Q10 port pins used in the example along with the signal names.
 
 |Sr No. | PIC18F47Q10 Pin|Signal Name| Board|
-| :---------: |:----------:|:-----------:|:-----------:|	
-| 1     | RA2    | Analog Input | AN output from UV/Ambient click |
-| 2     | RD5    | Sensor EN    | UV/Ambient click                | 
-| 3     | RA0    | Conn         | BLE2 Click                      | 
-| 4     | RA7    | Wake         | BLE2 Click                      | 
-| 5     | RC3/RX | UART RX	| BLE2 Click                      | 
-| 6    	| RC2/TX | UART TX    	| BLE2 Click            	  | 
+| :---------: |:----------:|:-----------:|:-----------:|
+| 1     | RA2    | Analog input | AN output from UV/Ambient Click |
+| 2     | RD5    | Sensor EN    | UV/Ambient Click                |
+| 3     | RA0    | Conn         | BLE2 Click                      |
+| 4     | RA7    | Wake         | BLE2 Click                      |
+| 5     | RC3/RX | UART RX	    | BLE2 Click                      |
+| 6    	| RC2/TX | UART TX    	| BLE2 Click            	        |
 | 7     | RA3    | CMD/MLDP     | BLE2 Click                      |
 
 
 ## Operation
 
-1. Power on the PIC18F47Q10 Curiosity Nano board using USB micro cable connected to the PC.
-2. Program the PIC18F47Q10 MCU on curiosity nano board using onboard programmer.
-3. The UV LED torch light can be used to check the working of UV sensor on the UV click board.
+1. Power on the PIC18F47Q10 Curiosity Nano board using a USB micro cable connected to the PC.
+2. Program the PIC18F47Q10 MCU on Curiosity Nano board.
+3. The UV LED torch light can be used to check how the UV sensor on the UV Click board works.
 
-### Curiosity Nano base for click boards with UV, BLE2 Click board and UV light source:
+#### Curiosity Nano Base for Click boards with UV, BLE2 Click board and UV light source
 
-<p align="center">
+<p align="left">
   <img width=750 height=auto src="images/uvclick.png">
 </p>
 
-<p align="center">
+<p align="left">
   <img width=750 height=auto src="images/uv1click.png">
 </p>
 
-### Curiosity Nano base for click boards with Ambient and BLE2 Click boards:
+#### Curiosity Nano Base for Click boards with Ambient and BLE2 Click boards
 
-<p align="center">
+<p align="left">
   <img width=750 height=auto src="images/ambientclick.png">
 </p>
 
-4. Install the android app (Curious Sensors) on the mobile.
+4. Install the Curious Sensors Android app on the mobile.
 
-### Mobile application setup and images:
+    - Allow the application to turn on the mobile Bluetooth service. Ignore this step if Bluetooth is already turned on in the mobile.
 
-5. Allow the application to turn on the Bluetooth service of the mobile. Ignore this step if Bluetooth is already turned on in the mobile.
+    - Enable the GPS service and turn on the location service in the mobile. Ignore this step if the Location service is already turned on in the mobile.
 
-6. Enable the GPS service and turn on the location service in the mobile. Ignore this step if Location service is already turned on in the mobile.
+    ![application image 1](images/app1.png)
 
-<p align="center">
-  <img width=750 height=auto src="images/app1.png">
-</p>
+    - Pressing the **SEARCH** button starts the scan of nearby BLE devices. Once the search operation is done, the GUI lists the detected devices. The user should select the BLE device used for the application from the list and press the **CONNECT** button to pair with the device.
 
-7. The GUI consists of a “Search” button, the user presses that to scan all nearby BLE devices. Once the search operation is done, it lists the device. The user should select one of the BLE devices from the list, and press the “Connect” button to pair with the device. Once connected to the device the connect button will appear as “Disconnect”.
+    ![application image 2](images/app1.png)
 
-<p align="center">
-  <img width=750 height=auto src="images/app2.png">
-</p>
+    - To view the sensor data, check the “Display sensor data” option in the GUI. The ADC mode, such as Basic Mode or Burst Average Mode, can be selected from the drop-down menu of “ADC Sampling Type”. The timer interval can be selected from the "ADC sampling interval" drop-down menu with the available options: 1, 2, 4, 8, or 16 seconds.
 
-8. To view the sensor data, check the “Display sensor data” option in the GUI. The ADC mode such as Normal or Burst average mode can be selected from the drop-down menus of “ADC Sampling Type”. The ADC sampling interval can be selected as 1, 2, 4, 8, or 16 seconds.
+    ![application image 3](images/app3.png)
 
-<p align="center">
-  <img width=750 height=auto src="images/app3.png">
-</p>
+    - The real-time sensor reading is displayed in percentage and the graph of the readings is plotted. The Y-axis shows a percentage vale of light intensity. To view the previous logged data from the PIC18F47Q10 PFM, press the **Show Logged Data** button. The button will then turn into **Show real data** and the graph of the logged data is plotted. If there are any errors in the CRC calculations or Flash read/write, the corresponding error message is displayed at the bottom.
 
-9. The real-time sensor reading is displayed in the percentage and the graph of the readings is plotted. The Y-axis shows the light intensity in terms of percentage. To view the previous logged data from the PFM of PIC18F47Q10 press button “Show Logged Data”. The button then will turn in to “Show real data” and the graph of the logged data is plotted. If there are any errors in CRC calculations or FLASH read/write, the corresponding error message is displayed at the bottom.
+    ![application image 4](images/app4.png)
 
-<p align="center">
-  <img width=750 height=auto src="images/app4.png">
-</p>
+## Peripheral Configuration
+
+This section explains how to configure the peripherals using MPLAB X IDE with MCC plug-in to recreate the project.
+
+Refer to the [Software Used ](https://github.com/microchip-pic-avr-examples/pic18f47q10-adcc-sensor-data-acquisition-mplab#software-used) section to install required tools to recreate the project.
+
+Additional information can be found here: [MCC Melody Technical Reference](https://onlinedocs.microchip.com/v2/keyword-lookup?keyword=MCC.MELODY.INTRODUCTION&version=latest&redirect=true)
+
+| Module | Configuration | Usage |
+|--------|----------------|----------------|
+| Clock control | *Clock Settings* <br> Clock Source —  HFINTOSC<br>   HF Internal Clock —  64 MHz<br>   Clock Divider —  1  | System Clock|
+|Configuration Bits|*CONFIG1L*<br> External Oscillator Mode Selection —  Oscillator not enabled | RA7 pin <br> (this pin is used as the external oscillator pin by default)
+|ADCC | *Software Settings*<br> TMR Dependencey selector —  TMR1 <br><br> *Hardware Settings*<br> Enable ADC<br> Result Alignment — Right <br>Auto-conversion Trigger — TMR1<br><br>  *ADC Clock* <br>Clock Source —  FOSC/ADCLK<br>Clock Divider —  FOSC/128  <br><br>*Computation Settings*<br> computation Mode —  Burst Average<br> Sample Repeat Count —  32 <br> Threshold Interrupt Mode —  Enabled <br> Accumulator Right Shift —  5<br><br> *Interrupt Settings*<br> Threshold Interrupt Enable —  Enable |   Samples output           
+|Timer1|*Software Settings* <br> Custom Name —  TIMER1 <br><br>*Hardware Settings* <br>Timer Enable —  Enable <br><br>*Timer Clock* <br>Clock Source — LFINTOSC <br> prescaler —  1:8<br>External Clock Synchronization —  Synchronize <br><br> *Timer Period*<br> Requested period —  1s <br><br> *Interrupt Settings*<br> TMR Interrupt Enable — Enable| ADC Auto-conversion Trigger|
+|Timer0|*Software Settings* <br> Custom Name — TIMER0 <br><br>*Hardware settings*<br> Clock Prescaler —  1:4096 <br> postscaler —  1:16 <br> Timer Mode —  8 bit <br> Clock Source —  FOSC/4 <br> Requested Period —  1s <br> <br> *Interrupt Settings*<br> TMR interrupt Enable — Enable |Trigger CRC |
+|CRC| *Hardware settings* <br> Enable CRC — Enable <BR>  use Pre-defined polynomial — Enable <br> Pre-defined polynomial —  CRC-16 <br> Polynomial Word Width —  16<br>Augmentation Mode —  Data augmented with 0s <br> Shift Direction —  Shift left <br> Data Words Width —  16 <br> <br> *Scanner* <br>  Enable Scanner<br> Memory access mode —  Burst Mode   | Error check of data stored in PFM  |
+|NVM|*Flash Software Settings* <br> Generate Flash APIs — Enable <br><br> *EEPROM Software Settings* <br> Generate EEPROM APIs —  Enable | EEPROM |
+|UART |*Dependency Selector* <br> UART PLIB Selector —  EUSART 1 <br><br> *Configuration Settings* <br> Custom Name — BLE_UART <BR> Requested Baud Rate —  115200<br><br> *Interrupt Settings* <br> Interrupt driven —  Enable <br> Software Transmit Buffer Size —  8 <br> Software Transmit Buffer Size —  8 | Send data to PC terminal|
+
+<br><br>The following table details the pin configuration for the Pins peripheral in the Pins window.
+
+|Peripheral | Function | Pin Name | Pin Direction | Custom Name |Analog | Start High | Slew Rate | Interrupt on Change|
+|-----------|----------|----------|---------------|-------------|------------|---------|---------|--------------------|
+| EUSART1 | TXD | RC2 | Output | IO_RC2 | No | Yes | Yes| None |
+| EUSART1 | RXD | RC3 | Input  | IO_RC3 | No  | No | Yes | None |
+| ADC     | ANx | RA2 | Input  | SENSOR_CLICK_AN | Yes  | No | Yes | None | 
+| Pins    | GPIO| RA3 | Output | BLE_CMD | No  | No | Yes | None| 
+| Pins    | GPIO| RA0 | Input  | BLE_CONNECTION   | No  | No | Yes | None |
+| Pins    | GPIO| RA7 | Output | BLE_WAKE   | No  | No | Yes | None |
+| Pins    | GPIO| RD5 | Output | SENSOR_ENABLE   | No  | No |Yes | None |
+
+### Compiler Settings
+
+The below setting is to let the compiler know that the Program size should not exceed the given range of address.
+- Go to Project Properties
+- Under XC8 Global Options, click XC8 linker
+- From the drop-down menu of "Option Categories", select Memory Model
+- In the "Rom Ranges" field, enter "0-1FDFF"
+- Click **Apply**
+
+![compiler settings](images/compilersettings.png)
 
 ## Conclusion
 
-This demo provides a code example of interfacing a sensor with PIC18F47Q10 device and usage of its advanced ADC with computation peripheral. The advanced analog peripheral ADCC replaces common software tasks with hardware solution reducing the amount of software code needed. It performs advanced calculations and filtering of data in hardware without any intervention from the CPU which reduces design efforts and improves system response.
-
-The CRC module periodically checks the integrity of the logged data to check for any data corruption. Also, the word write feature without a need to erase whole sector of the program flash memory is demonstrated in the application.
-
-Integrated analog and peripheral interconnectivity promotes autonomous control and reduces external connections and BOM. The core independent operation allows the CPU to either execute more complex tasks, supervise the system or remain in a low-power mode to conserve power until processing is required.
-
-
+This demo showcases a code example for interfacing a sensor with the PIC18F47Q10 microcontroller, highlighting the usage of its advanced ADCC peripheral. Additionally, the CRC module is employed to regularly verify the integrity of the logged data, ensuring it remains free from corruption. The demonstration also features the word write functionality, which allows for data to be written directly to the program Flash memory without the need to erase the entire sector, illustrating an efficient method of data handling within the application.

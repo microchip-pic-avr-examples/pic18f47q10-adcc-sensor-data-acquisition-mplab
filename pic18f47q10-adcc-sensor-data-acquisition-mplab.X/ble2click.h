@@ -28,58 +28,42 @@
 
 // This is a guard condition so that contents of this file are not included
 // more than once.  
-#ifndef XC_HEADER_TEMPLATE_H
-#define	XC_HEADER_TEMPLATE_H
-
-#include <xc.h> // include processor files - each processor file is guarded.  
-
-// TODO Insert appropriate #include <>
-
-// TODO Insert C++ class definitions if appropriate
-
-// TODO Insert declarations
-
-// Comment a function and leverage automatic documentation with slash star star
-/**
-    <p><b>Function prototype:</b></p>
-  
-    <p><b>Summary:</b></p>
-
-    <p><b>Description:</b></p>
-
-    <p><b>Precondition:</b></p>
-
-    <p><b>Parameters:</b></p>
-
-    <p><b>Returns:</b></p>
-
-    <p><b>Example:</b></p>
-    <code>
- 
-    </code>
-
-    <p><b>Remarks:</b></p>
- */
-// TODO Insert declarations or function prototypes (right here) to leverage 
-// live documentation
+#ifndef BLE2CLICK_H
+#define	BLE2CLICK_H
 
 #ifdef	__cplusplus
 extern "C" {
-#endif /* __cplusplus */
+#endif
 
-    // TODO If C++ is being used, regular C code needs function names to have C 
-    // linkage so the functions can be used by the c code. 
+extern char buf[64];
+extern const char CMD_FACTORYRESET[];
+extern const char CMD_USERDEFINEPROFILE[];
+extern const char CMD_PERIPHERAL[];
+extern const char CMD_CLEANPRIVATESERVICE[];
+extern const char CMD_UUID[];
+extern const char CMD_ADC_WRITE[];
+extern const char CMD_ADC_READ[];
+extern const char CMD_SERIALIZED_NAME[];
+extern const char CMD_NAME[];
+extern const char CMD_REBOOT[];
+extern const char CMD_ADVERTISE[];
+extern const char CMD_DATA_SEND[];
+extern const char CMD_STATUS[];
+extern const char RESP_CMD[];
+extern const char RESP_AOK[];
+extern const char RESP_CONN[];
+extern const char RESP_CONN_PARAM[];
+extern const char RESP_CONN_DATA[];
+extern const char RESP_CONN_NOTIFICATION[];
+extern const char RESP_CONN_END[];
 
-// include files    
-#include "mcc_generated_files/system/system.h"
-   
-// function declarations
-void InitialSetup(void);
-void ApplicationTask(void);
+void BLE2ClickSetup(void) ;
+void BLE2ClickGetstr(void);
+
 
 #ifdef	__cplusplus
 }
-#endif /* __cplusplus */
+#endif
 
-#endif	/* XC_HEADER_TEMPLATE_H */
+#endif	/* BLE2CLICK_H */
 

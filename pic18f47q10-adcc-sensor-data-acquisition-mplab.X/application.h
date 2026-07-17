@@ -30,64 +30,61 @@ extern "C" {
 #include "main.h"
 #include <string.h>
 #include <stdlib.h>
-
-#include "mcc_generated_files/BLE2_driver.h"
-#include "mcc_generated_files/drivers/uart.h"
+#include "stdbool.h" 
+#include <stdio.h>
+#include "ble2driver.h"
+#include "ble2click.h"
+#include "mcc_generated_files/system/system.h"
     
 // definitions     
-#define CHECKSUM_HIGHBYTE           0
-#define CHECKSUM_LOWBYTE            1
-#define ADDRESS_POINTER_HIGHBYTE    2
-#define ADDRESS_POINTER_LOWBYTE     3  
-#define IS_MEMORY_ERASED            4
+#define CHECKSUM_HIGHBYTE_ADDR               0  // EEPROM address of Checksum High byte
+#define CHECKSUM_LOWBYTE_ADDR                1  // EEPROM address of Checksum Low byte 
+#define CHECKSUM_POINTER_HIGHBYTE_ADDR       2  // EEPROM address of Checksum Pointer High byte
+#define CHECKSUM_POINTER_LOWBYTE_ADDR        3  // EEPROM address of Checksum Pointer Low byte 
+#define IS_MEMORY_ERASED_ADDR                4  // EEPROM address to check if memory is erased
     
-#define START_ADDR 0x4000
-#define STOP_ADDR  0x41FF
-#define XOR_VALUE  0x0000
+#define SCAN_START_ADDR 0x1FE00                 //  Flash address to begin scan of the data
+#define SCAN_STOP_ADDR  0x1FFFF                 //  Flash address to stop the scan of the data
+#define CRC_FINAL_XOR_VALUE  0x0000
     
-#define ADC_STATE       1
-#define ADC_MODE        2
-#define ADC_INTERVAL    3
+#define DATA_STATE          1
+#define ADC_MODE            2
+#define SENSING_INTERVAL    3
     
-#define ADC_REAL_DATA  1
-#define ADC_LOG_DATA   2
+#define REALTIME_DATA  1
+#define LOG_DATA       2
     
 #define ADC_BURST_MODE 1 
 #define ADC_BASIC_MODE 2   
     
-#define INTERVAL_01  1
-#define INTERVAL_02  2
-#define INTERVAL_04  3
-#define INTERVAL_08  4    
-#define INTERVAL_16  5
+#define SENSING_INTERVAL_01  1U
+#define SENSING_INTERVAL_02  2U
+#define SENSING_INTERVAL_04  3U
+#define SENSING_INTERVAL_08  4U   
+#define SENSING_INTERVAL_16  5U
     
+    
+//crc timer clock     
 #define TIMER1_01s   0xF0DD
 #define TIMER1_02s   0xE1BA
 #define TIMER1_04s   0xC374
 #define TIMER1_08s   0x86E8
 #define TIMER1_16s   0x0DD0
-    
-#define ADC_POT_PIN     0x0
-#define ADC_CLICK_1_PIN 0x1
-#define ADC_CLICK_2_PIN 0x2
    
-#define READ_ERROR  2000
-#define WRITE_ERROR 3000
-#define CRC_ERROR   4000
+#define READ_ERROR_DATA  2000
+#define WRITE_ERROR_DATA 3000
+#define CRC_ERROR_DATA   4000
+#define NO_ERROR         0000    
     
-#define MAX_ADC_VALUE   676
+#define MAX_ADC_VALUE   1015
+
+#define  NORMAL_CRC  0
+#define  REVERSE_CRC 1
     
-// global variables
-volatile bool connection_status;
-volatile bool adcReadyFlag;
-volatile bool burstMode;
-volatile bool isCRCPeekEnabled;
-volatile bool tmr0InterruptFlag;
-volatile uint8_t flashCrcErrorStatus;
-volatile uint16_t crcValPeek;
-volatile uint16_t crcValBurst;
-volatile uint16_t currentAdcValuePtr;
-extern volatile uint16_t timer1ReloadVal;
+#define READ_ERROR_STATUS_CODE  1
+#define WRITE_ERROR_STATUS_CODE 3
+#define CRC_ERROR_STATUS_CODE   5
+    
 
 typedef struct {
     uint8_t ADC_CHARACTERISTIC;
@@ -100,23 +97,25 @@ typedef struct {
    @Returns
     hex value of character
    @Description
-    returns the hex value of the character
+    returns the hex value of the character. 
+   eg: if x = '2', returns 0x02 
+ *     if x = 'C', returns 0x0c
    @Example
-    ch = getHexValue('A');
+    ch = HexValueGet('A');
  */
-uint8_t getHexValue(char);
+uint8_t HexValueGet(char);
 
 /**
    @Param
     none
    @Returns
-    8 bit ADCCharacteristic
+    8 bit ADCharacteristic
    @Description
     get the command type
    @Example
-    data.ADC_CHARACTERISTIC = getADCCharacteristic();
+    data.ADC_CHARACTERISTIC = ADCharacteristicGet();
  */
-uint8_t getADCCharacteristic(void);
+uint8_t ADCCharacteristicGet(void);
 
 /**
    @Param
@@ -126,21 +125,21 @@ uint8_t getADCCharacteristic(void);
    @Description
     get the ADC mode type
    @Example
-    data.ADC_VALUE = getADCMode();
+    data.ADC_VALUE = ADCModeGet();
  */
-uint8_t getADCMode(void);
+uint8_t ADCModeGet(void);
 
 /**
    @Param
     none
    @Returns
-    8 bit ADCCommand
+    8 bit ADCommand
    @Description
     get the ADC command
    @Example
-    ADC_data data = getADCCommand(); 
+    ADC_data data = ADCommandGet(); 
  */
-ADC_data getADCCommand(void);
+ADC_data ADCCommandGet(void);
 
 /**
    @Param
@@ -150,9 +149,9 @@ ADC_data getADCCommand(void);
    @Description
     process ADC command
    @Example
-    processADCCommand();
+    ADCommandProcess();
  */
-void processADCCommand(void);
+void ADCCommandProcess(void);
 
 /**
    @Param
@@ -162,9 +161,9 @@ void processADCCommand(void);
    @Description
     store the data in PFM
    @Example
-    LogDataToPFM(adcValue);
+    FlashDataLog(adcValue);
  */
-void LogDataToPFM(uint16_t adcValue);
+void FlashDataLog(uint16_t adcValue);
 
 /**
    @Param
@@ -174,9 +173,9 @@ void LogDataToPFM(uint16_t adcValue);
    @Description
     stores 1 word to the PFM
    @Example
-    FLASHWriteWordSingle(currentAdcValuePtr,adcValue);
+    FlashWordWrite(currentAdcValuePtr,adcValue);
  */
-void FLASHWriteWordSingle(uint32_t flashAddr, uint16_t word);
+void FlashWordWrite(uint24_t flashAddr, uint16_t word);
 
 /**
    @Param
@@ -186,9 +185,9 @@ void FLASHWriteWordSingle(uint32_t flashAddr, uint16_t word);
    @Description
     send the ADC value to BLE
    @Example
-    sendADCCValueBLE(adcValue);
+    BLEDataSend(adcValue);
  */
-void sendADCCValueBLE(uint16_t adcValue);
+void BLEDataSend(uint16_t adcValue);
 
 /**
    @Param
@@ -198,9 +197,9 @@ void sendADCCValueBLE(uint16_t adcValue);
    @Description
     initialize ADC in BURST mode
    @Example
-    ADCCBurstModeInitialize();
+    ADCBurstModeInitialize();
  */
-void ADCCBurstModeInitialize (void);
+void ADCBurstModeInitialize (void);
 
 /**
    @Param
@@ -210,21 +209,9 @@ void ADCCBurstModeInitialize (void);
    @Description
     initialize ADC in BASIC mode
    @Example
-    ADCCBasicModeInitialize();
+    ADCBasicModeInitialize();
  */
-void ADCCBasicModeInitialize(void);
-
-/**
-   @Param
-    ADC pin number
-   @Returns
-    none
-   @Description
-    set the desired ADC pin for sensing
-   @Example
-    ADCCSetSensorPin(ADC_CLICK_2_PIN);
- */
-void ADCCSetSensorPin(uint8_t adcPin);
+void ADCBasicModeInitialize(void);
 
 /**
    @Param
@@ -234,9 +221,9 @@ void ADCCSetSensorPin(uint8_t adcPin);
    @Description
     initialize CRC in PEEK mode
    @Example
-    CRCInitializePeekMode();
+    CRCPeekModeInitialize();
  */
-void CRCInitializePeekMode(void);
+void CRCPeekModeInitialize(void);
 
 /**
    @Param
@@ -246,10 +233,33 @@ void CRCInitializePeekMode(void);
    @Description
     initialize CRC in BURST mode
    @Example
-    CRCInitializeBurstMode();
+    CRCBurstModeInitialize();
  */
-void CRCInitializeBurstMode(void);
+void CRCBurstModeInitialize(void);
 
+/**
+   @Param
+    none
+   @Returns
+    none
+   @Description
+    setup and start CRC, Scanner in PEEK mode
+   @Example
+    ScannerSetupAndStart();
+ */
+void ScannerSetupAndStart(void);
+
+/**
+   @Param
+    none
+   @Returns
+    none
+   @Description
+    calculate CRC value in BURST mode
+   @Example
+    CRCBurstModeCalculate();
+ */
+void CRCBurstModeCalculate(void);
 /**
    @Param
     none
@@ -258,22 +268,20 @@ void CRCInitializeBurstMode(void);
    @Description
     start CRC in PEEK mode
    @Example
-    StartCRCPeekMode();
+    CRCPeriodicStart();
  */
-void StartCRCPeekMode(void);
-
+void CRCPeriodicStart(void);
 /**
    @Param
     none
    @Returns
     none
    @Description
-    start CRC in BURST mode
+    stop CRC in PEEK mode
    @Example
-    CRCBurstMode();
+    CRCPeriodicStop();
  */
-void CRCBurstMode(void);
-
+void CRCPeriodicStop(void);
 /**
    @Param
     16 bit checksum
@@ -282,10 +290,33 @@ void CRCBurstMode(void);
    @Description
     write the checksum value to EEPROM
    @Example
-    writeChecksum(checksum);
+    ChecksumWrite(checksum);
  */
-void writeChecksum(uint16_t checksum);
+void ChecksumWrite(uint16_t checksum);
 
+/**
+   @Param
+    none
+   @Returns
+   SCANGO bit value in SCANCON0 register
+   @Description
+   returns the status of scanner
+   @Example
+    CRC_IsScannerOngoing();
+ */
+inline bool CRC_IsScannerOngoing(void);
+
+/**
+   @Param
+    none
+   @Returns
+    busy status of the CRC and Scanner 
+   @Description
+   checks if the calculation of CRC is completed or not.
+   @Example
+    CRC_IsCalculationComplete();
+ */
+bool  CRC_IsCalculationComplete(void);
 /**
    @Param
     none
@@ -294,10 +325,9 @@ void writeChecksum(uint16_t checksum);
    @Description
     read the checksum value from EEPROM
    @Example
-    checksum = readChecksum();
+    checksum = ChecksumRead();
  */
-uint16_t readChecksum(void);
-
+uint16_t ChecksumRead(void);
 
 /**
    @Param
@@ -307,9 +337,9 @@ uint16_t readChecksum(void);
    @Description
     write the data address pointer to EEPROM
    @Example
-    writeDataPtr(dataPtr);
+    DataPtrWrite(dataPtr);
  */
-void writeDataPtr(uint16_t checksum);
+void DataPtrWrite(uint24_t dataPtr);
 
 /**
    @Param
@@ -319,9 +349,9 @@ void writeDataPtr(uint16_t checksum);
    @Description
     read the data address pointer from EEPROM
    @Example
-    dataPtr = readDataPtr();
+    dataPtr = DataPtrRead();
  */
-uint16_t readDataPtr(void);
+uint16_t DataPtrRead(void);
 
 /**
    @Param
@@ -329,7 +359,7 @@ uint16_t readDataPtr(void);
    @Returns
    none
    @Description
-     Timer interrupt handler function , 
+    Timer interrupt handler function 
  */
 void TMR0_UserInterruptHandler(void);
 
@@ -339,9 +369,9 @@ void TMR0_UserInterruptHandler(void);
    @Returns
    none
    @Description
-   ADC interrupt handler function , 
+   ADC interrupt handler function 
  */
-void ADCC_UserInterruptHandler(void);
+void ADC_UserInterruptHandler(void);
 
 
 #ifdef	__cplusplus

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+  <executable name="dist/free/debug\pic18f47q10-adcc-sensor-data-acquisition-mplab.X.debug.hex">
+    <memory name="program">
+      <units>bytes</units>
+      <length>130560</length>
+      <used>11250</used>
+      <free>119310</free>
+    </memory>
+    <memory name="data">
+      <units>bytes</units>
+      <length>3359</length>
+      <used>301</used>
+      <free>3058</free>
+    </memory>
+  </executable>
+</project>

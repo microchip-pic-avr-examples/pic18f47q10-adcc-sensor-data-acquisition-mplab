@@ -1,0 +1,2069 @@
+[p GLOBOPT AUTOSTATIC IEEE_FLT IEEE_DBL LFSROK EMI_WORD ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 18F47Q10 ]
+[d frameptr 4065 ]
+"135 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\mcc_generated_files/adc/src/adc.c
+[e E13158 . `uc
+ADC_CHANNEL_VSS 60
+ADC_CHANNEL_TEMP 61
+ADC_CHANNEL_DAC1 62
+ADC_CHANNEL_FVR_BUF1 63
+ADC_CHANNEL_ANA2 2
+]
+"208
+[e E13165 . `uc
+ADC_BASIC 0
+ADC_SERIES_ACCUMULATE 1
+ADC_SERIES_AVERAGE 2
+ADC_BURST_AVERAGE 3
+ADC_LOW_PASS_FILTER 4
+]
+"225
+[e E13182 . `uc
+ADC_NEVER_INTERRUPT 0
+ADC_BELOW_LOWER_THRESHOLD 1
+ADC_ABOVE_LOWER_THRESHOLD 2
+ADC_INSIDE_LOWER_AND_UPPER_THRESHOLD 3
+ADC_OUTSIDE_LOWER_AND_UPPER_THRESHOLD 4
+ADC_BELOW_UPPER_THRESHOLD 5
+ADC_ABOVE_UPPER_THRESHOLD 6
+ADC_ALWAYS_INTERRUPT 7
+]
+"346
+[e E13221 . `uc
+ADC_NOT_CONVERTING 0
+ADC_1ST_PRECHARGE 1
+ADC_1ST_ACQUISITION 2
+ADC_1ST_CONVERSION 3
+ADC_2ND_PRECHARGE 5
+ADC_2ND_ACQUISITION 6
+ADC_2ND_CONVERSION 7
+]
+"351
+[e E13192 . `uc
+ADC_TRIGGER_SOURCE_DISABLED 0
+ADC_TRIGGER_SOURCE_ADACTPPS 1
+ADC_TRIGGER_SOURCE_TMR0 2
+ADC_TRIGGER_SOURCE_TMR1 3
+ADC_TRIGGER_SOURCE_TMR2 4
+ADC_TRIGGER_SOURCE_TMR3 5
+ADC_TRIGGER_SOURCE_TMR4 6
+ADC_TRIGGER_SOURCE_TMR5 7
+ADC_TRIGGER_SOURCE_TMR6 8
+ADC_TRIGGER_SOURCE_CCP1 9
+ADC_TRIGGER_SOURCE_CCP2 10
+ADC_TRIGGER_SOURCE_PWM3 11
+ADC_TRIGGER_SOURCE_PWM4 12
+ADC_TRIGGER_SOURCE_C1OUT 13
+ADC_TRIGGER_SOURCE_C2OUT 14
+ADC_TRIGGER_SOURCE_IOC 15
+ADC_TRIGGER_SOURCE_CLC1 16
+ADC_TRIGGER_SOURCE_CLC2 17
+ADC_TRIGGER_SOURCE_CLC3 18
+ADC_TRIGGER_SOURCE_CLC4 19
+ADC_TRIGGER_SOURCE_CLC5 20
+ADC_TRIGGER_SOURCE_CLC6 21
+ADC_TRIGGER_SOURCE_CLC7 22
+ADC_TRIGGER_SOURCE_CLC8 23
+ADC_TRIGGER_SOURCE_ADERR 28
+ADC_TRIGGER_SOURCE_ADRESH 29
+ADC_TRIGGER_SOURCE_ADPCH 31
+]
+"356
+[e E13172 . `uc
+ADC_FIRST_DERIVATIVE_OF_SINGLE_MEASUREMENT 0
+ADC_ACTUAL_RESULT_VS_SETPOINT 1
+ADC_ACTUAL_RESULT_VS_FILTERED_VALUE 2
+ADC_PREVIOUS_RESULT_VALUE_ABOVE_OR_BELOW_SETPOINT 3
+ADC_FIRST_DERIVATIVE_OF_FILTERED_VALUE 4
+ADC_FILTERED_VALUE_VS_SETPOINT 5
+ADC_ACTUAL_RESULT_VS_THRESHOLD_VALUE 6
+ADC_FILTERED_VALUE_VS_THRESHOLD_VALUE 7
+]
+"53 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\mcc_generated_files/nvm/src/nvm.c
+[e E13158 . `uc
+NVM_OK 0
+NVM_ERROR 1
+]
+"18 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\application.c
+[e E13388 . `uc
+ADC_CHANNEL_VSS 60
+ADC_CHANNEL_TEMP 61
+ADC_CHANNEL_DAC1 62
+ADC_CHANNEL_FVR_BUF1 63
+ADC_CHANNEL_ANA2 2
+]
+"391
+[e E13323 . `uc
+NVM_OK 0
+NVM_ERROR 1
+]
+"15
+[v _InitialSetup InitialSetup `(v  1 e 1 0 ]
+"49
+[v _CRC_IsCalculationComplete CRC_IsCalculationComplete `(a  1 e 1 0 ]
+"56
+[v _CRC_IsScannerOngoing CRC_IsScannerOngoing `T(a  1 e 1 0 ]
+"61
+[v _ApplicationTask ApplicationTask `(v  1 e 1 0 ]
+"193
+[v _HexValueGet HexValueGet `(uc  1 e 1 0 ]
+"208
+[v _ADCModeGet ADCModeGet `(uc  1 e 1 0 ]
+"215
+[v _ADCCharacteristicGet ADCCharacteristicGet `(uc  1 e 1 0 ]
+"89 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X/application.h
+[s S2329 . 2 `uc 1 ADC_CHARACTERISTIC 1 0 `uc 1 ADC_VALUE 1 1 ]
+"222 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\application.c
+[v _ADCCommandGet ADCCommandGet `(S2329  1 e 2 0 ]
+"230
+[v _ADCCommandProcess ADCCommandProcess `(v  1 e 1 0 ]
+"327
+[v _BLEDataSend BLEDataSend `(v  1 e 1 0 ]
+"338
+[v _ADCBurstModeInitialize ADCBurstModeInitialize `(v  1 e 1 0 ]
+"343
+[v _ADCBasicModeInitialize ADCBasicModeInitialize `(v  1 e 1 0 ]
+"348
+[v _CRCBurstModeInitialize CRCBurstModeInitialize `(v  1 e 1 0 ]
+"355
+[v _CRCBurstModeCalculate CRCBurstModeCalculate `(v  1 e 1 0 ]
+"362
+[v _CRCPeekModeInitialize CRCPeekModeInitialize `(v  1 e 1 0 ]
+"369
+[v _ScannerSetupAndStart ScannerSetupAndStart `(v  1 e 1 0 ]
+"374
+[v _CRCPeriodicStart CRCPeriodicStart `(v  1 e 1 0 ]
+"381
+[v _CRCPeriodicStop CRCPeriodicStop `(v  1 e 1 0 ]
+"388
+[v _FlashWordWrite FlashWordWrite `(v  1 e 1 0 ]
+"410
+[v _FlashDataLog FlashDataLog `(v  1 e 1 0 ]
+"427
+[v _ChecksumWrite ChecksumWrite `(v  1 e 1 0 ]
+"436
+[v _ChecksumRead ChecksumRead `(us  1 e 2 0 ]
+"444
+[v _DataPtrWrite DataPtrWrite `(v  1 e 1 0 ]
+"453
+[v _DataPtrRead DataPtrRead `(us  1 e 2 0 ]
+"461
+[v _TMR0_UserInterruptHandler TMR0_UserInterruptHandler `(v  1 e 1 0 ]
+"467
+[v _ADC_UserInterruptHandler ADC_UserInterruptHandler `(v  1 e 1 0 ]
+"30 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\ble2click.c
+[v _BLE2ClickGetstr BLE2ClickGetstr `(v  1 e 1 0 ]
+"43
+[v _BLE2ClickSetup BLE2ClickSetup `(v  1 e 1 0 ]
+"32 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\ble2driver.c
+[v _BLE2_WakeModule BLE2_WakeModule `(v  1 e 1 0 ]
+"43
+[v _BLE2_SendString BLE2_SendString `(v  1 e 1 0 ]
+"48
+[v _BLE2_SendBuffer BLE2_SendBuffer `(v  1 e 1 0 ]
+"56
+[v _BLE2_SendByte BLE2_SendByte `(v  1 e 1 0 ]
+"62
+[v _BLE2_ReceiveByte BLE2_ReceiveByte `(uc  1 e 1 0 ]
+"7 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\__lldiv.c
+[v ___lldiv __lldiv `(ul  1 e 4 0 ]
+"7 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\aldiv.c
+[v ___aldiv __aldiv `(l  1 e 4 0 ]
+"7 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\almod.c
+[v ___almod __almod `(l  1 e 4 0 ]
+"9 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\aodiv.c
+[v ___aodiv __aodiv `(o  1 e 8 0 ]
+"9 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\aomod.c
+[v ___aomod __aomod `(o  1 e 8 0 ]
+"7 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\atdiv.c
+[v ___atdiv __atdiv `(m  1 e 3 0 ]
+"7 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\atmod.c
+[v ___atmod __atmod `(m  1 e 3 0 ]
+"7 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+"7 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\awmod.c
+[v ___awmod __awmod `(i  1 e 2 0 ]
+"193 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\doprnt.c
+[v _pad pad `(v  1 s 1 pad ]
+"1055
+[v _xtoa xtoa `(v  1 s 1 xtoa ]
+"1158
+[v _read_prec_or_width read_prec_or_width `(i  1 s 2 read_prec_or_width ]
+"1177
+[v _vfpfcnvrt vfpfcnvrt `(v  1 s 1 vfpfcnvrt ]
+"1817
+[v _vfprintf vfprintf `(i  1 e 2 0 ]
+"4 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\fleq.c
+[v ___fleq __fleq `(b  1 e 0 0 ]
+"62 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\float.c
+[v ___ftpack __ftpack `(f  1 e 4 0 ]
+"43 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\fltol.c
+[v ___fltol __fltol `(l  1 e 4 0 ]
+"86 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\ftadd.c
+[v ___ftadd __ftadd `(f  1 e 4 0 ]
+"54 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\ftdiv.c
+[v ___ftdiv __ftdiv `(f  1 e 4 0 ]
+"62 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\ftmul.c
+[v ___ftmul __ftmul `(f  1 e 4 0 ]
+"19 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\ftsub.c
+[v ___ftsub __ftsub `(f  1 e 4 0 ]
+"7 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\llmod.c
+[v ___llmod __llmod `(ul  1 e 4 0 ]
+"9 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\lodiv.c
+[v ___lodiv __lodiv `(uo  1 e 8 0 ]
+"9 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\lomod.c
+[v ___lomod __lomod `(uo  1 e 8 0 ]
+"7 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\ltdiv.c
+[v ___ltdiv __ltdiv `(um  1 e 3 0 ]
+"7 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\ltmod.c
+[v ___ltmod __ltmod `(um  1 e 3 0 ]
+"7 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\lwdiv.c
+[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
+"7 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\lwmod.c
+[v ___lwmod __lwmod `(ui  1 e 2 0 ]
+"8 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\nf_fputc.c
+[v _fputc fputc `(i  1 e 2 0 ]
+"8 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\nf_fputs.c
+[v _fputs fputs `(i  1 e 2 0 ]
+"9 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\nf_sprintf.c
+[v _sprintf sprintf `(i  1 e 2 0 ]
+"7 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\putch.c
+[v _putch putch `(v  1 e 1 0 ]
+"10 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"245
+[v ___flsub __flsub `(d  1 e 4 0 ]
+"11 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\sprcdiv.c
+[v ___fldiv __fldiv `(d  1 e 4 0 ]
+"8 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\sprcmul.c
+[v ___flmul __flmul `(d  1 e 4 0 ]
+"3 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\strcmp.c
+[v _strcmp strcmp `(i  1 e 2 0 ]
+"5 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\strlen.c
+[v _strlen strlen `(ui  1 e 2 0 ]
+"3 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\strncmp.c
+[v _strncmp strncmp `(i  1 e 2 0 ]
+"15 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
+"15 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\Umul24.c
+[v ___tmul __tmul `(um  1 e 3 0 ]
+"15 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\Umul32.c
+[v ___lmul __lmul `(ul  1 e 4 0 ]
+"91 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\Umul64.c
+[v ___omul __omul `(uo  1 e 8 0 ]
+"10 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\xxtofl.c
+[v ___xxtofl __xxtofl `(d  1 e 4 0 ]
+"39 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\main.c
+[v _main main `(v  1 e 1 0 ]
+"43 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\mcc_generated_files/adc/src/adc.c
+[v _ADC_Initialize ADC_Initialize `(v  1 e 1 0 ]
+"135
+[v _ADC_ChannelSelect ADC_ChannelSelect `(v  1 e 1 0 ]
+"160
+[v _ADC_ConversionResultGet ADC_ConversionResultGet `(s  1 e 2 0 ]
+"245
+[v _ADC_ThresholdCallbackRegister ADC_ThresholdCallbackRegister `(v  1 e 1 0 ]
+"295
+[v _ADC_FilterValueGet ADC_FilterValueGet `(s  1 e 2 0 ]
+"386
+[v _ADC_ISR ADC_ISR `(v  1 e 1 0 ]
+"399
+[v _ADC_ThresholdISR ADC_ThresholdISR `(v  1 e 1 0 ]
+"43 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\mcc_generated_files/crc/src/crc.c
+[v _CRC_Initialize CRC_Initialize `(v  1 e 1 0 ]
+"112
+[v _CRC_ReverseValue CRC_ReverseValue `(us  1 s 2 CRC_ReverseValue ]
+"133
+[v _CRC_GetCalculatedResult CRC_GetCalculatedResult `(us  1 e 2 0 ]
+"146
+[v _CRC_IsCrcBusy CRC_IsCrcBusy `T(a  1 e 1 0 ]
+"151
+[v _CRC_StartScanner CRC_StartScanner `T(v  1 e 1 0 ]
+"159
+[v _CRC_StopScanner CRC_StopScanner `T(v  1 e 1 0 ]
+"167
+[v _CRC_SetScannerAddressLimit CRC_SetScannerAddressLimit `(v  1 e 1 0 ]
+"43 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\mcc_generated_files/nvm/src/nvm.c
+[v _NVM_Initialize NVM_Initialize `(v  1 e 1 0 ]
+"65
+[v _NVM_StatusClear NVM_StatusClear `(v  1 e 1 0 ]
+"70
+[v _NVM_UnlockKeySet NVM_UnlockKeySet `(v  1 e 1 0 ]
+"76
+[v _NVM_UnlockKeyClear NVM_UnlockKeyClear `(v  1 e 1 0 ]
+"82
+[v _FLASH_Read FLASH_Read `(uc  1 e 1 0 ]
+"159
+[v _FLASH_Write FLASH_Write `(E13158  1 e 1 0 ]
+"264
+[v _FLASH_PageErase FLASH_PageErase `(E13158  1 e 1 0 ]
+"317
+[v _EEPROM_Read EEPROM_Read `(uc  1 e 1 0 ]
+"336
+[v _EEPROM_Write EEPROM_Write `(v  1 e 1 0 ]
+"39 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\mcc_generated_files/system/src/clock.c
+[v _CLOCK_Initialize CLOCK_Initialize `(v  1 e 1 0 ]
+"42 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\mcc_generated_files/system/src/interrupt.c
+[v _INTERRUPT_Initialize INTERRUPT_Initialize `(v  1 e 1 0 ]
+"80
+[v _INTERRUPT_InterruptManager INTERRUPT_InterruptManager `IIH(v  1 e 1 0 ]
+"129
+[v _INT0_CallBack INT0_CallBack `(v  1 e 1 0 ]
+"138
+[v _INT0_SetInterruptHandler INT0_SetInterruptHandler `(v  1 e 1 0 ]
+"142
+[v _INT0_DefaultInterruptHandler INT0_DefaultInterruptHandler `(v  1 e 1 0 ]
+"155
+[v _INT1_CallBack INT1_CallBack `(v  1 e 1 0 ]
+"164
+[v _INT1_SetInterruptHandler INT1_SetInterruptHandler `(v  1 e 1 0 ]
+"168
+[v _INT1_DefaultInterruptHandler INT1_DefaultInterruptHandler `(v  1 e 1 0 ]
+"181
+[v _INT2_CallBack INT2_CallBack `(v  1 e 1 0 ]
+"190
+[v _INT2_SetInterruptHandler INT2_SetInterruptHandler `(v  1 e 1 0 ]
+"194
+[v _INT2_DefaultInterruptHandler INT2_DefaultInterruptHandler `(v  1 e 1 0 ]
+"38 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\mcc_generated_files/system/src/pins.c
+[v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
+"38 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\mcc_generated_files/system/src/system.c
+[v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
+"37 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\mcc_generated_files/timer/src/delay.c
+[v _DELAY_milliseconds DELAY_milliseconds `(v  1 e 1 0 ]
+"45 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\mcc_generated_files/timer/src/tmr0.c
+[v _TMR0_Initialize TMR0_Initialize `(v  1 e 1 0 ]
+"79
+[v _TMR0_Start TMR0_Start `(v  1 e 1 0 ]
+"84
+[v _TMR0_Stop TMR0_Stop `(v  1 e 1 0 ]
+"98
+[v _TMR0_CounterSet TMR0_CounterSet `(v  1 e 1 0 ]
+"128
+[v _TMR0_ISR TMR0_ISR `(v  1 e 1 0 ]
+"137
+[v _TMR0_PeriodMatchCallbackRegister TMR0_PeriodMatchCallbackRegister `(v  1 e 1 0 ]
+"142
+[v _TMR0_DefaultCallback TMR0_DefaultCallback `(v  1 s 1 TMR0_DefaultCallback ]
+"48 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\mcc_generated_files/timer/src/tmr1.c
+[v _TMR1_Initialize TMR1_Initialize `(v  1 e 1 0 ]
+"101
+[v _TMR1_Start TMR1_Start `(v  1 e 1 0 ]
+"106
+[v _TMR1_Stop TMR1_Stop `(v  1 e 1 0 ]
+"126
+[v _TMR1_CounterSet TMR1_CounterSet `(v  1 e 1 0 ]
+[v i2_TMR1_CounterSet TMR1_CounterSet `(v  1 e 1 0 ]
+"195
+[v _TMR1_OverflowISR TMR1_OverflowISR `(v  1 e 1 0 ]
+"230
+[v _TMR1_DefaultOverflowCallback TMR1_DefaultOverflowCallback `(v  1 s 1 TMR1_DefaultOverflowCallback ]
+"235
+[v _TMR1_DefaultGateCallback TMR1_DefaultGateCallback `(v  1 s 1 TMR1_DefaultGateCallback ]
+"131 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\mcc_generated_files/uart/src/eusart1.c
+[v _EUSART1_Initialize EUSART1_Initialize `(v  1 e 1 0 ]
+"167
+[v _EUSART1_Deinitialize EUSART1_Deinitialize `(v  1 e 1 0 ]
+"190
+[v _EUSART1_TransmitEnable EUSART1_TransmitEnable `(v  1 e 1 0 ]
+"195
+[v _EUSART1_TransmitDisable EUSART1_TransmitDisable `(v  1 e 1 0 ]
+"220
+[v _EUSART1_AutoBaudSet EUSART1_AutoBaudSet `(v  1 e 1 0 ]
+"232
+[v _EUSART1_AutoBaudQuery EUSART1_AutoBaudQuery `(a  1 e 1 0 ]
+"267
+[v _EUSART1_IsRxReady EUSART1_IsRxReady `(a  1 e 1 0 ]
+"272
+[v _EUSART1_IsTxReady EUSART1_IsTxReady `(a  1 e 1 0 ]
+"277
+[v _EUSART1_IsTxDone EUSART1_IsTxDone `(a  1 e 1 0 ]
+"282
+[v _EUSART1_ErrorGet EUSART1_ErrorGet `(ui  1 e 2 0 ]
+"288
+[v _EUSART1_Read EUSART1_Read `(uc  1 e 1 0 ]
+"308
+[v _EUSART1_ReceiveISR EUSART1_ReceiveISR `(v  1 e 1 0 ]
+"353
+[v _EUSART1_Write EUSART1_Write `(v  1 e 1 0 ]
+"377
+[v _EUSART1_TransmitISR EUSART1_TransmitISR `(v  1 e 1 0 ]
+"400
+[v _EUSART1_DefaultFramingErrorCallback EUSART1_DefaultFramingErrorCallback `(v  1 s 1 EUSART1_DefaultFramingErrorCallback ]
+"405
+[v _EUSART1_DefaultOverrunErrorCallback EUSART1_DefaultOverrunErrorCallback `(v  1 s 1 EUSART1_DefaultOverrunErrorCallback ]
+"412
+[v _EUSART1_FramingErrorCallbackRegister EUSART1_FramingErrorCallbackRegister `(v  1 e 1 0 ]
+"420
+[v _EUSART1_OverrunErrorCallbackRegister EUSART1_OverrunErrorCallbackRegister `(v  1 e 1 0 ]
+"428
+[v _EUSART1_RxCompleteCallbackRegister EUSART1_RxCompleteCallbackRegister `(v  1 e 1 0 ]
+"436
+[v _EUSART1_TxCompleteCallbackRegister EUSART1_TxCompleteCallbackRegister `(v  1 e 1 0 ]
+"5 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\application.c
+[v _connectionStatus connectionStatus `VEa  1 e 1 0 ]
+"6
+[v _adcReadyFlag adcReadyFlag `VEa  1 e 1 0 ]
+"7
+[v _burstMode burstMode `VEa  1 e 1 0 ]
+"8
+[v _isCRCPeekOngoing isCRCPeekOngoing `VEa  1 e 1 0 ]
+"9
+[v _tmr0InterruptFlag tmr0InterruptFlag `VEa  1 e 1 0 ]
+"10
+[v _flashCrcErrorStatus flashCrcErrorStatus `VEuc  1 e 1 0 ]
+"11
+[v _crcValBurst crcValBurst `VEus  1 e 2 0 ]
+"12
+[v _currentAdcValuePtr currentAdcValuePtr `VEum  1 e 3 0 ]
+"13
+[v _timer1ValueReload timer1ValueReload `VEus  1 e 2 0 ]
+"8 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\ble2click.c
+[v _buf buf `[64]uc  1 e 64 0 ]
+"9
+[v _CMD_FACTORYRESET CMD_FACTORYRESET `C[7]uc  1 e 7 0 ]
+"10
+[v _CMD_USERDEFINEPROFILE CMD_USERDEFINEPROFILE `C[14]uc  1 e 14 0 ]
+"11
+[v _CMD_PERIPHERAL CMD_PERIPHERAL `C[14]uc  1 e 14 0 ]
+"12
+[v _CMD_CLEANPRIVATESERVICE CMD_CLEANPRIVATESERVICE `C[5]uc  1 e 5 0 ]
+"13
+[v _CMD_UUID CMD_UUID `C[38]uc  1 e 38 0 ]
+"14
+[v _CMD_ADC_WRITE CMD_ADC_WRITE `C[44]uc  1 e 44 0 ]
+"15
+[v _CMD_ADC_READ CMD_ADC_READ `C[44]uc  1 e 44 0 ]
+"18
+[v _CMD_REBOOT CMD_REBOOT `C[6]uc  1 e 6 0 ]
+"20
+[v _CMD_DATA_SEND CMD_DATA_SEND `C[38]uc  1 e 38 0 ]
+"24
+[v _RESP_CONN RESP_CONN `C[10]uc  1 e 10 0 ]
+"26
+[v _RESP_CONN_DATA RESP_CONN_DATA `C[3]uc  1 e 3 0 ]
+"28
+[v _RESP_CONN_END RESP_CONN_END `C[15]uc  1 e 15 0 ]
+"13644 C:/Users/I76627/.mchp_packs/Microchip/PIC18F-Q_DFP/1.30.487/xc8\pic\include\proc/pic18f47q10.h
+[v _RX1PPS RX1PPS `VEuc  1 e 1 @3760 ]
+[s S949 . 1 `uc 1 INT0IE 1 0 :1:0 
+`uc 1 INT1IE 1 0 :1:1 
+`uc 1 INT2IE 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 IOCIE 1 0 :1:4 
+`uc 1 TMR0IE 1 0 :1:5 
+]
+"15214
+[u S956 . 1 `S949 1 . 1 0 ]
+[v _PIE0bits PIE0bits `VES956  1 e 1 @3773 ]
+[s S78 . 1 `uc 1 ADIE 1 0 :1:0 
+`uc 1 ADTIE 1 0 :1:1 
+`uc 1 . 1 0 :4:2 
+`uc 1 CSWIE 1 0 :1:6 
+`uc 1 OSCFIE 1 0 :1:7 
+]
+"15258
+[u S84 . 1 `S78 1 . 1 0 ]
+[v _PIE1bits PIE1bits `VES84  1 e 1 @3774 ]
+[s S857 . 1 `uc 1 SSPIE 1 0 :1:0 
+`uc 1 BCLIE 1 0 :1:1 
+`uc 1 SSP2IE 1 0 :1:2 
+`uc 1 BCL2IE 1 0 :1:3 
+`uc 1 TXIE 1 0 :1:4 
+`uc 1 RCIE 1 0 :1:5 
+`uc 1 TX2IE 1 0 :1:6 
+`uc 1 RC2IE 1 0 :1:7 
+]
+"15346
+[s S866 . 1 `uc 1 SSP1IE 1 0 :1:0 
+`uc 1 BCL1IE 1 0 :1:1 
+`uc 1 . 1 0 :2:2 
+`uc 1 TX1IE 1 0 :1:4 
+`uc 1 RC1IE 1 0 :1:5 
+]
+[u S872 . 1 `S857 1 . 1 0 `S866 1 . 1 0 ]
+[v _PIE3bits PIE3bits `VES872  1 e 1 @3776 ]
+[s S970 . 1 `uc 1 TMR1IE 1 0 :1:0 
+`uc 1 TMR2IE 1 0 :1:1 
+`uc 1 TMR3IE 1 0 :1:2 
+`uc 1 TMR4IE 1 0 :1:3 
+`uc 1 TMR5IE 1 0 :1:4 
+`uc 1 TMR6IE 1 0 :1:5 
+]
+"15426
+[u S977 . 1 `S970 1 . 1 0 ]
+[v _PIE4bits PIE4bits `VES977  1 e 1 @3777 ]
+[s S1388 . 1 `uc 1 TMR1GIE 1 0 :1:0 
+`uc 1 TMR3GIE 1 0 :1:1 
+`uc 1 TMR5GIE 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 CLC1IE 1 0 :1:4 
+`uc 1 CLC2IE 1 0 :1:5 
+`uc 1 CLC3IE 1 0 :1:6 
+`uc 1 CLC4IE 1 0 :1:7 
+]
+"15478
+[u S1397 . 1 `S1388 1 . 1 0 ]
+[v _PIE5bits PIE5bits `VES1397  1 e 1 @3778 ]
+[s S455 . 1 `uc 1 CWGIE 1 0 :1:0 
+`uc 1 . 1 0 :4:1 
+`uc 1 NVMIE 1 0 :1:5 
+`uc 1 CRCIE 1 0 :1:6 
+`uc 1 SCANIE 1 0 :1:7 
+]
+"15586
+[s S461 . 1 `uc 1 CWG1IE 1 0 :1:0 
+]
+[u S463 . 1 `S455 1 . 1 0 `S461 1 . 1 0 ]
+[v _PIE7bits PIE7bits `VES463  1 e 1 @3780 ]
+[s S810 . 1 `uc 1 INT0IF 1 0 :1:0 
+`uc 1 INT1IF 1 0 :1:1 
+`uc 1 INT2IF 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 IOCIF 1 0 :1:4 
+`uc 1 TMR0IF 1 0 :1:5 
+]
+"15631
+[u S817 . 1 `S810 1 . 1 0 ]
+[v _PIR0bits PIR0bits `VES817  1 e 1 @3781 ]
+[s S93 . 1 `uc 1 ADIF 1 0 :1:0 
+`uc 1 ADTIF 1 0 :1:1 
+`uc 1 . 1 0 :4:2 
+`uc 1 CSWIF 1 0 :1:6 
+`uc 1 OSCFIF 1 0 :1:7 
+]
+"15675
+[u S99 . 1 `S93 1 . 1 0 ]
+[v _PIR1bits PIR1bits `VES99  1 e 1 @3782 ]
+[s S891 . 1 `uc 1 SSPIF 1 0 :1:0 
+`uc 1 BCLIF 1 0 :1:1 
+`uc 1 SSP2IF 1 0 :1:2 
+`uc 1 BCL2IF 1 0 :1:3 
+`uc 1 TXIF 1 0 :1:4 
+`uc 1 RCIF 1 0 :1:5 
+`uc 1 TX2IF 1 0 :1:6 
+`uc 1 RC2IF 1 0 :1:7 
+]
+"15763
+[s S900 . 1 `uc 1 SSP1IF 1 0 :1:0 
+`uc 1 BCL1IF 1 0 :1:1 
+`uc 1 . 1 0 :2:2 
+`uc 1 TX1IF 1 0 :1:4 
+`uc 1 RC1IF 1 0 :1:5 
+]
+[u S906 . 1 `S891 1 . 1 0 `S900 1 . 1 0 ]
+[v _PIR3bits PIR3bits `VES906  1 e 1 @3784 ]
+[s S987 . 1 `uc 1 TMR1IF 1 0 :1:0 
+`uc 1 TMR2IF 1 0 :1:1 
+`uc 1 TMR3IF 1 0 :1:2 
+`uc 1 TMR4IF 1 0 :1:3 
+`uc 1 TMR5IF 1 0 :1:4 
+`uc 1 TMR6IF 1 0 :1:5 
+]
+"15843
+[u S994 . 1 `S987 1 . 1 0 ]
+[v _PIR4bits PIR4bits `VES994  1 e 1 @3785 ]
+[s S1366 . 1 `uc 1 TMR1GIF 1 0 :1:0 
+`uc 1 TMR3GIF 1 0 :1:1 
+`uc 1 TMR5GIF 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 CLC1IF 1 0 :1:4 
+`uc 1 CLC2IF 1 0 :1:5 
+`uc 1 CLC3IF 1 0 :1:6 
+`uc 1 CLC4IF 1 0 :1:7 
+]
+"15895
+[u S1375 . 1 `S1366 1 . 1 0 ]
+[v _PIR5bits PIR5bits `VES1375  1 e 1 @3786 ]
+[s S435 . 1 `uc 1 CWGIF 1 0 :1:0 
+`uc 1 . 1 0 :4:1 
+`uc 1 NVMIF 1 0 :1:5 
+`uc 1 CRCIF 1 0 :1:6 
+`uc 1 SCANIF 1 0 :1:7 
+]
+"16003
+[s S441 . 1 `uc 1 CWG1IF 1 0 :1:0 
+]
+[u S443 . 1 `S435 1 . 1 0 `S441 1 . 1 0 ]
+[v _PIR7bits PIR7bits `VES443  1 e 1 @3788 ]
+"16611
+[v _OSCCON1 OSCCON1 `VEuc  1 e 1 @3795 ]
+"16751
+[v _OSCCON3 OSCCON3 `VEuc  1 e 1 @3797 ]
+"16903
+[v _OSCEN OSCEN `VEuc  1 e 1 @3799 ]
+"16954
+[v _OSCTUNE OSCTUNE `VEuc  1 e 1 @3800 ]
+"17012
+[v _OSCFRQ OSCFRQ `VEuc  1 e 1 @3801 ]
+"18321
+[v _RC2PPS RC2PPS `VEuc  1 e 1 @3828 ]
+"19069
+[v _IOCAF IOCAF `VEuc  1 e 1 @3845 ]
+"19131
+[v _IOCAN IOCAN `VEuc  1 e 1 @3846 ]
+"19193
+[v _IOCAP IOCAP `VEuc  1 e 1 @3847 ]
+"19255
+[v _INLVLA INLVLA `VEuc  1 e 1 @3848 ]
+"19317
+[v _SLRCONA SLRCONA `VEuc  1 e 1 @3849 ]
+"19379
+[v _ODCONA ODCONA `VEuc  1 e 1 @3850 ]
+"19441
+[v _WPUA WPUA `VEuc  1 e 1 @3851 ]
+"19503
+[v _ANSELA ANSELA `VEuc  1 e 1 @3852 ]
+"19565
+[v _IOCBF IOCBF `VEuc  1 e 1 @3853 ]
+"19627
+[v _IOCBN IOCBN `VEuc  1 e 1 @3854 ]
+"19689
+[v _IOCBP IOCBP `VEuc  1 e 1 @3855 ]
+"19751
+[v _INLVLB INLVLB `VEuc  1 e 1 @3856 ]
+"19813
+[v _SLRCONB SLRCONB `VEuc  1 e 1 @3857 ]
+"19875
+[v _ODCONB ODCONB `VEuc  1 e 1 @3858 ]
+"19937
+[v _WPUB WPUB `VEuc  1 e 1 @3859 ]
+"19999
+[v _ANSELB ANSELB `VEuc  1 e 1 @3860 ]
+"20061
+[v _IOCCF IOCCF `VEuc  1 e 1 @3861 ]
+"20123
+[v _IOCCN IOCCN `VEuc  1 e 1 @3862 ]
+"20185
+[v _IOCCP IOCCP `VEuc  1 e 1 @3863 ]
+"20247
+[v _INLVLC INLVLC `VEuc  1 e 1 @3864 ]
+"20309
+[v _SLRCONC SLRCONC `VEuc  1 e 1 @3865 ]
+"20371
+[v _ODCONC ODCONC `VEuc  1 e 1 @3866 ]
+"20433
+[v _WPUC WPUC `VEuc  1 e 1 @3867 ]
+"20495
+[v _ANSELC ANSELC `VEuc  1 e 1 @3868 ]
+"20557
+[v _INLVLD INLVLD `VEuc  1 e 1 @3869 ]
+"20619
+[v _SLRCOND SLRCOND `VEuc  1 e 1 @3870 ]
+"20681
+[v _ODCOND ODCOND `VEuc  1 e 1 @3871 ]
+"20743
+[v _WPUD WPUD `VEuc  1 e 1 @3872 ]
+"20805
+[v _ANSELD ANSELD `VEuc  1 e 1 @3873 ]
+"20867
+[v _IOCEF IOCEF `VEuc  1 e 1 @3874 ]
+"20888
+[v _IOCEN IOCEN `VEuc  1 e 1 @3875 ]
+"20909
+[v _IOCEP IOCEP `VEuc  1 e 1 @3876 ]
+"20930
+[v _INLVLE INLVLE `VEuc  1 e 1 @3877 ]
+"20968
+[v _SLRCONE SLRCONE `VEuc  1 e 1 @3878 ]
+"21000
+[v _ODCONE ODCONE `VEuc  1 e 1 @3879 ]
+"21032
+[v _WPUE WPUE `VEuc  1 e 1 @3880 ]
+"21070
+[v _ANSELE ANSELE `VEuc  1 e 1 @3881 ]
+"23030
+[v _SCANLADRL SCANLADRL `VEuc  1 e 1 @3908 ]
+"23158
+[v _SCANLADRH SCANLADRH `VEuc  1 e 1 @3909 ]
+"23286
+[v _SCANLADRU SCANLADRU `VEuc  1 e 1 @3910 ]
+"23399
+[v _SCANHADRL SCANHADRL `VEuc  1 e 1 @3911 ]
+"23527
+[v _SCANHADRH SCANHADRH `VEuc  1 e 1 @3912 ]
+"23655
+[v _SCANHADRU SCANHADRU `VEuc  1 e 1 @3913 ]
+"23759
+[v _SCANCON0 SCANCON0 `VEuc  1 e 1 @3914 ]
+[s S531 . 1 `uc 1 MODE 1 0 :2:0 
+`uc 1 . 1 0 :1:2 
+`uc 1 INTM 1 0 :1:3 
+`uc 1 INVALID 1 0 :1:4 
+`uc 1 BUSY 1 0 :1:5 
+`uc 1 GO 1 0 :1:6 
+`uc 1 EN 1 0 :1:7 
+]
+"23796
+[s S539 . 1 `uc 1 MODE0 1 0 :1:0 
+`uc 1 MODE1 1 0 :1:1 
+]
+[s S542 . 1 `uc 1 SCANMODE 1 0 :2:0 
+`uc 1 . 1 0 :1:2 
+`uc 1 SCANINTM 1 0 :1:3 
+`uc 1 SCANINVALID 1 0 :1:4 
+`uc 1 SCANBUSY 1 0 :1:5 
+`uc 1 SCANGO 1 0 :1:6 
+`uc 1 SCANEN 1 0 :1:7 
+]
+[s S550 . 1 `uc 1 SCANMODE0 1 0 :1:0 
+`uc 1 SCANMODE1 1 0 :1:1 
+]
+[s S553 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 DABORT 1 0 :1:4 
+]
+[u S556 . 1 `S531 1 . 1 0 `S539 1 . 1 0 `S542 1 . 1 0 `S550 1 . 1 0 `S553 1 . 1 0 ]
+[v _SCANCON0bits SCANCON0bits `VES556  1 e 1 @3914 ]
+"23886
+[v _SCANTRIG SCANTRIG `VEuc  1 e 1 @3915 ]
+"24316
+[v _ADACT ADACT `VEuc  1 e 1 @3921 ]
+"24368
+[v _ADCLK ADCLK `VEuc  1 e 1 @3922 ]
+"24426
+[v _ADREF ADREF `VEuc  1 e 1 @3923 ]
+"24467
+[v _ADCON1 ADCON1 `VEuc  1 e 1 @3924 ]
+[s S249 . 1 `uc 1 ADDSEN 1 0 :1:0 
+`uc 1 . 1 0 :4:1 
+`uc 1 ADGPOL 1 0 :1:5 
+`uc 1 ADIPEN 1 0 :1:6 
+`uc 1 ADPPOL 1 0 :1:7 
+]
+"24481
+[u S255 . 1 `S249 1 . 1 0 ]
+[v _ADCON1bits ADCON1bits `VES255  1 e 1 @3924 ]
+"24506
+[v _ADCON2 ADCON2 `VEuc  1 e 1 @3925 ]
+[s S147 . 1 `uc 1 ADMD 1 0 :3:0 
+`uc 1 ADACLR 1 0 :1:3 
+`uc 1 ADCRS 1 0 :3:4 
+`uc 1 ADPSIS 1 0 :1:7 
+]
+"24528
+[s S152 . 1 `uc 1 ADMD0 1 0 :1:0 
+`uc 1 ADMD1 1 0 :1:1 
+`uc 1 ADMD2 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 ADCRS0 1 0 :1:4 
+`uc 1 ADCRS1 1 0 :1:5 
+`uc 1 ADCRS2 1 0 :1:6 
+]
+[u S160 . 1 `S147 1 . 1 0 `S152 1 . 1 0 ]
+[v _ADCON2bits ADCON2bits `VES160  1 e 1 @3925 ]
+"24583
+[v _ADCON3 ADCON3 `VEuc  1 e 1 @3926 ]
+[s S186 . 1 `uc 1 ADTMD 1 0 :3:0 
+`uc 1 ADSOI 1 0 :1:3 
+`uc 1 ADCALC 1 0 :3:4 
+]
+"24604
+[s S190 . 1 `uc 1 ADTMD0 1 0 :1:0 
+`uc 1 ADTMD1 1 0 :1:1 
+`uc 1 ADTMD2 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 ADCALC0 1 0 :1:4 
+`uc 1 ADCALC1 1 0 :1:5 
+`uc 1 ADCALC2 1 0 :1:6 
+]
+[u S198 . 1 `S186 1 . 1 0 `S190 1 . 1 0 ]
+[v _ADCON3bits ADCON3bits `VES198  1 e 1 @3926 ]
+"24654
+[v _ADACQ ADACQ `VEuc  1 e 1 @3927 ]
+"24724
+[v _ADCAP ADCAP `VEuc  1 e 1 @3928 ]
+"24776
+[v _ADPRE ADPRE `VEuc  1 e 1 @3929 ]
+"24846
+[v _ADPCH ADPCH `VEuc  1 e 1 @3930 ]
+"24904
+[v _ADCON0 ADCON0 `VEuc  1 e 1 @3931 ]
+[s S26 . 1 `uc 1 ADGO 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 ADFM 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 ADCS 1 0 :1:4 
+`uc 1 . 1 0 :1:5 
+`uc 1 ADCONT 1 0 :1:6 
+`uc 1 ADON 1 0 :1:7 
+]
+"24939
+[s S35 . 1 `uc 1 GO 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 ADFM0 1 0 :1:2 
+]
+[s S39 . 1 `uc 1 DONE 1 0 :1:0 
+]
+[s S41 . 1 `uc 1 GO_NOT_DONE 1 0 :1:0 
+]
+[s S43 . 1 `uc 1 GO_nDONE 1 0 :1:0 
+]
+[s S45 . 1 `uc 1 . 1 0 :7:0 
+`uc 1 ADCAL 1 0 :1:7 
+]
+[u S48 . 1 `S26 1 . 1 0 `S35 1 . 1 0 `S39 1 . 1 0 `S41 1 . 1 0 `S43 1 . 1 0 `S45 1 . 1 0 ]
+[v _ADCON0bits ADCON0bits `VES48  1 e 1 @3931 ]
+"25006
+[v _ADPREVL ADPREVL `VEuc  1 e 1 @3932 ]
+"25076
+[v _ADPREVH ADPREVH `VEuc  1 e 1 @3933 ]
+"25153
+[v _ADRESL ADRESL `VEuc  1 e 1 @3934 ]
+"25223
+[v _ADRESH ADRESH `VEuc  1 e 1 @3935 ]
+"25285
+[v _ADSTAT ADSTAT `VEuc  1 e 1 @3936 ]
+[s S217 . 1 `uc 1 ADSTAT 1 0 :3:0 
+`uc 1 . 1 0 :1:3 
+`uc 1 ADMATH 1 0 :1:4 
+`uc 1 ADLTHR 1 0 :1:5 
+`uc 1 ADUTHR 1 0 :1:6 
+`uc 1 ADAOV 1 0 :1:7 
+]
+"25305
+[s S224 . 1 `uc 1 ADSTAT0 1 0 :1:0 
+`uc 1 ADSTAT1 1 0 :1:1 
+`uc 1 ADSTAT2 1 0 :1:2 
+]
+[u S228 . 1 `S217 1 . 1 0 `S224 1 . 1 0 ]
+[v _ADSTATbits ADSTATbits `VES228  1 e 1 @3936 ]
+"25350
+[v _ADRPT ADRPT `VEuc  1 e 1 @3937 ]
+"25420
+[v _ADCNT ADCNT `VEuc  1 e 1 @3938 ]
+"25497
+[v _ADSTPTL ADSTPTL `VEuc  1 e 1 @3939 ]
+"25567
+[v _ADSTPTH ADSTPTH `VEuc  1 e 1 @3940 ]
+"25644
+[v _ADLTHL ADLTHL `VEuc  1 e 1 @3941 ]
+"25714
+[v _ADLTHH ADLTHH `VEuc  1 e 1 @3942 ]
+"25791
+[v _ADUTHL ADUTHL `VEuc  1 e 1 @3943 ]
+"25861
+[v _ADUTHH ADUTHH `VEuc  1 e 1 @3944 ]
+"25938
+[v _ADERRL ADERRL `VEuc  1 e 1 @3945 ]
+"26008
+[v _ADERRH ADERRH `VEuc  1 e 1 @3946 ]
+"26085
+[v _ADACCL ADACCL `VEuc  1 e 1 @3947 ]
+"26155
+[v _ADACCH ADACCH `VEuc  1 e 1 @3948 ]
+"26232
+[v _ADFLTRL ADFLTRL `VEuc  1 e 1 @3949 ]
+"26302
+[v _ADFLTRH ADFLTRH `VEuc  1 e 1 @3950 ]
+"26379
+[v _CRCDATL CRCDATL `VEuc  1 e 1 @3951 ]
+"26441
+[v _CRCDATH CRCDATH `VEuc  1 e 1 @3952 ]
+"26510
+[v _CRCACCL CRCACCL `VEuc  1 e 1 @3953 ]
+"26572
+[v _CRCACCH CRCACCH `VEuc  1 e 1 @3954 ]
+"26772
+[v _CRCXORL CRCXORL `VEuc  1 e 1 @3957 ]
+"26829
+[v _CRCXORH CRCXORH `VEuc  1 e 1 @3958 ]
+"26891
+[v _CRCCON0 CRCCON0 `VEuc  1 e 1 @3959 ]
+[s S477 . 1 `uc 1 FULL 1 0 :1:0 
+`uc 1 SHIFTM 1 0 :1:1 
+`uc 1 . 1 0 :2:2 
+`uc 1 ACCM 1 0 :1:4 
+`uc 1 BUSY 1 0 :1:5 
+`uc 1 CRCGO 1 0 :1:6 
+`uc 1 EN 1 0 :1:7 
+]
+"26911
+[s S485 . 1 `uc 1 . 1 0 :7:0 
+`uc 1 CRCEN 1 0 :1:7 
+]
+[u S488 . 1 `S477 1 . 1 0 `S485 1 . 1 0 ]
+[v _CRCCON0bits CRCCON0bits `VES488  1 e 1 @3959 ]
+"26951
+[v _CRCCON1 CRCCON1 `VEuc  1 e 1 @3960 ]
+[s S503 . 1 `uc 1 PLEN 1 0 :4:0 
+`uc 1 DLEN 1 0 :4:4 
+]
+"26972
+[s S506 . 1 `uc 1 PLEN0 1 0 :1:0 
+`uc 1 PLEN1 1 0 :1:1 
+`uc 1 PLEN2 1 0 :1:2 
+`uc 1 PLEN3 1 0 :1:3 
+`uc 1 DLEN0 1 0 :1:4 
+`uc 1 DLEN1 1 0 :1:5 
+`uc 1 DLEN2 1 0 :1:6 
+`uc 1 DLEN3 1 0 :1:7 
+]
+[u S515 . 1 `S503 1 . 1 0 `S506 1 . 1 0 ]
+[v _CRCCON1bits CRCCON1bits `VES515  1 e 1 @3960 ]
+"27036
+[v _NVMADRL NVMADRL `VEuc  1 e 1 @3961 ]
+"27106
+[v _NVMADRH NVMADRH `VEuc  1 e 1 @3962 ]
+"27176
+[v _NVMADRU NVMADRU `VEuc  1 e 1 @3963 ]
+"27241
+[v _NVMDATL NVMDATL `VEuc  1 e 1 @3964 ]
+"27311
+[v _NVMDATH NVMDATH `VEuc  1 e 1 @3965 ]
+[s S665 . 1 `uc 1 . 1 0 :4:0 
+`uc 1 NVMERR 1 0 :1:4 
+`uc 1 . 1 0 :2:5 
+`uc 1 NVMEN 1 0 :1:7 
+]
+"27394
+[u S670 . 1 `S665 1 . 1 0 ]
+[v _NVMCON0bits NVMCON0bits `VES670  1 e 1 @3967 ]
+[s S645 . 1 `uc 1 RD 1 0 :1:0 
+`uc 1 SECRD 1 0 :1:1 
+`uc 1 . 1 0 :2:2 
+`uc 1 WR 1 0 :1:4 
+`uc 1 SECWR 1 0 :1:5 
+`uc 1 SECER 1 0 :1:6 
+]
+"27424
+[u S652 . 1 `S645 1 . 1 0 ]
+[v _NVMCON1bits NVMCON1bits `VES652  1 e 1 @3968 ]
+"27454
+[v _NVMCON2 NVMCON2 `VEuc  1 e 1 @3969 ]
+"27474
+[v _LATA LATA `VEuc  1 e 1 @3970 ]
+[s S2505 . 1 `uc 1 LATA0 1 0 :1:0 
+`uc 1 LATA1 1 0 :1:1 
+`uc 1 LATA2 1 0 :1:2 
+`uc 1 LATA3 1 0 :1:3 
+`uc 1 LATA4 1 0 :1:4 
+`uc 1 LATA5 1 0 :1:5 
+`uc 1 LATA6 1 0 :1:6 
+`uc 1 LATA7 1 0 :1:7 
+]
+"27491
+[u S2514 . 1 `S2505 1 . 1 0 ]
+[v _LATAbits LATAbits `VES2514  1 e 1 @3970 ]
+"27536
+[v _LATB LATB `VEuc  1 e 1 @3971 ]
+"27598
+[v _LATC LATC `VEuc  1 e 1 @3972 ]
+"27660
+[v _LATD LATD `VEuc  1 e 1 @3973 ]
+[s S2063 . 1 `uc 1 LATD0 1 0 :1:0 
+`uc 1 LATD1 1 0 :1:1 
+`uc 1 LATD2 1 0 :1:2 
+`uc 1 LATD3 1 0 :1:3 
+`uc 1 LATD4 1 0 :1:4 
+`uc 1 LATD5 1 0 :1:5 
+`uc 1 LATD6 1 0 :1:6 
+`uc 1 LATD7 1 0 :1:7 
+]
+"27677
+[u S2072 . 1 `S2063 1 . 1 0 ]
+[v _LATDbits LATDbits `VES2072  1 e 1 @3973 ]
+"27722
+[v _LATE LATE `VEuc  1 e 1 @3974 ]
+"27754
+[v _TRISA TRISA `VEuc  1 e 1 @3975 ]
+[s S2527 . 1 `uc 1 TRISA0 1 0 :1:0 
+`uc 1 TRISA1 1 0 :1:1 
+`uc 1 TRISA2 1 0 :1:2 
+`uc 1 TRISA3 1 0 :1:3 
+`uc 1 TRISA4 1 0 :1:4 
+`uc 1 TRISA5 1 0 :1:5 
+`uc 1 TRISA6 1 0 :1:6 
+`uc 1 TRISA7 1 0 :1:7 
+]
+"27776
+[u S2536 . 1 `S2527 1 . 1 0 ]
+[v _TRISAbits TRISAbits `VES2536  1 e 1 @3975 ]
+"27876
+[v _TRISB TRISB `VEuc  1 e 1 @3976 ]
+"27998
+[v _TRISC TRISC `VEuc  1 e 1 @3977 ]
+"28120
+[v _TRISD TRISD `VEuc  1 e 1 @3978 ]
+"28242
+[v _TRISE TRISE `VEuc  1 e 1 @3979 ]
+[s S2548 . 1 `uc 1 RA0 1 0 :1:0 
+`uc 1 RA1 1 0 :1:1 
+`uc 1 RA2 1 0 :1:2 
+`uc 1 RA3 1 0 :1:3 
+`uc 1 RA4 1 0 :1:4 
+`uc 1 RA5 1 0 :1:5 
+`uc 1 RA6 1 0 :1:6 
+`uc 1 RA7 1 0 :1:7 
+]
+"28321
+[u S2557 . 1 `S2548 1 . 1 0 ]
+[v _PORTAbits PORTAbits `VES2557  1 e 1 @3980 ]
+"29623
+[v _RC1REG RC1REG `VEuc  1 e 1 @3992 ]
+"29677
+[v _TX1REG TX1REG `VEuc  1 e 1 @3993 ]
+"29743
+[v _SP1BRGL SP1BRGL `VEuc  1 e 1 @3994 ]
+"29797
+[v _SP1BRGH SP1BRGH `VEuc  1 e 1 @3995 ]
+"29851
+[v _RC1STA RC1STA `VEuc  1 e 1 @3996 ]
+[s S1802 . 1 `uc 1 RX9D 1 0 :1:0 
+`uc 1 OERR 1 0 :1:1 
+`uc 1 FERR 1 0 :1:2 
+`uc 1 ADDEN 1 0 :1:3 
+`uc 1 CREN 1 0 :1:4 
+`uc 1 SREN 1 0 :1:5 
+`uc 1 RX9 1 0 :1:6 
+`uc 1 SPEN 1 0 :1:7 
+]
+"29877
+[u S1811 . 1 `S1802 1 . 1 0 ]
+[v _RC1STAbits RC1STAbits `VES1811  1 e 1 @3996 ]
+"30031
+[v _TX1STA TX1STA `VEuc  1 e 1 @3997 ]
+[s S1823 . 1 `uc 1 TX9D 1 0 :1:0 
+`uc 1 TRMT 1 0 :1:1 
+`uc 1 BRGH 1 0 :1:2 
+`uc 1 SENDB 1 0 :1:3 
+`uc 1 SYNC 1 0 :1:4 
+`uc 1 TXEN 1 0 :1:5 
+`uc 1 TX9 1 0 :1:6 
+`uc 1 CSRC 1 0 :1:7 
+]
+"30057
+[u S1832 . 1 `S1823 1 . 1 0 ]
+[v _TX1STAbits TX1STAbits `VES1832  1 e 1 @3997 ]
+"30211
+[v _BAUD1CON BAUD1CON `VEuc  1 e 1 @3998 ]
+[s S1844 . 1 `uc 1 ABDEN 1 0 :1:0 
+`uc 1 WUE 1 0 :1:1 
+`uc 1 . 1 0 :1:2 
+`uc 1 BRG16 1 0 :1:3 
+`uc 1 SCKP 1 0 :1:4 
+`uc 1 . 1 0 :1:5 
+`uc 1 RCIDL 1 0 :1:6 
+`uc 1 ABDOVF 1 0 :1:7 
+]
+"30245
+[u S1853 . 1 `S1844 1 . 1 0 ]
+[v _BAUD1CONbits BAUD1CONbits `VES1853  1 e 1 @3998 ]
+"35726
+[v _TMR1L TMR1L `VEuc  1 e 1 @4044 ]
+"35846
+[v _TMR1H TMR1H `VEuc  1 e 1 @4045 ]
+"35966
+[v _T1CON T1CON `VEuc  1 e 1 @4046 ]
+[s S1276 . 1 `uc 1 ON 1 0 :1:0 
+`uc 1 RD16 1 0 :1:1 
+`uc 1 NOT_SYNC 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 CKPS 1 0 :2:4 
+]
+"36008
+[s S1282 . 1 `uc 1 TMR1ON 1 0 :1:0 
+`uc 1 T1RD16 1 0 :1:1 
+`uc 1 NOT_T1SYNC 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 T1CKPS0 1 0 :1:4 
+`uc 1 T1CKPS1 1 0 :1:5 
+]
+"36008
+[s S1289 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 nSYNC 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 CKPS0 1 0 :1:4 
+`uc 1 CKPS1 1 0 :1:5 
+]
+"36008
+[s S1295 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 RD161 1 0 :1:1 
+]
+"36008
+[s S1298 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 nT1SYNC 1 0 :1:2 
+]
+"36008
+[u S1301 . 1 `S1276 1 . 1 0 `S1282 1 . 1 0 `S1289 1 . 1 0 `S1295 1 . 1 0 `S1298 1 . 1 0 ]
+"36008
+"36008
+[v _T1CONbits T1CONbits `VES1301  1 e 1 @4046 ]
+"36188
+[v _T1GCON T1GCON `VEuc  1 e 1 @4047 ]
+[s S1409 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 GVAL 1 0 :1:2 
+`uc 1 GGO 1 0 :1:3 
+`uc 1 GSPM 1 0 :1:4 
+`uc 1 GTM 1 0 :1:5 
+`uc 1 GPOL 1 0 :1:6 
+`uc 1 GE 1 0 :1:7 
+]
+"36242
+[s S1417 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 T1GVAL 1 0 :1:2 
+`uc 1 T1GGO 1 0 :1:3 
+`uc 1 T1GSPM 1 0 :1:4 
+`uc 1 T1GTM 1 0 :1:5 
+`uc 1 T1GPOL 1 0 :1:6 
+`uc 1 T1GE 1 0 :1:7 
+]
+"36242
+[s S1425 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 NOT_DONE 1 0 :1:3 
+]
+"36242
+[s S1428 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 NOT_T1DONE 1 0 :1:3 
+]
+"36242
+[s S1431 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 GGO_NOT_DONE 1 0 :1:3 
+]
+"36242
+[s S1434 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 GGO_nDONE 1 0 :1:3 
+]
+"36242
+[s S1437 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 T1GGO_NOT_DONE 1 0 :1:3 
+]
+"36242
+[s S1440 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 T1GGO_nDONE 1 0 :1:3 
+]
+"36242
+[u S1443 . 1 `S1409 1 . 1 0 `S1417 1 . 1 0 `S1425 1 . 1 0 `S1428 1 . 1 0 `S1431 1 . 1 0 `S1434 1 . 1 0 `S1437 1 . 1 0 `S1440 1 . 1 0 ]
+"36242
+"36242
+[v _T1GCONbits T1GCONbits `VES1443  1 e 1 @4047 ]
+"36474
+[v _T1GATE T1GATE `VEuc  1 e 1 @4048 ]
+"36640
+[v _T1CLK T1CLK `VEuc  1 e 1 @4049 ]
+"36886
+[v _TMR0L TMR0L `VEuc  1 e 1 @4050 ]
+"37024
+[v _TMR0H TMR0H `VEuc  1 e 1 @4051 ]
+"37278
+[v _T0CON0 T0CON0 `VEuc  1 e 1 @4052 ]
+[s S1220 . 1 `uc 1 T0OUTPS 1 0 :4:0 
+`uc 1 T016BIT 1 0 :1:4 
+`uc 1 T0OUT 1 0 :1:5 
+`uc 1 . 1 0 :1:6 
+`uc 1 T0EN 1 0 :1:7 
+]
+"37298
+[s S1226 . 1 `uc 1 T0OUTPS0 1 0 :1:0 
+`uc 1 T0OUTPS1 1 0 :1:1 
+`uc 1 T0OUTPS2 1 0 :1:2 
+`uc 1 T0OUTPS3 1 0 :1:3 
+]
+"37298
+[u S1231 . 1 `S1220 1 . 1 0 `S1226 1 . 1 0 ]
+"37298
+"37298
+[v _T0CON0bits T0CON0bits `VES1231  1 e 1 @4052 ]
+"37343
+[v _T0CON1 T0CON1 `VEuc  1 e 1 @4053 ]
+[s S682 . 1 `uc 1 INT0EDG 1 0 :1:0 
+`uc 1 INT1EDG 1 0 :1:1 
+`uc 1 INT2EDG 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 IPEN 1 0 :1:5 
+`uc 1 PEIE_GIEL 1 0 :1:6 
+`uc 1 GIE_GIEH 1 0 :1:7 
+]
+"38228
+[s S690 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 PEIE 1 0 :1:6 
+`uc 1 GIE 1 0 :1:7 
+]
+"38228
+[s S694 . 1 `uc 1 . 1 0 :6:0 
+`uc 1 GIEL 1 0 :1:6 
+`uc 1 GIEH 1 0 :1:7 
+]
+"38228
+[u S698 . 1 `S682 1 . 1 0 `S690 1 . 1 0 `S694 1 . 1 0 ]
+"38228
+"38228
+[v _INTCONbits INTCONbits `VES698  1 e 1 @4082 ]
+"38330
+[v _TABLAT TABLAT `VEuc  1 e 1 @4085 ]
+"38359
+[v _TBLPTRL TBLPTRL `VEuc  1 e 1 @4086 ]
+"38379
+[v _TBLPTRH TBLPTRH `VEuc  1 e 1 @4087 ]
+"38399
+[v _TBLPTRU TBLPTRU `VEuc  1 e 1 @4088 ]
+"153 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\doprnt.c
+[v _prec prec `i  1 s 2 prec ]
+[v _width width `i  1 s 2 width ]
+"154
+[v _flags flags `uc  1 s 1 flags ]
+"185
+[v _dbuf dbuf `[32]uc  1 s 32 dbuf ]
+"39 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\mcc_generated_files/adc/src/adc.c
+[v _ADC_ConversionDoneCallback ADC_ConversionDoneCallback `*.38(v  1 s 3 ADC_ConversionDoneCallback ]
+"40
+[v _ADC_ThresholdCallback ADC_ThresholdCallback `*.38(v  1 s 3 ADC_ThresholdCallback ]
+"41
+[v _adc_busy_status adc_busy_status `a  1 s 1 adc_busy_status ]
+"40 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\mcc_generated_files/nvm/src/nvm.c
+[v _unlockKeyLow unlockKeyLow `VNEuc  1 s 1 unlockKeyLow ]
+"41
+[v _unlockKeyHigh unlockKeyHigh `VNEuc  1 s 1 unlockKeyHigh ]
+"38 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\mcc_generated_files/system/src/interrupt.c
+[v _INT0_InterruptHandler INT0_InterruptHandler `*.38(v  1 e 3 0 ]
+"39
+[v _INT1_InterruptHandler INT1_InterruptHandler `*.38(v  1 e 3 0 ]
+"40
+[v _INT2_InterruptHandler INT2_InterruptHandler `*.38(v  1 e 3 0 ]
+"38 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\mcc_generated_files/timer/src/tmr0.c
+[v _TMR0_PeriodMatchCallback TMR0_PeriodMatchCallback `*.38(v  1 s 3 TMR0_PeriodMatchCallback ]
+"42 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\mcc_generated_files/timer/src/tmr1.c
+[v _timer1ReloadVal timer1ReloadVal `VEus  1 s 2 timer1ReloadVal ]
+"43
+[v _TMR1_OverflowCallback TMR1_OverflowCallback `*.38(v  1 s 3 TMR1_OverflowCallback ]
+"45
+[v _TMR1_GateCallback TMR1_GateCallback `*.38(v  1 s 3 TMR1_GateCallback ]
+[s S1593 . 72 `*.38(v 1 Initialize 3 0 `*.38(v 1 Deinitialize 3 3 `*.38(uc 1 Read 3 6 `*.38(v 1 Write 3 9 `*.38(a 1 IsRxReady 3 12 `*.38(a 1 IsTxReady 3 15 `*.38(a 1 IsTxDone 3 18 `*.38(v 1 TransmitEnable 3 21 `*.38(v 1 TransmitDisable 3 24 `*.38(v 1 AutoBaudSet 3 27 `*.38(a 1 AutoBaudQuery 3 30 `*.38(a 1 AutoBaudEventEnableGet 3 33 `*.38(v 1 BRGCountSet 3 36 `*.38(ul 1 BRGCountGet 3 39 `*.38(v 1 BaudRateSet 3 42 `*.38(ul 1 BaudRateGet 3 45 `*.38(ui 1 ErrorGet 3 48 `*.38(v 1 TxCompleteCallbackRegister 3 51 `*.38(v 1 RxCompleteCallbackRegister 3 54 `*.38(v 1 TxCollisionCallbackRegister 3 57 `*.38(v 1 FramingErrorCallbackRegister 3 60 `*.38(v 1 OverrunErrorCallbackRegister 3 63 `*.38(v 1 ParityErrorCallbackRegister 3 66 `*.38(v 1 EventCallbackRegister 3 69 ]
+"53 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\mcc_generated_files/uart/src/eusart1.c
+[v _BLE_UART BLE_UART `CS1593  1 e 72 0 ]
+"83
+[v _eusart1TxHead eusart1TxHead `VEuc  1 s 1 eusart1TxHead ]
+"84
+[v _eusart1TxTail eusart1TxTail `VEuc  1 s 1 eusart1TxTail ]
+"85
+[v _eusart1TxBufferRemaining eusart1TxBufferRemaining `VEuc  1 s 1 eusart1TxBufferRemaining ]
+"86
+[v _eusart1TxBuffer eusart1TxBuffer `VE[8]uc  1 s 8 eusart1TxBuffer ]
+"88
+[v _eusart1RxHead eusart1RxHead `VEuc  1 s 1 eusart1RxHead ]
+"89
+[v _eusart1RxTail eusart1RxTail `VEuc  1 s 1 eusart1RxTail ]
+"90
+[v _eusart1RxCount eusart1RxCount `VEuc  1 s 1 eusart1RxCount ]
+"91
+[v _eusart1RxBuffer eusart1RxBuffer `VE[8]uc  1 s 8 eusart1RxBuffer ]
+[s S1744 . 1 `uc 1 perr 1 0 :1:0 
+`uc 1 ferr 1 0 :1:1 
+`uc 1 oerr 1 0 :1:2 
+`uc 1 reserved 1 0 :5:3 
+]
+"97
+[u S1749 . 2 `S1744 1 . 1 0 `ui 1 status 2 0 ]
+[v _eusart1RxStatusBuffer eusart1RxStatusBuffer `VE[8]S1749  1 s 16 eusart1RxStatusBuffer ]
+"104
+[v _eusart1RxLastError eusart1RxLastError `VES1749  1 s 2 eusart1RxLastError ]
+"110
+[v _EUSART1_TxInterruptHandler EUSART1_TxInterruptHandler `*.38(v  1 e 3 0 ]
+"112
+[v _EUSART1_TxCompleteInterruptHandler EUSART1_TxCompleteInterruptHandler `*.38(v  1 s 3 EUSART1_TxCompleteInterruptHandler ]
+"114
+[v _EUSART1_RxInterruptHandler EUSART1_RxInterruptHandler `*.38(v  1 e 3 0 ]
+"115
+[v _EUSART1_RxCompleteInterruptHandler EUSART1_RxCompleteInterruptHandler `*.38(v  1 s 3 EUSART1_RxCompleteInterruptHandler ]
+"117
+[v _EUSART1_FramingErrorHandler EUSART1_FramingErrorHandler `*.38(v  1 s 3 EUSART1_FramingErrorHandler ]
+"118
+[v _EUSART1_OverrunErrorHandler EUSART1_OverrunErrorHandler `*.38(v  1 s 3 EUSART1_OverrunErrorHandler ]
+"39 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\main.c
+[v _main main `(v  1 e 1 0 ]
+{
+"69
+} 0
+"137 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\mcc_generated_files/timer/src/tmr0.c
+[v _TMR0_PeriodMatchCallbackRegister TMR0_PeriodMatchCallbackRegister `(v  1 e 1 0 ]
+{
+[v TMR0_PeriodMatchCallbackRegister@callbackHandler callbackHandler `*.38(v  1 p 3 9 ]
+"140
+} 0
+"38 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\mcc_generated_files/system/src/system.c
+[v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
+{
+"49
+} 0
+"48 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\mcc_generated_files/timer/src/tmr1.c
+[v _TMR1_Initialize TMR1_Initialize `(v  1 e 1 0 ]
+{
+"67
+[v TMR1_Initialize@readValHigh readValHigh `us  1 a 2 11 ]
+"66
+[v TMR1_Initialize@readValLow readValLow `us  1 a 2 9 ]
+"82
+} 0
+"45 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\mcc_generated_files/timer/src/tmr0.c
+[v _TMR0_Initialize TMR0_Initialize `(v  1 e 1 0 ]
+{
+"64
+} 0
+"38 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\mcc_generated_files/system/src/pins.c
+[v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
+{
+"129
+} 0
+"43 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\mcc_generated_files/nvm/src/nvm.c
+[v _NVM_Initialize NVM_Initialize `(v  1 e 1 0 ]
+{
+"46
+} 0
+"42 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\mcc_generated_files/system/src/interrupt.c
+[v _INTERRUPT_Initialize INTERRUPT_Initialize `(v  1 e 1 0 ]
+{
+"71
+} 0
+"190
+[v _INT2_SetInterruptHandler INT2_SetInterruptHandler `(v  1 e 1 0 ]
+{
+[v INT2_SetInterruptHandler@InterruptHandler InterruptHandler `*.38(v  1 p 3 9 ]
+"192
+} 0
+"164
+[v _INT1_SetInterruptHandler INT1_SetInterruptHandler `(v  1 e 1 0 ]
+{
+[v INT1_SetInterruptHandler@InterruptHandler InterruptHandler `*.38(v  1 p 3 9 ]
+"166
+} 0
+"138
+[v _INT0_SetInterruptHandler INT0_SetInterruptHandler `(v  1 e 1 0 ]
+{
+[v INT0_SetInterruptHandler@InterruptHandler InterruptHandler `*.38(v  1 p 3 9 ]
+"140
+} 0
+"131 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\mcc_generated_files/uart/src/eusart1.c
+[v _EUSART1_Initialize EUSART1_Initialize `(v  1 e 1 0 ]
+{
+"165
+} 0
+"420
+[v _EUSART1_OverrunErrorCallbackRegister EUSART1_OverrunErrorCallbackRegister `(v  1 e 1 0 ]
+{
+[v EUSART1_OverrunErrorCallbackRegister@callbackHandler callbackHandler `*.38(v  1 p 3 9 ]
+"426
+} 0
+"412
+[v _EUSART1_FramingErrorCallbackRegister EUSART1_FramingErrorCallbackRegister `(v  1 e 1 0 ]
+{
+[v EUSART1_FramingErrorCallbackRegister@callbackHandler callbackHandler `*.38(v  1 p 3 9 ]
+"418
+} 0
+"43 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\mcc_generated_files/crc/src/crc.c
+[v _CRC_Initialize CRC_Initialize `(v  1 e 1 0 ]
+{
+"90
+} 0
+"39 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\mcc_generated_files/system/src/clock.c
+[v _CLOCK_Initialize CLOCK_Initialize `(v  1 e 1 0 ]
+{
+"55
+} 0
+"43 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\mcc_generated_files/adc/src/adc.c
+[v _ADC_Initialize ADC_Initialize `(v  1 e 1 0 ]
+{
+"92
+} 0
+"15 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\application.c
+[v _InitialSetup InitialSetup `(v  1 e 1 0 ]
+{
+"47
+} 0
+"453
+[v _DataPtrRead DataPtrRead `(us  1 e 2 0 ]
+{
+"457
+[v DataPtrRead@addressLowByte addressLowByte `uc  1 a 1 20 ]
+"456
+[v DataPtrRead@addressHighByte addressHighByte `uc  1 a 1 19 ]
+"459
+} 0
+"436
+[v _ChecksumRead ChecksumRead `(us  1 e 2 0 ]
+{
+"440
+[v ChecksumRead@checkSumLowByte checkSumLowByte `uc  1 a 1 20 ]
+"439
+[v ChecksumRead@checkSumHighByte checkSumHighByte `uc  1 a 1 19 ]
+"442
+} 0
+"317 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\mcc_generated_files/nvm/src/nvm.c
+[v _EEPROM_Read EEPROM_Read `(uc  1 e 1 0 ]
+{
+[v EEPROM_Read@address address `um  1 p 3 9 ]
+"334
+} 0
+"43 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\ble2click.c
+[v _BLE2ClickSetup BLE2ClickSetup `(v  1 e 1 0 ]
+{
+"75
+} 0
+"32 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\ble2driver.c
+[v _BLE2_WakeModule BLE2_WakeModule `(v  1 e 1 0 ]
+{
+"36
+} 0
+"135 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\mcc_generated_files/adc/src/adc.c
+[v _ADC_ChannelSelect ADC_ChannelSelect `(v  1 e 1 0 ]
+{
+[v ADC_ChannelSelect@channel channel `E13158  1 p 1 wreg ]
+[v ADC_ChannelSelect@channel channel `E13158  1 p 1 wreg ]
+"137
+[v ADC_ChannelSelect@channel channel `E13158  1 p 1 9 ]
+"138
+} 1
+"61 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\application.c
+[v _ApplicationTask ApplicationTask `(v  1 e 1 0 ]
+{
+"67
+[v ApplicationTask@adcValue adcValue `us  1 a 2 12 ]
+"63
+[v ApplicationTask@crcValPeek crcValPeek `VEus  1 a 2 14 ]
+"66
+[v ApplicationTask@connectionEnd connectionEnd `a  1 a 1 11 ]
+"65
+[v ApplicationTask@connectionData connectionData `a  1 a 1 10 ]
+"191
+} 0
+"3 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\strncmp.c
+[v _strncmp strncmp `(i  1 e 2 0 ]
+{
+[v strncmp@l l `*.39Cuc  1 p 2 9 ]
+[v strncmp@r r `*.32Cuc  1 p 2 11 ]
+[v strncmp@n n `ui  1 p 2 13 ]
+"8
+} 0
+"3 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\strcmp.c
+[v _strcmp strcmp `(i  1 e 2 0 ]
+{
+[v strcmp@l l `*.39Cuc  1 p 2 9 ]
+[v strcmp@r r `*.32Cuc  1 p 2 11 ]
+"7
+} 0
+"410 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\application.c
+[v _FlashDataLog FlashDataLog `(v  1 e 1 0 ]
+{
+[v FlashDataLog@adcValue adcValue `us  1 p 2 37 ]
+"425
+} 0
+"388
+[v _FlashWordWrite FlashWordWrite `(v  1 e 1 0 ]
+{
+"390
+[v FlashWordWrite@readWord readWord `us  1 a 2 34 ]
+"391
+[v FlashWordWrite@errorStatus errorStatus `E13323  1 a 1 36 ]
+"388
+[v FlashWordWrite@flashAddr flashAddr `um  1 p 3 28 ]
+[v FlashWordWrite@word word `us  1 p 2 31 ]
+"408
+} 0
+"65 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\mcc_generated_files/nvm/src/nvm.c
+[v _NVM_StatusClear NVM_StatusClear `(v  1 e 1 0 ]
+{
+"68
+} 0
+"159
+[v _FLASH_Write FLASH_Write `(E13158  1 e 1 0 ]
+{
+"162
+[v FLASH_Write@globalInterruptBitValue globalInterruptBitValue `uc  1 a 1 17 ]
+"159
+[v FLASH_Write@address address `um  1 p 3 9 ]
+[v FLASH_Write@data data `us  1 p 2 12 ]
+"205
+} 0
+"264
+[v _FLASH_PageErase FLASH_PageErase `(E13158  1 e 1 0 ]
+{
+"267
+[v FLASH_PageErase@globalInterruptBitValue globalInterruptBitValue `uc  1 a 1 15 ]
+"264
+[v FLASH_PageErase@address address `um  1 p 3 9 ]
+"305
+} 0
+"444 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\application.c
+[v _DataPtrWrite DataPtrWrite `(v  1 e 1 0 ]
+{
+[v DataPtrWrite@dataPtr dataPtr `um  1 p 3 17 ]
+"451
+} 0
+"427
+[v _ChecksumWrite ChecksumWrite `(v  1 e 1 0 ]
+{
+[v ChecksumWrite@checksum checksum `us  1 p 2 17 ]
+"434
+} 0
+"70 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\mcc_generated_files/nvm/src/nvm.c
+[v _NVM_UnlockKeySet NVM_UnlockKeySet `(v  1 e 1 0 ]
+{
+[v NVM_UnlockKeySet@unlockKey unlockKey `us  1 p 2 9 ]
+"74
+} 0
+"76
+[v _NVM_UnlockKeyClear NVM_UnlockKeyClear `(v  1 e 1 0 ]
+{
+"80
+} 0
+"336
+[v _EEPROM_Write EEPROM_Write `(v  1 e 1 0 ]
+{
+"339
+[v EEPROM_Write@globalInterruptBitValue globalInterruptBitValue `uc  1 a 1 16 ]
+"336
+[v EEPROM_Write@address address `um  1 p 3 9 ]
+[v EEPROM_Write@data data `uc  1 p 1 12 ]
+"372
+} 0
+"133 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\mcc_generated_files/crc/src/crc.c
+[v _CRC_GetCalculatedResult CRC_GetCalculatedResult `(us  1 e 2 0 ]
+{
+[v CRC_GetCalculatedResult@reverse reverse `a  1 p 1 wreg ]
+"135
+[v CRC_GetCalculatedResult@result result `us  1 a 2 21 ]
+"133
+[v CRC_GetCalculatedResult@reverse reverse `a  1 p 1 wreg ]
+[v CRC_GetCalculatedResult@xorValue xorValue `us  1 p 2 16 ]
+[v CRC_GetCalculatedResult@reverse reverse `a  1 p 1 20 ]
+"144
+} 1
+"112
+[v _CRC_ReverseValue CRC_ReverseValue `(us  1 s 2 CRC_ReverseValue ]
+{
+"114
+[v CRC_ReverseValue@mask mask `us  1 a 2 14 ]
+"115
+[v CRC_ReverseValue@reverse reverse `us  1 a 2 12 ]
+"112
+[v CRC_ReverseValue@crc crc `us  1 p 2 9 ]
+"131
+} 0
+"381 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\application.c
+[v _CRCPeriodicStop CRCPeriodicStop `(v  1 e 1 0 ]
+{
+"386
+} 0
+"84 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\mcc_generated_files/timer/src/tmr0.c
+[v _TMR0_Stop TMR0_Stop `(v  1 e 1 0 ]
+{
+"87
+} 0
+"98
+[v _TMR0_CounterSet TMR0_CounterSet `(v  1 e 1 0 ]
+{
+[v TMR0_CounterSet@counterValue counterValue `uc  1 p 1 wreg ]
+[v TMR0_CounterSet@counterValue counterValue `uc  1 p 1 wreg ]
+"100
+[v TMR0_CounterSet@counterValue counterValue `uc  1 p 1 9 ]
+"101
+} 1
+"159 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\mcc_generated_files/crc/src/crc.c
+[v _CRC_StopScanner CRC_StopScanner `T(v  1 e 1 0 ]
+{
+"165
+} 0
+"374 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\application.c
+[v _CRCPeriodicStart CRCPeriodicStart `(v  1 e 1 0 ]
+{
+"379
+} 0
+"79 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\mcc_generated_files/timer/src/tmr0.c
+[v _TMR0_Start TMR0_Start `(v  1 e 1 0 ]
+{
+"82
+} 0
+"362 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\application.c
+[v _CRCPeekModeInitialize CRCPeekModeInitialize `(v  1 e 1 0 ]
+{
+"367
+} 0
+"348
+[v _CRCBurstModeInitialize CRCBurstModeInitialize `(v  1 e 1 0 ]
+{
+"353
+} 0
+"355
+[v _CRCBurstModeCalculate CRCBurstModeCalculate `(v  1 e 1 0 ]
+{
+"360
+} 0
+"369
+[v _ScannerSetupAndStart ScannerSetupAndStart `(v  1 e 1 0 ]
+{
+"373
+} 0
+"151 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\mcc_generated_files/crc/src/crc.c
+[v _CRC_StartScanner CRC_StartScanner `T(v  1 e 1 0 ]
+{
+"157
+} 0
+"167
+[v _CRC_SetScannerAddressLimit CRC_SetScannerAddressLimit `(v  1 e 1 0 ]
+{
+[v CRC_SetScannerAddressLimit@startAddr startAddr `um  1 p 3 9 ]
+[v CRC_SetScannerAddressLimit@endAddr endAddr `um  1 p 3 12 ]
+"175
+} 0
+"49 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\application.c
+[v _CRC_IsCalculationComplete CRC_IsCalculationComplete `(a  1 e 1 0 ]
+{
+"51
+[v CRC_IsCalculationComplete@busyStatus busyStatus `a  1 a 1 9 ]
+"54
+} 0
+"56
+[v _CRC_IsScannerOngoing CRC_IsScannerOngoing `T(a  1 e 1 0 ]
+{
+"59
+} 0
+"146 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\mcc_generated_files/crc/src/crc.c
+[v _CRC_IsCrcBusy CRC_IsCrcBusy `T(a  1 e 1 0 ]
+{
+"149
+} 0
+"30 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\ble2click.c
+[v _BLE2ClickGetstr BLE2ClickGetstr `(v  1 e 1 0 ]
+{
+"32
+[v BLE2ClickGetstr@i i `ui  1 a 2 13 ]
+"41
+} 0
+"62 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\ble2driver.c
+[v _BLE2_ReceiveByte BLE2_ReceiveByte `(uc  1 e 1 0 ]
+{
+"66
+} 0
+"288 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\mcc_generated_files/uart/src/eusart1.c
+[v _EUSART1_Read EUSART1_Read `(uc  1 e 1 0 ]
+{
+"290
+[v EUSART1_Read@readValue readValue `uc  1 a 1 10 ]
+"291
+[v EUSART1_Read@tempRxTail tempRxTail `uc  1 a 1 9 ]
+"306
+} 0
+"267
+[v _EUSART1_IsRxReady EUSART1_IsRxReady `(a  1 e 1 0 ]
+{
+"270
+} 0
+"295 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\mcc_generated_files/adc/src/adc.c
+[v _ADC_FilterValueGet ADC_FilterValueGet `(s  1 e 2 0 ]
+{
+"298
+} 0
+"160
+[v _ADC_ConversionResultGet ADC_ConversionResultGet `(s  1 e 2 0 ]
+{
+"163
+} 0
+"230 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\application.c
+[v _ADCCommandProcess ADCCommandProcess `(v  1 e 1 0 ]
+{
+"234
+[v ADCCommandProcess@lcurrentAdcValuePtr lcurrentAdcValuePtr `um  1 a 3 5 ]
+"232
+[v ADCCommandProcess@dataRead dataRead `us  1 a 2 8 ]
+[s S2329 . 2 `uc 1 ADC_CHARACTERISTIC 1 0 `uc 1 ADC_VALUE 1 1 ]
+"233
+[v ADCCommandProcess@data data `S2329  1 a 2 3 ]
+"325
+} 0
+"10 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\xxtofl.c
+[v ___xxtofl __xxtofl `(d  1 e 4 0 ]
+{
+[v ___xxtofl@sign sign `uc  1 p 1 wreg ]
+"13
+[v ___xxtofl@arg arg `ul  1 a 4 19 ]
+"12
+[v ___xxtofl@exp exp `uc  1 a 1 18 ]
+"10
+[v ___xxtofl@sign sign `uc  1 p 1 wreg ]
+[v ___xxtofl@val val `l  1 p 4 9 ]
+"15
+[v ___xxtofl@sign sign `uc  1 p 1 17 ]
+"44
+} 1
+"43 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\fltol.c
+[v ___fltol __fltol `(l  1 e 4 0 ]
+{
+"45
+[v ___fltol@exp1 exp1 `uc  1 a 1 82 ]
+[v ___fltol@sign1 sign1 `uc  1 a 1 81 ]
+"43
+[v ___fltol@f1 f1 `d  1 p 4 73 ]
+"70
+} 0
+"8 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\sprcmul.c
+[v ___flmul __flmul `(d  1 e 4 0 ]
+{
+[s S3208 . 4 `uc 1 a 1 0 `uc 1 b 1 1 `uc 1 c 1 2 `uc 1 d 1 3 ]
+"13
+[s S3213 . 4 `s 1 wordA 2 0 `s 1 wordB 2 2 ]
+[u S3216 . 4 `l 1 i 4 0 `d 1 f 4 0 `S3208 1 fAsBytes 4 0 `S3213 1 fAsWords 4 0 ]
+[v ___flmul@prod prod `S3216  1 a 4 67 ]
+"12
+[v ___flmul@grs grs `ul  1 a 4 61 ]
+[s S3284 . 2 `uc 1 a 1 0 `uc 1 b 1 1 ]
+"14
+[u S3287 . 2 `s 1 i 2 0 `us 1 n 2 0 `S3284 1 nAsBytes 2 0 ]
+[v ___flmul@temp temp `S3287  1 a 2 71 ]
+"10
+[v ___flmul@bexp bexp `uc  1 a 1 66 ]
+"11
+[v ___flmul@aexp aexp `uc  1 a 1 65 ]
+"9
+[v ___flmul@sign sign `uc  1 a 1 60 ]
+"8
+[v ___flmul@b b `d  1 p 4 48 ]
+[v ___flmul@a a `d  1 p 4 52 ]
+"205
+} 0
+"11 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\sprcdiv.c
+[v ___fldiv __fldiv `(d  1 e 4 0 ]
+{
+"21
+[v ___fldiv@grs grs `ul  1 a 4 42 ]
+"22
+[v ___fldiv@rem rem `ul  1 a 4 35 ]
+"20
+[v ___fldiv@new_exp new_exp `s  1 a 2 40 ]
+"19
+[v ___fldiv@aexp aexp `uc  1 a 1 47 ]
+"18
+[v ___fldiv@bexp bexp `uc  1 a 1 46 ]
+"16
+[v ___fldiv@sign sign `uc  1 a 1 39 ]
+"11
+[v ___fldiv@b b `d  1 p 4 23 ]
+[v ___fldiv@a a `d  1 p 4 27 ]
+"185
+} 0
+"106 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\mcc_generated_files/timer/src/tmr1.c
+[v _TMR1_Stop TMR1_Stop `(v  1 e 1 0 ]
+{
+"109
+} 0
+"101
+[v _TMR1_Start TMR1_Start `(v  1 e 1 0 ]
+{
+"104
+} 0
+"126
+[v _TMR1_CounterSet TMR1_CounterSet `(v  1 e 1 0 ]
+{
+"130
+[v TMR1_CounterSet@onState onState `a  1 a 1 11 ]
+"126
+[v TMR1_CounterSet@timerVal timerVal `us  1 p 2 9 ]
+"142
+} 0
+"82 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\mcc_generated_files/nvm/src/nvm.c
+[v _FLASH_Read FLASH_Read `(uc  1 e 1 0 ]
+{
+"85
+[v FLASH_Read@tablePointer tablePointer `ul  1 a 4 24 ]
+"82
+[v FLASH_Read@address address `um  1 p 3 9 ]
+"101
+} 0
+"327 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\application.c
+[v _BLEDataSend BLEDataSend `(v  1 e 1 0 ]
+{
+"329
+[v BLEDataSend@result result `[2]uc  1 a 2 80 ]
+"327
+[v BLEDataSend@data data `us  1 p 2 76 ]
+"336
+} 0
+"9 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\nf_sprintf.c
+[v _sprintf sprintf `(i  1 e 2 0 ]
+{
+[u S3343 . 2 `*.30uc 1 buffer 1 0 `*.39Cuc 1 source 2 0 ]
+"13
+[s S3346 _IO_FILE 11 `S3343 1 . 2 0 `i 1 count 2 2 `[3]uc 1 ungetbuf 3 4 `i 1 ungetcnt 2 7 `i 1 limit 2 9 ]
+[v sprintf@f f `S3346  1 a 11 65 ]
+"12
+[v sprintf@ap ap `[1]*.30v  1 a 1 64 ]
+"9
+[v sprintf@s s `*.30uc  1 p 1 59 ]
+[v sprintf@fmt fmt `*.32Cuc  1 p 2 60 ]
+"23
+} 0
+"1817 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\doprnt.c
+[v _vfprintf vfprintf `(i  1 e 2 0 ]
+{
+"1820
+[v vfprintf@cfmt cfmt `*.32uc  1 a 2 57 ]
+[s S3378 _IO_FILE 0 ]
+"1817
+[v vfprintf@fp fp `*.30S3378  1 p 1 53 ]
+[v vfprintf@fmt fmt `*.32Cuc  1 p 2 54 ]
+[v vfprintf@ap ap `*.30*.30v  1 p 1 56 ]
+"1840
+} 0
+"1177
+[v _vfpfcnvrt vfpfcnvrt `(v  1 s 1 vfpfcnvrt ]
+{
+[u S3397 . 4 `i 1 sint 2 0 `ui 1 uint 2 0 `d 1 f 4 0 ]
+"1188
+[v vfpfcnvrt@convarg convarg `S3397  1 a 4 46 ]
+"1179
+[v vfpfcnvrt@cp cp `*.32uc  1 a 2 51 ]
+"1180
+[v vfpfcnvrt@done done `a  1 a 1 50 ]
+[s S3378 _IO_FILE 0 ]
+"1177
+[v vfpfcnvrt@fp fp `*.30S3378  1 p 1 41 ]
+[v vfpfcnvrt@fmt fmt `*.30*.32uc  1 p 1 42 ]
+[v vfpfcnvrt@ap ap `*.30*.30v  1 p 1 43 ]
+"1814
+} 0
+"1055
+[v _xtoa xtoa `(v  1 s 1 xtoa ]
+{
+"1063
+[v xtoa@i i `i  1 a 2 39 ]
+[v xtoa@w w `i  1 a 2 36 ]
+"1059
+[v xtoa@c c `uc  1 a 1 38 ]
+"1067
+[v xtoa@p p `a  1 a 1 35 ]
+[s S3378 _IO_FILE 0 ]
+"1055
+[v xtoa@fp fp `*.30S3378  1 p 1 29 ]
+[v xtoa@d d `ui  1 p 2 30 ]
+"1153
+} 0
+"193
+[v _pad pad `(v  1 s 1 pad ]
+{
+"195
+[v pad@i i `i  1 a 2 27 ]
+[s S3378 _IO_FILE 0 ]
+"193
+[v pad@fp fp `*.30S3378  1 p 1 22 ]
+[v pad@buf buf `*.30uc  1 p 1 23 ]
+[v pad@p p `i  1 p 2 24 ]
+"226
+} 0
+"8 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\nf_fputs.c
+[v _fputs fputs `(i  1 e 2 0 ]
+{
+"11
+[v fputs@i i `i  1 a 2 20 ]
+"10
+[v fputs@c c `uc  1 a 1 19 ]
+"8
+[v fputs@s s `*.30Cuc  1 p 1 17 ]
+[u S3343 . 2 `*.30uc 1 buffer 1 0 `*.39Cuc 1 source 2 0 ]
+[s S3346 _IO_FILE 11 `S3343 1 . 2 0 `i 1 count 2 2 `[3]uc 1 ungetbuf 3 4 `i 1 ungetcnt 2 7 `i 1 limit 2 9 ]
+[v fputs@fp fp `*.30S3346  1 p 1 18 ]
+"19
+} 0
+"8 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\nf_fputc.c
+[v _fputc fputc `(i  1 e 2 0 ]
+{
+[v fputc@c c `i  1 p 2 9 ]
+[u S3343 . 2 `*.30uc 1 buffer 1 0 `*.39Cuc 1 source 2 0 ]
+[s S3346 _IO_FILE 11 `S3343 1 . 2 0 `i 1 count 2 2 `[3]uc 1 ungetbuf 3 4 `i 1 ungetcnt 2 7 `i 1 limit 2 9 ]
+[v fputc@fp fp `*.30S3346  1 p 1 11 ]
+"24
+} 0
+"7 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\putch.c
+[v _putch putch `(v  1 e 1 0 ]
+{
+"9
+} 1
+"1158 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\doprnt.c
+[v _read_prec_or_width read_prec_or_width `(i  1 s 2 read_prec_or_width ]
+{
+"1164
+[v read_prec_or_width@c c `uc  1 a 1 13 ]
+"1159
+[v read_prec_or_width@n n `i  1 a 2 14 ]
+"1158
+[v read_prec_or_width@fmt fmt `*.30*.32Cuc  1 p 1 9 ]
+[v read_prec_or_width@ap ap `*.30[1]*.30v  1 p 1 10 ]
+"1171
+} 0
+"43 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\ble2driver.c
+[v _BLE2_SendString BLE2_SendString `(v  1 e 1 0 ]
+{
+[v BLE2_SendString@command command `*.34Cuc  1 p 2 17 ]
+"46
+} 0
+"5 C:\Program Files\Microchip\xc8\v3.10\pic\sources\c99\common\strlen.c
+[v _strlen strlen `(ui  1 e 2 0 ]
+{
+"7
+[v strlen@a a `*.34Cuc  1 a 2 11 ]
+"5
+[v strlen@s s `*.34Cuc  1 p 2 9 ]
+"12
+} 0
+"48 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\ble2driver.c
+[v _BLE2_SendBuffer BLE2_SendBuffer `(v  1 e 1 0 ]
+{
+[v BLE2_SendBuffer@buffer buffer `*.34uc  1 p 2 13 ]
+[v BLE2_SendBuffer@length length `us  1 p 2 15 ]
+"55
+} 0
+"56
+[v _BLE2_SendByte BLE2_SendByte `(v  1 e 1 0 ]
+{
+[v BLE2_SendByte@byte byte `uc  1 p 1 wreg ]
+[v BLE2_SendByte@byte byte `uc  1 p 1 wreg ]
+[v BLE2_SendByte@byte byte `uc  1 p 1 11 ]
+"60
+} 1
+"353 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\mcc_generated_files/uart/src/eusart1.c
+[v _EUSART1_Write EUSART1_Write `(v  1 e 1 0 ]
+{
+"355
+[v EUSART1_Write@tempTxHead tempTxHead `uc  1 a 1 10 ]
+"353
+[v EUSART1_Write@txData txData `uc  1 p 1 9 ]
+"375
+} 0
+"272
+[v _EUSART1_IsTxReady EUSART1_IsTxReady `(a  1 e 1 0 ]
+{
+"275
+} 0
+"89 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X/application.h
+[s S2329 . 2 `uc 1 ADC_CHARACTERISTIC 1 0 `uc 1 ADC_VALUE 1 1 ]
+"222 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\application.c
+[v _ADCCommandGet ADCCommandGet `(S2329  1 e 2 0 ]
+{
+"224
+[v ADCCommandGet@data data `S2329  1 a 2 19 ]
+"228
+} 0
+"208
+[v _ADCModeGet ADCModeGet `(uc  1 e 1 0 ]
+{
+"210
+[v ADCModeGet@ch ch `uc  1 a 1 16 ]
+"211
+[v ADCModeGet@num num `uc  1 a 1 15 ]
+"213
+} 0
+"215
+[v _ADCCharacteristicGet ADCCharacteristicGet `(uc  1 e 1 0 ]
+{
+"217
+[v ADCCharacteristicGet@ch ch `uc  1 a 1 16 ]
+"218
+[v ADCCharacteristicGet@num num `uc  1 a 1 15 ]
+"220
+} 0
+"193
+[v _HexValueGet HexValueGet `(uc  1 e 1 0 ]
+{
+[v HexValueGet@x x `uc  1 p 1 wreg ]
+"195
+[v HexValueGet@hexvalue hexvalue `uc  1 a 1 9 ]
+"193
+[v HexValueGet@x x `uc  1 p 1 wreg ]
+"197
+[v HexValueGet@x x `uc  1 p 1 10 ]
+"206
+} 1
+"338
+[v _ADCBurstModeInitialize ADCBurstModeInitialize `(v  1 e 1 0 ]
+{
+"341
+} 0
+"343
+[v _ADCBasicModeInitialize ADCBasicModeInitialize `(v  1 e 1 0 ]
+{
+"346
+} 0
+"245 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\mcc_generated_files/adc/src/adc.c
+[v _ADC_ThresholdCallbackRegister ADC_ThresholdCallbackRegister `(v  1 e 1 0 ]
+{
+[v ADC_ThresholdCallbackRegister@callback callback `*.38(v  1 p 3 9 ]
+"248
+} 0
+"80 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\mcc_generated_files/system/src/interrupt.c
+[v _INTERRUPT_InterruptManager INTERRUPT_InterruptManager `IIH(v  1 e 1 0 ]
+{
+"118
+} 0
+"195 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\mcc_generated_files/timer/src/tmr1.c
+[v _TMR1_OverflowISR TMR1_OverflowISR `(v  1 e 1 0 ]
+{
+"206
+} 0
+"126
+[v i2_TMR1_CounterSet TMR1_CounterSet `(v  1 e 1 0 ]
+{
+"130
+[v i2TMR1_CounterSet@onState onState `a  1 a 1 2 ]
+"126
+[v i2TMR1_CounterSet@timerVal timerVal `us  1 p 2 0 ]
+"142
+} 0
+"230
+[v _TMR1_DefaultOverflowCallback TMR1_DefaultOverflowCallback `(v  1 s 1 TMR1_DefaultOverflowCallback ]
+{
+"233
+} 0
+"128 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\mcc_generated_files/timer/src/tmr0.c
+[v _TMR0_ISR TMR0_ISR `(v  1 e 1 0 ]
+{
+"135
+} 0
+"142
+[v _TMR0_DefaultCallback TMR0_DefaultCallback `(v  1 s 1 TMR0_DefaultCallback ]
+{
+"145
+} 0
+"461 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\application.c
+[v _TMR0_UserInterruptHandler TMR0_UserInterruptHandler `(v  1 e 1 0 ]
+{
+"465
+} 0
+"377 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\mcc_generated_files/uart/src/eusart1.c
+[v _EUSART1_TransmitISR EUSART1_TransmitISR `(v  1 e 1 0 ]
+{
+"379
+[v EUSART1_TransmitISR@tempTxTail tempTxTail `uc  1 a 1 0 ]
+"398
+} 0
+"308
+[v _EUSART1_ReceiveISR EUSART1_ReceiveISR `(v  1 e 1 0 ]
+{
+"311
+[v EUSART1_ReceiveISR@tempRxHead tempRxHead `uc  1 a 1 1 ]
+"310
+[v EUSART1_ReceiveISR@regValue regValue `uc  1 a 1 0 ]
+"351
+} 0
+"405
+[v _EUSART1_DefaultOverrunErrorCallback EUSART1_DefaultOverrunErrorCallback `(v  1 s 1 EUSART1_DefaultOverrunErrorCallback ]
+{
+"410
+} 0
+"400
+[v _EUSART1_DefaultFramingErrorCallback EUSART1_DefaultFramingErrorCallback `(v  1 s 1 EUSART1_DefaultFramingErrorCallback ]
+{
+"403
+} 0
+"399 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\mcc_generated_files/adc/src/adc.c
+[v _ADC_ThresholdISR ADC_ThresholdISR `(v  1 e 1 0 ]
+{
+"410
+} 0
+"467 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\application.c
+[v _ADC_UserInterruptHandler ADC_UserInterruptHandler `(v  1 e 1 0 ]
+{
+"471
+} 0
+"386 C:\TaskMaster\Examples_Migration\pic18f47q10-adcc-sensor-data-acquisition-mplab\pic18f47q10-adcc-sensor-data-acquisition-mplab.X\mcc_generated_files/adc/src/adc.c
+[v _ADC_ISR ADC_ISR `(v  1 e 1 0 ]
+{
+"397
+} 0

@@ -1,295 +1,319 @@
 // include files
-#include "mcc_generated_files/mcc.h"
-#include "mcc_generated_files/BLE2_driver.h"
+#include "application.h"  
 
-#include "application.h"
-#include "BLE2Click.h"
+// global variables
+volatile bool connectionStatus = false;
+volatile bool adcReadyFlag = false;     
+volatile bool burstMode = false;
+volatile bool isCRCPeekOngoing = false;
+volatile bool tmr0InterruptFlag = false;
+volatile uint8_t flashCrcErrorStatus = NO_ERROR; 
+volatile uint16_t crcValBurst = 0;
+volatile uint24_t currentAdcValuePtr = 0; 
+volatile uint16_t timer1ValueReload; 
 
-void InitialSetup(void) {
-    // clear the NVM register bits 
-    NVMCON0 = 0x00;
+void InitialSetup(void) 
+{
     // select the analog channel 
-    ADCCSetSensorPin(ADC_CLICK_2_PIN);
-    // enable the UV sensor
-    sensor_enable_SetHigh();    
+    ADC_ChannelSelect(SENSOR_CLICK_AN);
+    // enable the sensor
+    SENSOR_ENABLE_SetHigh();         
     // setup BLE
     BLE2ClickSetup();  
     // check if PFM and EEPROM are erased
-    if(DATAEE_ReadByte(IS_MEMORY_ERASED) == 0xFF) {
-        DATAEE_WriteByte(IS_MEMORY_ERASED,1);
-        // initialize CRC in burst mode
-        CRCInitializeBurstMode();
-        // start CRC
-        CRCBurstMode();
-        //calculate and store the initial value of checksum
-        crcValBurst = CRC_CalculatedResultGet(NORMAL, XOR_VALUE);
-        writeChecksum(crcValBurst);
+    if(EEPROM_Read(IS_MEMORY_ERASED_ADDR) == 0xFF) 
+    {
+        NVM_UnlockKeySet(UNLOCK_KEY_WORD_BYTE_WRITE);
+        EEPROM_Write(IS_MEMORY_ERASED_ADDR,1);
+        NVM_UnlockKeyClear();
+        CRCBurstModeInitialize();
+        CRCBurstModeCalculate();
+        // store the initial value of checksum       
+        crcValBurst = CRC_GetCalculatedResult( NORMAL_CRC , CRC_FINAL_XOR_VALUE);        
+        ChecksumWrite(crcValBurst);
         // store the initial value of data buffer
-        currentAdcValuePtr = START_ADDR;
-        writeDataPtr(currentAdcValuePtr);
-    } else {
+        currentAdcValuePtr = SCAN_START_ADDR;
+        DataPtrWrite(currentAdcValuePtr);
+    }
+    else 
+    {
         // get the checksum and data pointer from the EEPROM        
-        crcValBurst = readChecksum();
-        currentAdcValuePtr = readDataPtr();
+        crcValBurst = ChecksumRead();
+        currentAdcValuePtr = DataPtrRead();
     }    
-    //enable the timer for CRC in peek mode
-    TMR0_StartTimer();
+    // start the timer and CRC in peek mode
+    CRCPeriodicStart();
+    isCRCPeekOngoing = true;
 }
 
-void ApplicationTask(void) {
-    // local variables to handle various BLE operations
-    bool connection_data = false;
-    bool connection_end = false;
-    // ADC result variable
-    uint16_t adcValue;    
-    
+bool CRC_IsCalculationComplete(void)
+{  
+    bool busyStatus = 0;
+    busyStatus = !(CRC_IsCrcBusy() || CRC_IsScannerOngoing());
+    return(busyStatus);
+}
+
+inline bool CRC_IsScannerOngoing(void)
+{
+    return(SCANCON0bits.SCANGO);
+}
+
+void ApplicationTask(void) 
+{
+    volatile uint16_t crcValPeek = 0;
+    // local variables to know the status of BLE connection and data
+    bool connectionData = false;
+    bool connectionEnd = false;
+    uint16_t adcValue = 0;  // ADC result variable
     // check if any data is received on UART 
-    if(uart[BLE2].DataReady()) {
+    if(BLE_UART.IsRxReady())
+    {
         // get the Response
         BLE2ClickGetstr();
         // if not connected , check if the received data is for new connection. If yes, update the status flag to connected
-        if(!connection_status) {
-            connection_status=strcmp(buf,resp_conn) ? 0 : 1;
+        if(!connectionStatus)
+        {
+            connectionStatus = strcmp(buf,RESP_CONN) ? 0 : 1;
         }
         // if device is connected, check for various response received by the BLE and process it 
-        if(connection_status) {
-            connection_end=strcmp(buf,resp_conn_end) ? 0 : 1;
-            connection_data=strncmp(buf,resp_conn_data,2) ? 0 : 1;
-            // received disconnect message, make the connection status flag as false
-            if(connection_end) { 
-                // start logging to PFM every 2s as BLE is disconnected
-                timer1ReloadVal = TIMER1_02s;
-                TMR1_Reload();
-                TMR1_StartTimer();
-                connection_status=false;
-            // valid data received, process it
-            }else if(connection_data){
-                processADCCommand(); 
+        if(connectionStatus) 
+        {
+            connectionEnd = strcmp(buf,RESP_CONN_END) ? 0 : 1;
+            connectionData = strncmp(buf,RESP_CONN_DATA,2) ? 0 : 1;
+            // if disconnect message is received, make the connection status flag as false
+            if(connectionEnd) 
+            { 
+                // start timer to trigger ADC in every 2sec
+//                timer1ValueReload = TIMER1_02s;
+                TMR1_CounterSet(TIMER1_02s);
+                TMR1_Start(); 
+                connectionStatus = false;               
+            }
+            else if(connectionData)
+            {
+                //valid data is received, process it
+                ADCCommandProcess(); 
             }
         }  
+    
     }
-    // check if new ADCC value is ready for transmit
-    if(connection_status && adcReadyFlag) {
-        adcReadyFlag = false;
-        if(burstMode) {
-            // get the averaged data 
-            adcValue = ADCC_GetFilterValue();
-        } else {
-            // get the raw data
-            adcValue = ADCC_GetConversionResult();
-        }  
-        adcValue = (float)adcValue / MAX_ADC_VALUE * 100;
-        sendADCCValueBLE(adcValue);
-    }
-    // check if there is any errors in Flash or CRC
-    if(connection_status && flashCrcErrorStatus) {
-        // clear the NVMERR bit
-        NVMCON0bits.NVMERR = 0;
-        if(flashCrcErrorStatus == 1) {
-            sendADCCValueBLE(READ_ERROR);
-        } else if(flashCrcErrorStatus == 3) {
-            sendADCCValueBLE(WRITE_ERROR);
-        } else if(flashCrcErrorStatus == 5) {
-            sendADCCValueBLE(CRC_ERROR);
+    // check if BLE is connected  
+    if(connectionStatus )
+    {  
+        // check if new ADC value is ready for transmit
+        if(adcReadyFlag)
+        {
+           adcReadyFlag = false;
+           if(burstMode) 
+           {
+             // get the averaged data 
+             adcValue = ADC_FilterValueGet();
+           } 
+           else 
+           {
+              // get the raw data
+              adcValue = ADC_ConversionResultGet();
+           }  
+           adcValue = (uint16_t)((float)adcValue / MAX_ADC_VALUE * 100.0);
+           BLEDataSend(adcValue);
+        }           
+       // check if there is any errors in Flash or CRC
+       if(flashCrcErrorStatus) 
+        {        
+           if(flashCrcErrorStatus == READ_ERROR_STATUS_CODE)
+           {
+              BLEDataSend(READ_ERROR_DATA); // Error when checking the data read 
+           } 
+           else if(flashCrcErrorStatus == WRITE_ERROR_STATUS_CODE)
+           {
+              BLEDataSend(WRITE_ERROR_DATA); // Error when writing data into Flash
+           }   
+           else if(flashCrcErrorStatus == CRC_ERROR_STATUS_CODE)
+           {
+              BLEDataSend(CRC_ERROR_DATA); // CRC checksum mismatch error
+           }        
+           flashCrcErrorStatus = 0;
         }
     }
-    // if BLE is not connected , log the data in PFM
-    if((!connection_status) && adcReadyFlag) {
-        adcReadyFlag = false;
-        if(burstMode) {
-            adcValue = ADCC_GetFilterValue();
-        } else {
-            adcValue = ADCC_GetConversionResult();
+
+   // if BLE is not connected , log the data in PFM
+   else
+   {
+        if(adcReadyFlag) 
+       {
+           adcReadyFlag = false;
+           if(burstMode) 
+           {
+              adcValue = ADC_FilterValueGet();
+           } 
+           else 
+           {
+              adcValue = ADC_ConversionResultGet();
+           }
+           //stop timer running for CRC in peek mode as new value is being updated
+           CRCPeriodicStop();
+           CRCCON0bits.CRCGO = 0;
+           CRCCON0bits.CRCGO = 1;
+           isCRCPeekOngoing = false; 
+           FlashDataLog(adcValue);
+           CRCBurstModeInitialize();
+           CRCBurstModeCalculate();
+           // store the new checksum value
+           crcValBurst = CRC_GetCalculatedResult( NORMAL_CRC , CRC_FINAL_XOR_VALUE);
+           ChecksumWrite(crcValBurst);            
+           //start the timer and CRC in peek mode
+           CRCPeriodicStart();
+           isCRCPeekOngoing = true;          
         }
-        //stop timer running for CRC in peek mode as new value is being updated
-        TMR0_StopTimer();
-        TMR0_WriteTimer(0x00);
-        CRC_SCAN_StopScanner();
-        isCRCPeekEnabled = false;            
-        LogDataToPFM(adcValue);
-        //initialize CRC in burst mode
-        CRCInitializeBurstMode();
-        // start CRC
-        CRCBurstMode();
-        //calculate the new checksum
-        crcValBurst = CRC_CalculatedResultGet(NORMAL, XOR_VALUE);
-        writeChecksum(crcValBurst);
-        //re enable the timer for CRC in peek mode
-        TMR0_StartTimer();
     }
-    // check the CRC value periodically
-    if(tmr0InterruptFlag) {
-        tmr0InterruptFlag = false;
-        if(!isCRCPeekEnabled) {
-        CRCInitializePeekMode();
-        StartCRCPeekMode();
-        isCRCPeekEnabled = true;
+    // start the CRC in peek mode periodically 
+    if(tmr0InterruptFlag) 
+    {
+        tmr0InterruptFlag = false; 
+        if(!isCRCPeekOngoing)
+        {    
+            CRCPeekModeInitialize();
+            ScannerSetupAndStart(); 
+            isCRCPeekOngoing = true; 
         }
-        //Check if CRC Scan is completed
-        if (CRC_SCAN_HasScanCompleted()) {  
-            //Stop Scanner
-            CRC_SCAN_StopScanner();         
-            crcValPeek = CRC_CalculatedResultGet(NORMAL, XOR_VALUE);
-            if (crcValBurst != crcValPeek) {
-                //Critical Error, CRC mismatch has occurred
-                flashCrcErrorStatus = 0x05; 
-            }
-            isCRCPeekEnabled = false;
+    }
+    //Check if CRC calculation is completed
+    if (CRC_IsCalculationComplete())
+    {        
+        crcValPeek = CRC_GetCalculatedResult( NORMAL_CRC , CRC_FINAL_XOR_VALUE);
+        if (crcValBurst != crcValPeek) 
+        {
+            //Critical Error, CRC mismatch has occurred
+            flashCrcErrorStatus = CRC_ERROR_STATUS_CODE;
         }
+        isCRCPeekOngoing = false; 
     }
 }
 
-uint8_t getHexValue(char x) {
+uint8_t HexValueGet(char x) 
+{
     uint8_t hexvalue;    
-    if(x=='0') {
-        hexvalue = 0;
+   // converts the ASCII value to the Hex value.
+    if (x >= '0' && x <= '9') 
+    {
+      hexvalue = x - '0';  
     }
-    if(x=='1') {
-        hexvalue = 1;
-    }
-    if(x=='2') {
-        hexvalue = 2;
-    }
-    if(x=='3') {
-        hexvalue = 3;
-    }
-    if(x=='4') {
-        hexvalue = 4;
-    }
-    if(x=='5') {
-        hexvalue = 5;
-    }
-    if(x=='6') {
-        hexvalue = 6;
-    }
-    if(x=='7') {  
-        hexvalue = 7; 
-    }
-    if(x=='8') {
-        hexvalue = 8;
-    }
-    if(x=='9') {
-        hexvalue = 9;
-    }     
-    if(x=='A') {
-        hexvalue = 0x0A;
-    }
-    if(x=='B') {
-        hexvalue = 0x0B;
-    }
-    if(x=='C') {
-        hexvalue = 0x0C;
-    }
-    if(x=='D') {
-        hexvalue = 0x0D;
-    }
-    if(x=='E') {
-        hexvalue = 0x0E;
-    }
-    if(x=='F') {
-        hexvalue = 0x0F;
+   else if (x >= 'A' && x <= 'F')
+    {
+      hexvalue = 10 + (x - 'A'); 
     } 
-    return hexvalue;
+   return hexvalue;
 }
 
-uint8_t getADCMode(void) {    
-    uint8_t ch = (getHexValue(buf[10]) << 4) | getHexValue(buf[11]);
+uint8_t ADCModeGet(void)
+{    
+    uint8_t ch = ((uint8_t)(HexValueGet(buf[10]) << 4)) | HexValueGet(buf[11]);
     uint8_t num = (ch<='9') ? (ch-'0') : (ch-'A'+10) ;
     return num;
 }
 
-uint8_t getADCCharacteristic(void) {    
-    uint8_t ch = (getHexValue(buf[8]) << 4) | getHexValue(buf[9]);
+uint8_t ADCCharacteristicGet(void) 
+{    
+    uint8_t ch = ((uint8_t)(HexValueGet(buf[8]) << 4)) | HexValueGet(buf[9]);
     uint8_t num = (ch<='9') ? (ch-'0') : (ch-'A'+10) ;
     return num;
 }
 
-ADC_data getADCCommand(void) {    
+ADC_data ADCCommandGet(void)
+{    
     ADC_data data;
-    data.ADC_CHARACTERISTIC = getADCCharacteristic();
-    data.ADC_VALUE = getADCMode();
+    data.ADC_CHARACTERISTIC = ADCCharacteristicGet();
+    data.ADC_VALUE = ADCModeGet();
     return data;
 }
 
-void processADCCommand(void) {    
-    ADC_data data = getADCCommand();
-    uint16_t lcurrentAdcValuePtr = currentAdcValuePtr;
-    switch(data.ADC_CHARACTERISTIC) {
-        case ADC_STATE:
-            switch(data.ADC_VALUE) {
-                case ADC_REAL_DATA:
-                    // send real time data to phone by enabling the timer
-                    TMR1_StartTimer();
+void ADCCommandProcess(void) 
+{   
+    uint16_t dataRead;
+    ADC_data data = ADCCommandGet();
+    uint24_t lcurrentAdcValuePtr = currentAdcValuePtr;
+    
+    switch(data.ADC_CHARACTERISTIC) 
+    {
+        case DATA_STATE:
+            switch(data.ADC_VALUE)
+            {
+                case REALTIME_DATA:
+                    // send the real time data to phone by enabling the timer
+                    TMR1_Start();
                     break;
-                case ADC_LOG_DATA:
-                    // send logged data to phone
-                    TMR1_StopTimer();
-                    while(lcurrentAdcValuePtr < STOP_ADDR) {
-                        uint16_t dataRead = FLASH_ReadWord(lcurrentAdcValuePtr);
-                        if(dataRead != 0xFFFF) {
-                            dataRead = (float)dataRead / MAX_ADC_VALUE * 100;
-                            sendADCCValueBLE(dataRead);
-                            __delay_ms(100);
+                case LOG_DATA:
+                    // send the logged data to phone
+                    TMR1_Stop();
+                    while(lcurrentAdcValuePtr < SCAN_STOP_ADDR) 
+                    {
+                        //read the ADC value that is stored in FLASH
+                        dataRead = FLASH_Read(lcurrentAdcValuePtr+1);           
+                        dataRead = ( dataRead<<8)|FLASH_Read(lcurrentAdcValuePtr);
+                        if(dataRead != 0xFFFF) 
+                        {
+                            dataRead = (uint16_t)((float)dataRead / MAX_ADC_VALUE * 100);
+                            BLEDataSend(dataRead);
+                            __delay_ms(100);    
                         }
                         lcurrentAdcValuePtr += 2;
                     }
-                    lcurrentAdcValuePtr = START_ADDR;
-                    while(lcurrentAdcValuePtr < currentAdcValuePtr) {
-                        uint16_t dataRead = FLASH_ReadWord(lcurrentAdcValuePtr);
-                        if(dataRead != 0xFFFF) {
-                            dataRead = (float)dataRead / MAX_ADC_VALUE * 100;
-                            sendADCCValueBLE(dataRead);
+                    lcurrentAdcValuePtr = SCAN_START_ADDR;
+                    while(lcurrentAdcValuePtr < currentAdcValuePtr) 
+                    {
+                        //read the ADC value that is stored in FLASH
+                        dataRead = FLASH_Read(lcurrentAdcValuePtr+1);          
+                        dataRead = ( dataRead<<8)|FLASH_Read(lcurrentAdcValuePtr);
+                        if(dataRead != 0xFFFF) 
+                        {
+                            dataRead = (uint16_t)((float)dataRead / MAX_ADC_VALUE * 100.0);
+                            BLEDataSend(dataRead);
                             __delay_ms(100);
                         }                        
                         lcurrentAdcValuePtr += 2;                    
-                    }
+                    } 
                     break;
                 default:
                     break;
             }
             break;
         case ADC_MODE:
-            switch(data.ADC_VALUE) {
+            switch(data.ADC_VALUE)
+            {
                 case ADC_BURST_MODE:
-                    //ADC in burst mode
-                    ADCCBurstModeInitialize();
+                    ADCBurstModeInitialize();
                     burstMode = true;
                     break;
                 case ADC_BASIC_MODE:
-                    //ADC in basic mode
-                    ADCCBasicModeInitialize();
+                    ADCBasicModeInitialize();
                     burstMode = false;
                     break;            
                 default:
                     break;
             }        
             break;
-        case ADC_INTERVAL:
-            switch(data.ADC_VALUE) {
-                case INTERVAL_01:
+        case SENSING_INTERVAL:
+            switch(data.ADC_VALUE)
+            {
+                case SENSING_INTERVAL_01:
                     //ADC sampling interval is 1s
-                    timer1ReloadVal = TIMER1_01s;
-                    TMR1_Reload();
+                    TMR1_CounterSet(TIMER1_01s);
                     break;
-                case INTERVAL_02:
+                case SENSING_INTERVAL_02:
                     //ADC sampling interval is 2s
-                    timer1ReloadVal = TIMER1_02s;
-                    TMR1_Reload();
+                    TMR1_CounterSet(TIMER1_02s);
                     break;
-                case INTERVAL_04:
+                case SENSING_INTERVAL_04:
                     //ADC sampling interval is 4s
-                    timer1ReloadVal = TIMER1_04s;
-                    TMR1_Reload();
+                    TMR1_CounterSet(TIMER1_04s);
                     break;
-                case INTERVAL_08:
+                case SENSING_INTERVAL_08:
                     //ADC sampling interval is 8s
-                    timer1ReloadVal = TIMER1_08s;
-                    TMR1_Reload();
+                    TMR1_CounterSet(TIMER1_08s);
                     break;
-                case INTERVAL_16:
+                case SENSING_INTERVAL_16:
                     //ADC sampling interval is 16s
-                    timer1ReloadVal = TIMER1_16s;
-                    TMR1_Reload();
+                   TMR1_CounterSet(TIMER1_16s);
                     break;             
                 default:
                     break;
@@ -297,150 +321,151 @@ void processADCCommand(void) {
             break;
         default:
             break;
-        }
+    }
 }
 
-void FLASHWriteWordSingle(uint32_t flashAddr, uint16_t word) {
-    
-    uint8_t GIEBitValue = INTCONbits.GIE;
-    uint16_t data_check;    
-    
-    // Load 22-bit address
-    NVMADRL = 0xFF & (flashAddr);
-    NVMADRH = 0xFF & (flashAddr >> 8);
-    NVMADRU = 0xFF & (flashAddr >> 16);
-    
-    // Load the 16 bit data
-    NVMDAT = word;
-    
-    // Unlock and launch the transfer from SECRAM to PFM
-    INTCONbits.GIE = 0;
-    // Enable NVM access
-    NVMCON0bits.NVMEN = 1;  
-    // unlock sequence
-    NVMCON2 = 0x55;
-    NVMCON2 = 0xAA;
-    NVMCON1bits.WR = 1;
-    
-    if(NVMCON0bits.NVMERR) {
-        flashCrcErrorStatus = 0x03; 
-    } else {
-        data_check = FLASH_ReadWord(flashAddr);
-        if(data_check != word) {
-            flashCrcErrorStatus = 0x01;
-        }
-    }
-    
-    NVMCON0bits.NVMEN = 0;    // Disable NVM access
-    INTCONbits.GIE = GIEBitValue; 
-}
-
-void LogDataToPFM(uint16_t adcValue) {
-    if(currentAdcValuePtr > STOP_ADDR) {
-        currentAdcValuePtr = START_ADDR;
-    }
-    if(!(currentAdcValuePtr & 0x00FF)) {
-        FLASH_EraseBlock(currentAdcValuePtr);
-    }
-    FLASHWriteWordSingle(currentAdcValuePtr,adcValue);
-    currentAdcValuePtr += 2;
-    writeDataPtr(currentAdcValuePtr);
-}
-
-void sendADCCValueBLE(uint16_t adcValue) {    
+void BLEDataSend(uint16_t data) 
+{
     uint8_t result[2];
-    BLE2_SendString(cmd_adc_value_send);
-    sprintf((char*)result, "%02X", (uint8_t)adcValue);
+    BLE2_SendString(CMD_DATA_SEND);
+    sprintf((char*)result, "%02X", (uint8_t)data);
     BLE2_SendString((const char*)result);
-    sprintf((char*)result, "%02X", (uint8_t)(adcValue >> 8));
+    sprintf((char*)result, "%02X", (uint8_t)(data >> 8));
     BLE2_SendString((const char*)result);
     BLE2_SendString("\r\n");
 }
 
-void ADCCBurstModeInitialize(void) {
+void ADCBurstModeInitialize(void)
+{
     ADCON2bits.ADMD = 0b011;
 }
 
-void ADCCBasicModeInitialize(void) {
+void ADCBasicModeInitialize(void) 
+{
     ADCON2bits.ADMD = 0b000;
 }
 
-void ADCCSetSensorPin(uint8_t adcPin) {
-    ADPCH = adcPin;
-}
-
-void CRCInitializePeekMode() {
+void CRCBurstModeInitialize(void)
+{
     CRCACCL = 0x00;
     CRCACCH = 0x00;
-
-    SCANCON0bits.MODE = 0x2;
-}
-
-void CRCInitializeBurstMode() {
-    CRCACCL = 0x00;
-    CRCACCH = 0x00;
-
     SCANCON0bits.MODE = 0x1;
 }
 
-void StartCRCPeekMode() {
-    // Sets SCAN address limit
-    CRC_SCAN_SetAddressLimit(START_ADDR, STOP_ADDR);
-
-    // Start Scanner - Peek Mode
-    CRC_SCAN_StartScanner();
+void CRCBurstModeCalculate(void)
+{     
+    ScannerSetupAndStart();   
+    // Wait for scan and CRC calculation to complete
+    while (!CRC_IsCalculationComplete());   
 }
 
-void CRCBurstMode() {
-    // Sets SCAN address limit
-    CRC_SCAN_SetAddressLimit(START_ADDR, STOP_ADDR);
-
-    // Start Scanner - Burst Mode
-    CRC_SCAN_StartScanner();
-
-    // Wait for scan to complete
-    while (!CRC_SCAN_HasScanCompleted());
-
-    // Stop Scanner
-    CRC_SCAN_StopScanner();
+void CRCPeekModeInitialize(void) 
+{
+    CRCACCL = 0x00;
+    CRCACCH = 0x00;
+    SCANCON0bits.MODE = 0x2;
 }
 
-void writeChecksum(uint16_t checksum) {
-    // store the checksum in EEPROM
-    DATAEE_WriteByte(CHECKSUM_HIGHBYTE,(checksum >> 8));
-    DATAEE_WriteByte(CHECKSUM_LOWBYTE,(uint8_t)checksum);
+void ScannerSetupAndStart(void)
+{
+    CRC_SetScannerAddressLimit(SCAN_START_ADDR, SCAN_STOP_ADDR);
+    CRC_StartScanner();
+}
+void CRCPeriodicStart(void)
+{
+    TMR0_Start();
+    CRCPeekModeInitialize();
+    ScannerSetupAndStart(); 
 }
 
-uint16_t readChecksum(void) {
-    // read the checksum from EEPROM
-    uint8_t checkSumHighByte = DATAEE_ReadByte(CHECKSUM_HIGHBYTE);
-    uint8_t checkSumLowByte = DATAEE_ReadByte(CHECKSUM_LOWBYTE);
+void CRCPeriodicStop(void) 
+{      
+    TMR0_Stop(); 
+    TMR0_Write(0x00);
+    CRC_StopScanner();
+}
+
+void FlashWordWrite(uint24_t flashAddr, uint16_t word) 
+{
+    uint16_t readWord; 
+    nvm_status_t errorStatus;
+    NVM_UnlockKeySet(UNLOCK_KEY_WORD_BYTE_WRITE);
+    errorStatus = FLASH_Write(flashAddr,word); 
+    NVM_UnlockKeyClear();    
+    if(errorStatus == NVM_ERROR)
+    {
+        NVM_StatusClear();
+        flashCrcErrorStatus = WRITE_ERROR_STATUS_CODE;       
+    }
+    else 
+    {
+        readWord = FLASH_Read(flashAddr);        
+        if(readWord != word) 
+        {
+            flashCrcErrorStatus = READ_ERROR_STATUS_CODE;
+        }
+    }
+}
+
+void FlashDataLog(uint16_t adcValue)
+{
+    if(currentAdcValuePtr > SCAN_STOP_ADDR) 
+    {
+        currentAdcValuePtr = SCAN_START_ADDR;
+    }
+    if(!(currentAdcValuePtr & 0x00FF))
+    {
+       NVM_UnlockKeySet(UNLOCK_KEY_PAGE_ERASE);
+       FLASH_PageErase(currentAdcValuePtr);
+       NVM_UnlockKeyClear();
+    }
+    FlashWordWrite(currentAdcValuePtr,adcValue);
+    currentAdcValuePtr += 2;
+    DataPtrWrite(currentAdcValuePtr);
+}
+
+void ChecksumWrite(uint16_t checksum)
+{
+    NVM_UnlockKeySet(UNLOCK_KEY_WORD_BYTE_WRITE);
+    // Store the checksum in EEPROM
+    EEPROM_Write(CHECKSUM_HIGHBYTE_ADDR,(checksum >> 8));
+    EEPROM_Write(CHECKSUM_LOWBYTE_ADDR,(uint8_t)checksum);
+    NVM_UnlockKeyClear();
+}
+
+uint16_t ChecksumRead(void)
+{
+    // Read the checksum from EEPROM
+    uint8_t checkSumHighByte = EEPROM_Read(CHECKSUM_HIGHBYTE_ADDR);
+    uint8_t checkSumLowByte = EEPROM_Read(CHECKSUM_LOWBYTE_ADDR);
     return(((uint16_t)checkSumHighByte << 8) | checkSumLowByte);
 }
 
-void writeDataPtr(uint16_t dataPtr) {
-    // store the current address pointer in EEPROM
-    DATAEE_WriteByte(ADDRESS_POINTER_HIGHBYTE,(dataPtr >> 8));
-    DATAEE_WriteByte(ADDRESS_POINTER_LOWBYTE,(uint8_t)dataPtr);
+void DataPtrWrite(uint24_t dataPtr)
+{
+    NVM_UnlockKeySet(UNLOCK_KEY_WORD_BYTE_WRITE);
+    // Store the current address pointer in EEPROM
+    EEPROM_Write(CHECKSUM_POINTER_HIGHBYTE_ADDR,((uint8_t)dataPtr >> 8));
+    EEPROM_Write(CHECKSUM_POINTER_LOWBYTE_ADDR,(uint8_t)dataPtr);
+    NVM_UnlockKeyClear();
 }
 
-uint16_t readDataPtr(void) {
-    // read the current address pointer from EEPROM
-    uint8_t addressHighByte = DATAEE_ReadByte(ADDRESS_POINTER_HIGHBYTE);
-    uint8_t addressLowByte = DATAEE_ReadByte(ADDRESS_POINTER_LOWBYTE);
+uint16_t DataPtrRead(void) 
+{
+    // Read the current address pointer from EEPROM
+    uint8_t addressHighByte = EEPROM_Read(CHECKSUM_POINTER_HIGHBYTE_ADDR);
+    uint8_t addressLowByte = EEPROM_Read(CHECKSUM_POINTER_LOWBYTE_ADDR);
     return(((uint16_t)addressHighByte << 8) | addressLowByte);
-}
-
-
+ } 
+  
 void TMR0_UserInterruptHandler(void)
 {
-     //timer interrupt  handler function
-     tmr0InterruptFlag = true;
+    //Timer interrupt  handler function
+    tmr0InterruptFlag = true;
 }
 
-void ADCC_UserInterruptHandler(void)
+void ADC_UserInterruptHandler(void)
 {
-    //adc interrupt handler function
-     adcReadyFlag = true;
+    //ADC interrupt handler function
+    adcReadyFlag = true;
 }
-
